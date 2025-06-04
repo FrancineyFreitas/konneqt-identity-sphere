@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -6,10 +5,12 @@ import { Label } from '../components/ui/label';
 import { Card, CardContent } from '../components/ui/card';
 import ScrollReveal from '../components/ScrollReveal';
 import { toast } from '@/hooks/use-toast';
+import { subscribeToMailchimp } from '../api/mailchimp';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     institution: '',
     email: '',
     phone: ''
@@ -29,8 +30,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Simulação da integração com Mailchimp
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await subscribeToMailchimp(formData);
       
       toast({
         title: "Mensagem enviada com sucesso!",
@@ -39,7 +39,8 @@ const Contact = () => {
       });
 
       setFormData({
-        name: '',
+        firstName: '',
+        lastName: '',
         institution: '',
         email: '',
         phone: ''
@@ -47,7 +48,7 @@ const Contact = () => {
     } catch (error) {
       toast({
         title: "Erro ao enviar mensagem",
-        description: "Tente novamente em alguns instantes.",
+        description: error instanceof Error ? error.message : "Tente novamente em alguns instantes.",
         variant: "destructive",
         duration: 5000,
       });
@@ -58,15 +59,24 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-20 px-4 bg-muted/30">
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto">
         <ScrollReveal>
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Solicite uma <span className="gradient-text">Demonstração</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
               Descubra como o QSCIM pode transformar a gestão de identidades da sua instituição
             </p>
+            <div className="flex justify-center items-center">
+              <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-konneqt-green/20 to-konneqt-blue/20 rounded-full px-8 py-5 shadow-lg hover:shadow-xl transition-all duration-300">
+                <span className="text-3xl">🎯</span>
+                <div className="text-left">
+                  <div className="text-sm text-muted-foreground">Demonstração personalizada</div>
+                  <div className="text-lg font-semibold">Adaptada à sua instituição</div>
+                </div>
+              </div>
+            </div>
           </div>
         </ScrollReveal>
 
@@ -75,20 +85,37 @@ const Contact = () => {
             <Card className="shadow-xl border-2 border-transparent hover:border-konneqt-blue/20 transition-all duration-300">
               <CardContent className="p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <Label htmlFor="name" className="text-sm font-semibold">
-                      Nome completo *
-                    </Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="mt-2 border-2 focus:border-konneqt-blue"
-                      placeholder="Seu nome completo"
-                    />
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="firstName" className="text-sm font-semibold">
+                        Nome *
+                      </Label>
+                      <Input
+                        id="firstName"
+                        name="firstName"
+                        type="text"
+                        required
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        className="mt-2 border-2 focus:border-konneqt-blue"
+                        placeholder="Seu nome"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="lastName" className="text-sm font-semibold">
+                        Sobrenome *
+                      </Label>
+                      <Input
+                        id="lastName"
+                        name="lastName"
+                        type="text"
+                        required
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        className="mt-2 border-2 focus:border-konneqt-blue"
+                        placeholder="Seu sobrenome"
+                      />
+                    </div>
                   </div>
 
                   <div>
@@ -125,12 +152,13 @@ const Contact = () => {
 
                   <div>
                     <Label htmlFor="phone" className="text-sm font-semibold">
-                      Telefone
+                      Telefone *
                     </Label>
                     <Input
                       id="phone"
                       name="phone"
                       type="tel"
+                      required
                       value={formData.phone}
                       onChange={handleInputChange}
                       className="mt-2 border-2 focus:border-konneqt-blue"
@@ -177,20 +205,10 @@ const Contact = () => {
               {/* Nova seção de promoção */}
               <div className="bg-gradient-to-r from-konneqt-green/20 to-konneqt-green/30 border-2 border-konneqt-green rounded-2xl p-8 text-center relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-konneqt-green via-green-400 to-konneqt-green"></div>
-                <div className="text-5xl font-black text-konneqt-green mb-2 animate-pulse">50% OFF</div>
+                <div className="text-5xl font-black text-konneqt-white mb-2 animate-pulse">50% OFF</div>
                 <div className="text-lg font-bold text-konneqt-green mb-2">No primeiro ano de implementação</div>
                 <div className="text-sm font-semibold text-konneqt-green/80">Para instituições educacionais</div>
                 <div className="absolute -right-4 -bottom-4 text-6xl opacity-20">🎓</div>
-              </div>
-
-              <div className="text-center">
-                <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-konneqt-green/20 to-konneqt-blue/20 rounded-full px-6 py-4">
-                  <span className="text-2xl">🎯</span>
-                  <div className="text-left">
-                    <div className="text-sm text-muted-foreground">Demonstração personalizada</div>
-                    <div className="font-semibold">Adaptada à sua instituição</div>
-                  </div>
-                </div>
               </div>
             </div>
           </ScrollReveal>

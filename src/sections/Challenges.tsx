@@ -12,13 +12,13 @@ const Challenges = () => {
     },
     {
       title: 'Sazonalidade extrema',
-      description: '85% dos acessos em 2 semanas',
+      description: '85% dos acessos criados em 2 semanas',
       icon: '📈',
       color: 'konneqt-purple'
     },
     {
       title: 'Diversidade de perfis',
-      description: 'Graduação, pós, intercâmbio, visitantes',
+      description: 'Graduação, pós-graduação, intercâmbio, visitantes',
       icon: '🎓',
       color: 'konneqt-green'
     }
@@ -27,22 +27,22 @@ const Challenges = () => {
   const impacts = [
     {
       metric: '72%',
-      description: 'do tempo da TI em tarefas manuais',
+      description: 'Tempo gasto em tarefas manuais',
       color: 'text-red-500'
     },
     {
       metric: '45%',
-      description: 'de erros no provisionamento',
+      description: 'Erros em provisionamento manual',
       color: 'text-orange-500'
     },
     {
       metric: '3 a 5 dias',
-      description: 'para criar um usuário',
+      description: 'Dias para provisionar novos usuários',
       color: 'text-yellow-500'
     },
     {
       metric: 'US$ 50 mil',
-      description: 'custo anual',
+      description: 'Custo anual de gestão manual',
       color: 'text-red-600'
     }
   ];

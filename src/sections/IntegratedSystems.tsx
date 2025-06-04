@@ -24,7 +24,7 @@ const IntegratedSystems = () => {
     },
     {
       title: 'Outros Sistemas',
-      systems: ['Wi-Fi', 'Laboratórios', 'Controle de acesso', 'Impressão', 'Armazenamento em nuvem'],
+      systems: ['Wi-Fi', 'Laboratórios', 'Controle de acesso', 'Impressão'],
       icon: '🔗',
       color: 'konneqt-orange'
     }

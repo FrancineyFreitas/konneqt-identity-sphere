@@ -1,4 +1,3 @@
-
 import ScrollReveal from '../components/ScrollReveal';
 
 const HowItWorks = () => {
@@ -20,7 +19,7 @@ const HowItWorks = () => {
     {
       number: '3',
       title: 'Sistemas de destino',
-      description: 'Azure AD, Google, Okta, Active Directory',
+      description: 'Azure AD, Google, Okta, Active Directory, etc.',
       icon: '🎯',
       color: 'konneqt-green'
     }
@@ -47,9 +46,11 @@ const HowItWorks = () => {
           <div className="grid md:grid-cols-3 gap-8 relative z-10">
             {steps.map((step, index) => (
               <ScrollReveal key={index} delay={index * 200}>
-                <div className="bg-card border border-border rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 dark:border-konneqt-orange/30 dark:hover:border-konneqt-orange/60">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-konneqt-${step.color} to-konneqt-${step.color}/80 text-white text-2xl font-bold mb-6`}>
-                    {step.number}
+                <div className="bg-card border border-border rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 dark:border-konneqt-orange/30 dark:hover:border-konneqt-orange/60 h-full flex flex-col items-center justify-center">
+                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-konneqt-${step.color} to-konneqt-${step.color}/80 mb-6 relative`}>
+                    <div className="absolute inset-0.5 bg-black dark:bg-black rounded-full flex items-center justify-center">
+                      <span className="text-[White] dark:text-[#1ee391] text-2xl font-bold">{step.number}</span>
+                    </div>
                   </div>
                   
                   <div className="text-4xl mb-4">{step.icon}</div>

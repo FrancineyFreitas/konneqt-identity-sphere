@@ -40,6 +40,7 @@ const Security = () => {
   const securityLayers = [
     'Autenticação multifator (MFA)',
     'Controle de acesso por função',
+    'Criptografia',
     'Monitoramento em tempo real',
     'Logs e relatórios de auditoria'
   ];

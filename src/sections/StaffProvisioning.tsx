@@ -17,16 +17,16 @@ const StaffProvisioning = () => {
     },
     {
       title: 'Professor Visitante',
-      accesses: ['Acesso temporário com expiração automática'],
+      accesses: ['Acesso temporário com expiração automática', 'WiFi Guest', 'LMS Limitado', 'Biblioteca', 'Labs Específicos'],
       icon: '👨‍🎓',
       color: 'konneqt-green'
     }
   ];
 
   const flowSteps = [
-    { step: '1', title: 'Cadastro no RH', icon: '📋' },
+    { step: '1', title: 'Contratação no RH', icon: '📋' },
     { step: '2', title: 'Processamento pelo QSCIM', icon: '⚙️' },
-    { step: '3', title: 'Criação de contas', icon: '👤' },
+    { step: '3', title: 'Provisionamento', icon: '👤' },
     { step: '4', title: 'Envio de credenciais', icon: '📧' }
   ];
 

@@ -1,4 +1,3 @@
-
 import ScrollReveal from '../components/ScrollReveal';
 
 const Implementation = () => {
@@ -33,12 +32,35 @@ const Implementation = () => {
     }
   ];
 
-  const bestPractices = [
-    'Desabilitar SCIM "create" no IdP',
-    'Usar SSO com provisionamento Just-in-Time',
-    'Validar e-mails e identificadores persistentes',
-    'Migração gradual e backup com rollback'
-  ];
+  const bestPracticesConfig = {
+    title: 'Configuração Recomendada',
+    items: [
+      'Desabilitar SCIM "create" no IdP',
+      'Usar SSO para Just-in-Time provisioning',
+      'SCIM apenas para update/suspend/delete',
+      'Evitar criação desnecessária de contas'
+    ]
+  };
+
+  const bestPracticesEmail = {
+    title: 'Mapeamento de Email',
+    items: [
+      'Garantir formato consistente de email',
+      'SSO Email = SCIM userName',
+      'Usar UserPrincipalName (UPN)',
+      'Validar antes da migração'
+    ]
+  };
+
+  const bestPracticesIds = {
+    title: 'Identificadores Persistentes',
+    items: [
+      'Usar employeeID para NameID',
+      'Mesmo ID para SCIM externalId',
+      'Evitar mudanças de identificadores',
+      'Manter consistência entre sistemas'
+    ]
+  };
 
   return (
     <section className="py-20 px-4 bg-muted/30">
@@ -71,15 +93,20 @@ const Implementation = () => {
 
         <ScrollReveal>
           <div className="bg-gradient-to-r from-konneqt-green/10 to-konneqt-blue/10 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-center mb-8">Boas Práticas</h3>
+            <h3 className="text-2xl font-bold text-center mb-8">Melhores Práticas Campus-Wide</h3>
             
-            <div className="grid sm:grid-cols-2 gap-6">
-              {bestPractices.map((practice, index) => (
-                <div key={index} className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-konneqt-green rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white text-xs">✓</span>
-                  </div>
-                  <span className="text-sm">{practice}</span>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[bestPracticesConfig, bestPracticesEmail, bestPracticesIds].map((category, index) => (
+                <div key={index} className="space-y-4">
+                  <h4 className="font-semibold text-lg mb-4">{category.title}</h4>
+                  {category.items.map((practice, practiceIndex) => (
+                    <div key={practiceIndex} className="flex items-start space-x-3">
+                      <div className="w-6 h-6 bg-konneqt-green rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                        <span className="text-white text-xs">✓</span>
+                      </div>
+                      <span className="text-sm">{practice}</span>
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>

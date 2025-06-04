@@ -1,5 +1,5 @@
-
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
+import KonneqtLogo from '../components/KonneqtLogo';
 
 const Footer = () => {
   return (
@@ -7,22 +7,21 @@ const Footer = () => {
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
           <div className="flex items-center space-x-4">
-            <div className="w-8 h-8 bg-gradient-to-r from-konneqt-blue to-konneqt-purple rounded-lg"></div>
-            <span className="text-xl font-bold gradient-text">Konneqt</span>
+            <a 
+              href="https://konneqt.io/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <KonneqtLogo width={120} height={32} className="w-auto h-8" />
+            </a>
           </div>
 
           <div className="text-center">
             <p className="text-sm text-muted-foreground mb-2">
               © 2025 Konneqt. Todos os direitos reservados.
             </p>
-            <a 
-              href="https://konneqt.io" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-konneqt-blue hover:text-konneqt-purple transition-colors duration-300 text-sm font-medium"
-            >
-              https://konneqt.io
-            </a>
+            
           </div>
 
           <div className="flex items-center space-x-4">

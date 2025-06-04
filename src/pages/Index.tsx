@@ -1,4 +1,3 @@
-
 import Header from '../sections/Header';
 import Hero from '../sections/Hero';
 import Challenges from '../sections/Challenges';
@@ -10,6 +9,7 @@ import StaffProvisioning from '../sections/StaffProvisioning';
 import IntegratedSystems from '../sections/IntegratedSystems';
 import Security from '../sections/Security';
 import Implementation from '../sections/Implementation';
+import Testimonial from '../sections/Testimonial';
 import Contact from '../sections/Contact';
 import Footer from '../sections/Footer';
 
@@ -27,6 +27,7 @@ const Index = () => {
       <IntegratedSystems />
       <Security />
       <Implementation />
+      <Testimonial />
       <Contact />
       <Footer />
     </div>

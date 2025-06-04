@@ -6,19 +6,19 @@ const Benefits = () => {
   const benefits = [
     {
       title: 'Automação Completa',
-      items: ['Provisionamento em tempo real', 'Desprovisionamento seguro'],
+      items: ['Provisionamento em tempo real', 'Desprovisionamento seguro', 'Sincronização em tempo real'],
       icon: '🤖',
       color: 'konneqt-blue'
     },
     {
       title: 'Segurança Avançada',
-      items: ['Controle por função', 'Auditoria', 'Conformidade com FERPA/LGPD'],
+      items: ['Controle  de acesso baseado em função', 'Auditoria completa de acessos', 'Conformidade com FERPA/LGPD'],
       icon: '🔒',
       color: 'konneqt-purple'
     },
     {
       title: 'Eficiência Operacional',
-      items: ['Economia de tempo', 'Redução de erros humanos', 'Redução de custos'],
+      items: ['Economia de tempo', 'Eliminação de erros humanos', 'Escalabilidade ilimitada'],
       icon: '📈',
       color: 'konneqt-green'
     }
