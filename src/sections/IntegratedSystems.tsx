@@ -47,7 +47,7 @@ const IntegratedSystems = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {systemCategories.map((category, index) => (
             <ScrollReveal key={index} delay={index * 200}>
-              <div className="bg-card border rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="bg-card border border-border rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 dark:border-konneqt-green/30 dark:hover:border-konneqt-green/60">
                 <div className="text-center mb-6">
                   <div className="text-4xl mb-3">{category.icon}</div>
                   <h3 className="text-lg font-semibold">{category.title}</h3>

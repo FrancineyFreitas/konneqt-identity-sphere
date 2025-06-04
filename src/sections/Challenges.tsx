@@ -64,7 +64,7 @@ const Challenges = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {challenges.map((challenge, index) => (
             <ScrollReveal key={index} delay={index * 200}>
-              <Card className="border-2 border-transparent hover:border-konneqt-blue/20 transition-all duration-300 hover:shadow-lg">
+              <Card className="border-2 border-transparent hover:border-konneqt-blue/20 transition-all duration-300 hover:shadow-lg dark:border-konneqt-blue/30 dark:hover:border-konneqt-blue/60">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl mb-4">{challenge.icon}</div>
                   <h3 className="text-xl font-semibold mb-3">{challenge.title}</h3>

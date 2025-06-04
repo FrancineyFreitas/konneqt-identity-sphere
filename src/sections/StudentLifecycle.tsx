@@ -59,7 +59,7 @@ const StudentLifecycle = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {events.map((event, index) => (
             <ScrollReveal key={index} delay={index * 100}>
-              <Card className="border-2 border-transparent hover:border-konneqt-blue/20 transition-all duration-300 hover:shadow-lg group">
+              <Card className="border-2 border-transparent hover:border-konneqt-blue/20 transition-all duration-300 hover:shadow-lg group dark:border-konneqt-purple/30 dark:hover:border-konneqt-purple/60">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl mb-4 group-hover:animate-float">{event.icon}</div>
                   <h3 className="text-lg font-semibold mb-3">{event.title}</h3>
