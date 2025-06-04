@@ -1,0 +1,57 @@
+
+import { Facebook, Instagram, Linkedin } from 'lucide-react';
+
+const Footer = () => {
+  return (
+    <footer className="bg-background border-t border-border py-12 px-4">
+      <div className="container mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+          <div className="flex items-center space-x-4">
+            <div className="w-8 h-8 bg-gradient-to-r from-konneqt-blue to-konneqt-purple rounded-lg"></div>
+            <span className="text-xl font-bold gradient-text">Konneqt</span>
+          </div>
+
+          <div className="text-center">
+            <p className="text-sm text-muted-foreground mb-2">
+              © 2025 Konneqt. Todos os direitos reservados.
+            </p>
+            <a 
+              href="https://konneqt.io" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-konneqt-blue hover:text-konneqt-purple transition-colors duration-300 text-sm font-medium"
+            >
+              https://konneqt.io
+            </a>
+          </div>
+
+          <div className="flex items-center space-x-4">
+            <a 
+              href="#" 
+              aria-label="Instagram"
+              className="p-2 rounded-full bg-gradient-to-r from-konneqt-blue/10 to-konneqt-purple/10 hover:from-konneqt-blue/20 hover:to-konneqt-purple/20 transition-all duration-300 group"
+            >
+              <Instagram size={20} className="text-muted-foreground group-hover:text-konneqt-blue transition-colors" />
+            </a>
+            <a 
+              href="#" 
+              aria-label="Facebook"
+              className="p-2 rounded-full bg-gradient-to-r from-konneqt-blue/10 to-konneqt-purple/10 hover:from-konneqt-blue/20 hover:to-konneqt-purple/20 transition-all duration-300 group"
+            >
+              <Facebook size={20} className="text-muted-foreground group-hover:text-konneqt-blue transition-colors" />
+            </a>
+            <a 
+              href="#" 
+              aria-label="LinkedIn"
+              className="p-2 rounded-full bg-gradient-to-r from-konneqt-blue/10 to-konneqt-purple/10 hover:from-konneqt-blue/20 hover:to-konneqt-purple/20 transition-all duration-300 group"
+            >
+              <Linkedin size={20} className="text-muted-foreground group-hover:text-konneqt-blue transition-colors" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
