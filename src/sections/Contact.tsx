@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -5,7 +6,7 @@ import { Label } from '../components/ui/label';
 import { Card, CardContent } from '../components/ui/card';
 import ScrollReveal from '../components/ScrollReveal';
 import { toast } from '@/hooks/use-toast';
-import { subscribeToMailchimp } from '../api/mailchimp';
+import { submitContactForm } from '../api/n8n';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -30,7 +31,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      await subscribeToMailchimp(formData);
+      await submitContactForm(formData);
       
       toast({
         title: "Mensagem enviada com sucesso!",
