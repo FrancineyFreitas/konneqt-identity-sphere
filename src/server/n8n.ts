@@ -1,11 +1,8 @@
 import axios from 'axios';
-import dotenv from 'dotenv';
 import { SubscribeData } from './validators';
 import { ApiError } from './types';
 
-dotenv.config();
-
-const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || 'https://automation.cloud.konneqt.io/webhook/contact-form';
+const N8N_WEBHOOK_URL = import.meta.env.NEXT_PUBLIC_N8N_WEBHOOK_URL || 'https://automation.cloud.konneqt.io/webhook/contact-form';
 
 export async function submitToN8N(data: SubscribeData) {
   try {
@@ -37,4 +34,4 @@ export async function submitToN8N(data: SubscribeData) {
     }
     throw new ApiError('Erro ao conectar com o servidor', 500);
   }
-} 
+}
