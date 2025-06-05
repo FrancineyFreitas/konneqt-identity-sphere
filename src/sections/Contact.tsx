@@ -5,29 +5,32 @@ import { Label } from '../components/ui/label';
 import { Card, CardContent } from '../components/ui/card';
 import ScrollReveal from '../components/ScrollReveal';
 import { toast } from '@/hooks/use-toast';
-import { submitContactForm } from '@/lib/api';
-import { contactFormSchema } from '@/lib/validations';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import type { ContactFormData } from '@/lib/validations';
+import { subscribeToMailchimp } from '../api/mailchimp';
 
 const Contact = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors }
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactFormSchema)
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    institution: '',
+    email: '',
+    phone: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const onSubmit = async (data: ContactFormData) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      await submitContactForm(data);
+      await subscribeToMailchimp(formData);
       
       toast({
         title: "Mensagem enviada com sucesso!",
@@ -35,7 +38,13 @@ const Contact = () => {
         duration: 5000,
       });
 
-      reset();
+      setFormData({
+        firstName: '',
+        lastName: '',
+        institution: '',
+        email: '',
+        phone: ''
+      });
     } catch (error) {
       toast({
         title: "Erro ao enviar mensagem",
@@ -71,11 +80,11 @@ const Contact = () => {
           </div>
         </ScrollReveal>
 
-        <div className="max-w-xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           <ScrollReveal>
             <Card className="shadow-xl border-2 border-transparent hover:border-konneqt-blue/20 transition-all duration-300">
               <CardContent className="p-8">
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="firstName" className="text-sm font-semibold">
@@ -83,14 +92,14 @@ const Contact = () => {
                       </Label>
                       <Input
                         id="firstName"
-                        {...register('firstName')}
+                        name="firstName"
                         type="text"
+                        required
+                        value={formData.firstName}
+                        onChange={handleInputChange}
                         className="mt-2 border-2 focus:border-konneqt-blue"
                         placeholder="Seu nome"
                       />
-                      {errors.firstName && (
-                        <p className="mt-1 text-sm text-red-500">{errors.firstName.message}</p>
-                      )}
                     </div>
                     <div>
                       <Label htmlFor="lastName" className="text-sm font-semibold">
@@ -98,14 +107,14 @@ const Contact = () => {
                       </Label>
                       <Input
                         id="lastName"
-                        {...register('lastName')}
+                        name="lastName"
                         type="text"
+                        required
+                        value={formData.lastName}
+                        onChange={handleInputChange}
                         className="mt-2 border-2 focus:border-konneqt-blue"
                         placeholder="Seu sobrenome"
                       />
-                      {errors.lastName && (
-                        <p className="mt-1 text-sm text-red-500">{errors.lastName.message}</p>
-                      )}
                     </div>
                   </div>
 
@@ -115,14 +124,14 @@ const Contact = () => {
                     </Label>
                     <Input
                       id="institution"
-                      {...register('institution')}
+                      name="institution"
                       type="text"
+                      required
+                      value={formData.institution}
+                      onChange={handleInputChange}
                       className="mt-2 border-2 focus:border-konneqt-blue"
                       placeholder="Nome da sua instituição"
                     />
-                    {errors.institution && (
-                      <p className="mt-1 text-sm text-red-500">{errors.institution.message}</p>
-                    )}
                   </div>
 
                   <div>
@@ -131,38 +140,30 @@ const Contact = () => {
                     </Label>
                     <Input
                       id="email"
-                      {...register('email')}
+                      name="email"
                       type="email"
+                      required
+                      value={formData.email}
+                      onChange={handleInputChange}
                       className="mt-2 border-2 focus:border-konneqt-blue"
                       placeholder="seu.email@instituicao.edu.br"
                     />
-                    {errors.email && (
-                      <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
-                    )}
                   </div>
 
                   <div>
                     <Label htmlFor="phone" className="text-sm font-semibold">
                       Telefone *
                     </Label>
-                    <div className="relative">
-                      <Input
-                        id="phone"
-                        {...register('phone')}
-                        type="tel"
-                        className="mt-2 border-2 focus:border-konneqt-blue pl-[4.5rem]"
-                        placeholder="123 456 7890"
-                      />
-                      <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">
-                        +Int
-                      </div>
-                    </div>
-                    {errors.phone && (
-                      <p className="mt-1 text-sm text-red-500">{errors.phone.message}</p>
-                    )}
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      Exemplo: +1 234 567 8900 ou +55 11 98765-4321
-                    </p>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      required
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="mt-2 border-2 focus:border-konneqt-blue"
+                      placeholder="(11) 99999-9999"
+                    />
                   </div>
 
                   <Button
@@ -172,16 +173,44 @@ const Contact = () => {
                   >
                     {isSubmitting ? 'Enviando...' : 'Solicitar Demonstração'}
                   </Button>
-
-                  <div className="text-center text-sm text-muted-foreground">
-                    <div className="flex items-center justify-center gap-2">
-                      <span className="text-konneqt-green font-semibold">50% OFF</span>
-                      <span>no primeiro ano para instituições educacionais</span>
-                    </div>
-                  </div>
                 </form>
               </CardContent>
             </Card>
+          </ScrollReveal>
+
+          <ScrollReveal delay={200}>
+            <div className="space-y-8">
+              <div className="bg-gradient-to-br from-konneqt-blue/10 to-konneqt-purple/10 rounded-2xl p-8">
+                <h3 className="text-2xl font-bold mb-6">Por que escolher o QSCIM?</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <span className="w-8 h-8 bg-konneqt-green rounded-full flex items-center justify-center text-white text-sm">✓</span>
+                    <span>Implementação rápida e segura</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <span className="w-8 h-8 bg-konneqt-blue rounded-full flex items-center justify-center text-white text-sm">✓</span>
+                    <span>ROI comprovado em 3 meses</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <span className="w-8 h-8 bg-konneqt-purple rounded-full flex items-center justify-center text-white text-sm">✓</span>
+                    <span>Suporte especializado 24/7</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <span className="w-8 h-8 bg-konneqt-orange rounded-full flex items-center justify-center text-white text-sm">✓</span>
+                    <span>Conformidade total com LGPD</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Nova seção de promoção */}
+              <div className="bg-gradient-to-r from-konneqt-green/20 to-konneqt-green/30 border-2 border-konneqt-green rounded-2xl p-8 text-center relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-konneqt-green via-green-400 to-konneqt-green"></div>
+                <div className="text-5xl font-black text-konneqt-white mb-2 animate-pulse">50% OFF</div>
+                <div className="text-lg font-bold text-konneqt-green mb-2">No primeiro ano de implementação</div>
+                <div className="text-sm font-semibold text-konneqt-green/80">Para instituições educacionais</div>
+                <div className="absolute -right-4 -bottom-4 text-6xl opacity-20">🎓</div>
+              </div>
+            </div>
           </ScrollReveal>
         </div>
       </div>
