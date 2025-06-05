@@ -4,14 +4,19 @@ import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
 import { validateSubscribeData } from './validators';
-import { subscribeToMailchimp } from './mailchimp';
+import { submitToN8N } from './n8n';
+import { ApiError } from './types';
 
 dotenv.config();
 
 const app = express();
+const port = process.env.PORT || 3001;
 
 // Security middleware
 app.use(helmet());
+app.use(express.json());
+
+// CORS configuration
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
     ? ['https://konneqt.io', 'https://www.konneqt.io'] 
@@ -24,11 +29,9 @@ app.use(cors({
 // Rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // Limit each IP to 5 requests per windowMs
-  message: 'Muitas tentativas. Por favor, tente novamente mais tarde.'
+  max: 5 // limit each IP to 5 requests per windowMs
 });
 
-app.use(express.json());
 app.use('/api/subscribe', limiter);
 
 // Subscribe endpoint
@@ -37,8 +40,8 @@ app.post('/api/subscribe', async (req, res) => {
     // Validate request data
     const validatedData = validateSubscribeData(req.body);
     
-    // Subscribe to Mailchimp
-    await subscribeToMailchimp(validatedData);
+    // Submit to n8n webhook
+    await submitToN8N(validatedData);
     
     res.status(200).json({ 
       success: true, 
@@ -46,14 +49,17 @@ app.post('/api/subscribe', async (req, res) => {
     });
   } catch (error) {
     console.error('Subscription error:', error);
-    res.status(error.status || 500).json({ 
+    const apiError = error instanceof ApiError 
+      ? error 
+      : new ApiError('Erro interno do servidor', 500);
+    
+    res.status(apiError.status).json({ 
       success: false, 
-      message: error.message || 'Erro interno do servidor' 
+      message: apiError.message 
     });
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 }); 
