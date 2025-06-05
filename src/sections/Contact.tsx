@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -34,8 +33,8 @@ const Contact = () => {
       await submitContactForm(formData);
       
       toast({
-        title: "Mensagem enviada com sucesso!",
-        description: "Entraremos em contato em breve para agendar uma demonstração.",
+        title: "Solicitação enviada!",
+        description: "Sua solicitação foi enviada com sucesso. Entraremos em contato em breve para agendar uma demonstração.",
         duration: 5000,
       });
 
@@ -47,9 +46,10 @@ const Contact = () => {
         phone: ''
       });
     } catch (error) {
+      console.error('Erro no envio:', error);
       toast({
-        title: "Erro ao enviar mensagem",
-        description: error instanceof Error ? error.message : "Tente novamente em alguns instantes.",
+        title: "Erro ao enviar solicitação",
+        description: "Houve um problema ao enviar sua solicitação. Tente novamente em alguns instantes.",
         variant: "destructive",
         duration: 5000,
       });
@@ -203,7 +203,6 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Nova seção de promoção */}
               <div className="bg-gradient-to-r from-konneqt-green/20 to-konneqt-green/30 border-2 border-konneqt-green rounded-2xl p-8 text-center relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-konneqt-green via-green-400 to-konneqt-green"></div>
                 <div className="text-5xl font-black text-konneqt-white mb-2 animate-pulse">50% OFF</div>
