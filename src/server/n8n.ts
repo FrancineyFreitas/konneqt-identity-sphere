@@ -5,7 +5,7 @@ import { ApiError } from './types';
 
 dotenv.config();
 
-const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || 'https://automation.cloud.konneqt.io/webhook-test/contact-form';
+const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || 'https://automation.cloud.konneqt.io/webhook/contact-form';
 
 export async function submitToN8N(data: SubscribeData) {
   try {
