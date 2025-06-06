@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from '../components/ui/card';
 import ScrollReveal from '../components/ScrollReveal';
 
@@ -7,23 +6,20 @@ const Challenges = () => {
     {
       title: 'Volume massivo de usuários',
       description: '10.000+ alunos, 500+ professores, 200+ funcionários',
-      color: 'konneqt-blue',
-      animation: 'animate-pulse hover:animate-[pulse_1s_ease-in-out_infinite]', // Pulsação para representar multidão
-      bgAnimation: 'bg-gradient-to-r from-konneqt-blue/5 to-konneqt-blue/10 hover:from-konneqt-blue/10 hover:to-konneqt-blue/20'
+      icon: '👥',
+      color: 'konneqt-blue'
     },
     {
       title: 'Sazonalidade extrema',
       description: '85% dos acessos criados em 2 semanas',
-      color: 'konneqt-purple',
-      animation: 'animate-[slideUp_2s_ease-in-out_infinite] hover:animate-[slideUp_0.8s_ease-in-out_infinite]', // Movimento para cima como crescimento rápido
-      bgAnimation: 'bg-gradient-to-t from-konneqt-purple/5 to-konneqt-purple/10 hover:from-konneqt-purple/10 hover:to-konneqt-purple/20'
+      icon: '📈',
+      color: 'konneqt-purple'
     },
     {
       title: 'Diversidade de perfis',
       description: 'Graduação, pós-graduação, intercâmbio, visitantes',
-      color: 'konneqt-green',
-      animation: 'animate-[swing_3s_ease-in-out_infinite] hover:animate-[swing_1.5s_ease-in-out_infinite]', // Balanço para representar diversidade
-      bgAnimation: 'bg-gradient-to-br from-konneqt-green/5 to-konneqt-green/10 hover:from-konneqt-green/10 hover:to-konneqt-green/20'
+      icon: '🎓',
+      color: 'konneqt-green'
     }
   ];
 
@@ -67,8 +63,11 @@ const Challenges = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {challenges.map((challenge, index) => (
             <ScrollReveal key={index} delay={index * 200}>
-              <Card className={`border-2 border-transparent hover:border-konneqt-blue/20 transition-all duration-300 hover:shadow-lg dark:border-konneqt-blue/30 dark:hover:border-konneqt-blue/60 ${challenge.animation} ${challenge.bgAnimation}`}>
+              <Card className="border-2 border-transparent hover:border-konneqt-blue/20 transition-all duration-300 hover:shadow-lg dark:border-konneqt-blue/30 dark:hover:border-konneqt-blue/60">
                 <CardContent className="p-6 text-center min-h-[200px] flex flex-col justify-center">
+                  <div className="text-4xl mb-4">
+                    {challenge.icon}
+                  </div>
                   <h3 className="text-xl font-semibold mb-3">{challenge.title}</h3>
                   <p className="text-muted-foreground">{challenge.description}</p>
                   <div className={`mt-4 h-1 w-12 mx-auto rounded-full bg-${challenge.color} opacity-70`}></div>
