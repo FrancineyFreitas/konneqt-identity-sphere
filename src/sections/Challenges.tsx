@@ -1,4 +1,5 @@
 
+
 import { Card, CardContent } from '../components/ui/card';
 import ScrollReveal from '../components/ScrollReveal';
 
@@ -8,19 +9,22 @@ const Challenges = () => {
       title: 'Volume massivo de usuários',
       description: '10.000+ alunos, 500+ professores, 200+ funcionários',
       icon: '👥',
-      color: 'konneqt-blue'
+      color: 'konneqt-blue',
+      animation: 'animate-pulse hover:animate-bounce' // Pulsação para representar multidão
     },
     {
       title: 'Sazonalidade extrema',
       description: '85% dos acessos criados em 2 semanas',
       icon: '📈',
-      color: 'konneqt-purple'
+      color: 'konneqt-purple',
+      animation: 'animate-[slideUp_2s_ease-in-out_infinite] hover:animate-[slideUp_0.5s_ease-in-out_infinite]' // Movimento para cima como gráfico subindo
     },
     {
       title: 'Diversidade de perfis',
       description: 'Graduação, pós-graduação, intercâmbio, visitantes',
       icon: '🎓',
-      color: 'konneqt-green'
+      color: 'konneqt-green',
+      animation: 'animate-[swing_3s_ease-in-out_infinite] hover:animate-[swing_1s_ease-in-out_infinite]' // Balanço educacional
     }
   ];
 
@@ -66,7 +70,7 @@ const Challenges = () => {
             <ScrollReveal key={index} delay={index * 200}>
               <Card className="border-2 border-transparent hover:border-konneqt-blue/20 transition-all duration-300 hover:shadow-lg dark:border-konneqt-blue/30 dark:hover:border-konneqt-blue/60">
                 <CardContent className="p-6 text-center">
-                  <div className="text-4xl mb-4 animate-bounce hover:animate-pulse transition-all duration-300 cursor-pointer transform hover:scale-110">
+                  <div className={`text-4xl mb-4 cursor-pointer transform hover:scale-110 transition-transform duration-300 ${challenge.animation}`}>
                     {challenge.icon}
                   </div>
                   <h3 className="text-xl font-semibold mb-3">{challenge.title}</h3>
@@ -100,3 +104,4 @@ const Challenges = () => {
 };
 
 export default Challenges;
+
