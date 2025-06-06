@@ -1,3 +1,4 @@
+
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
@@ -14,7 +15,7 @@ const Hero = () => {
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="space-y-6 md:space-y-8">
               <ScrollReveal>
-                <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-konneqt-blue/10 to-konneqt-purple/10 rounded-full px-3 md:px-4 py-2 mb-4">
+                <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-konneqt-blue/10 to-konneqt-purple/10 rounded-full px-3 md:px-4 py-2 mb-4 mt-16 md:mt-4">
                   <span className="text-base md:text-lg">⭐</span>
                   <span className="text-xs md:text-sm font-medium">Solução Líder em Gestão de Identidades</span>
                 </div>

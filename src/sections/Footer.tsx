@@ -1,3 +1,4 @@
+
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
 import KonneqtLogo from '../components/KonneqtLogo';
 
@@ -26,21 +27,27 @@ const Footer = () => {
 
           <div className="flex items-center space-x-4">
             <a 
-              href="#" 
+              href="https://www.instagram.com/konneqt.io/" 
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Instagram"
               className="p-2 rounded-full bg-gradient-to-r from-konneqt-blue/10 to-konneqt-purple/10 hover:from-konneqt-blue/20 hover:to-konneqt-purple/20 transition-all duration-300 group"
             >
               <Instagram size={20} className="text-muted-foreground group-hover:text-konneqt-blue transition-colors" />
             </a>
             <a 
-              href="#" 
+              href="https://www.facebook.com/people/Konneqtio/61572554427000/" 
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Facebook"
               className="p-2 rounded-full bg-gradient-to-r from-konneqt-blue/10 to-konneqt-purple/10 hover:from-konneqt-blue/20 hover:to-konneqt-purple/20 transition-all duration-300 group"
             >
               <Facebook size={20} className="text-muted-foreground group-hover:text-konneqt-blue transition-colors" />
             </a>
             <a 
-              href="#" 
+              href="https://www.linkedin.com/company/konneqt-tech" 
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="LinkedIn"
               className="p-2 rounded-full bg-gradient-to-r from-konneqt-blue/10 to-konneqt-purple/10 hover:from-konneqt-blue/20 hover:to-konneqt-purple/20 transition-all duration-300 group"
             >

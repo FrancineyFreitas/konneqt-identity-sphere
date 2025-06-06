@@ -66,7 +66,9 @@ const Challenges = () => {
             <ScrollReveal key={index} delay={index * 200}>
               <Card className="border-2 border-transparent hover:border-konneqt-blue/20 transition-all duration-300 hover:shadow-lg dark:border-konneqt-blue/30 dark:hover:border-konneqt-blue/60">
                 <CardContent className="p-6 text-center">
-                  <div className="text-4xl mb-4">{challenge.icon}</div>
+                  <div className="text-4xl mb-4 animate-bounce hover:animate-pulse transition-all duration-300 cursor-pointer transform hover:scale-110">
+                    {challenge.icon}
+                  </div>
                   <h3 className="text-xl font-semibold mb-3">{challenge.title}</h3>
                   <p className="text-muted-foreground">{challenge.description}</p>
                 </CardContent>
