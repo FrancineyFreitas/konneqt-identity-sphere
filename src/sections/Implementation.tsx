@@ -1,3 +1,4 @@
+
 import ScrollReveal from '../components/ScrollReveal';
 
 const Implementation = () => {
@@ -32,36 +33,6 @@ const Implementation = () => {
     }
   ];
 
-  const bestPracticesConfig = {
-    title: 'Configuração Recomendada',
-    items: [
-      'Desabilitar SCIM "create" no IdP',
-      'Usar SSO para Just-in-Time provisioning',
-      'SCIM apenas para update/suspend/delete',
-      'Evitar criação desnecessária de contas'
-    ]
-  };
-
-  const bestPracticesEmail = {
-    title: 'Mapeamento de Email',
-    items: [
-      'Garantir formato consistente de email',
-      'SSO Email = SCIM userName',
-      'Usar UserPrincipalName (UPN)',
-      'Validar antes da migração'
-    ]
-  };
-
-  const bestPracticesIds = {
-    title: 'Identificadores Persistentes',
-    items: [
-      'Usar employeeID para NameID',
-      'Mesmo ID para SCIM externalId',
-      'Evitar mudanças de identificadores',
-      'Manter consistência entre sistemas'
-    ]
-  };
-
   return (
     <section className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto">
@@ -76,7 +47,7 @@ const Implementation = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {phases.map((phase, index) => (
             <ScrollReveal key={index} delay={index * 150}>
               <div className="bg-card border rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300">
@@ -90,35 +61,6 @@ const Implementation = () => {
             </ScrollReveal>
           ))}
         </div>
-
-        <ScrollReveal>
-          <div className="bg-gradient-to-r from-konneqt-green/10 to-konneqt-blue/10 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-center mb-8">Melhores Práticas Campus-Wide</h3>
-            
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[bestPracticesConfig, bestPracticesEmail, bestPracticesIds].map((category, index) => (
-                <div key={index} className="space-y-4">
-                  <h4 className="font-semibold text-lg mb-4">{category.title}</h4>
-                  {category.items.map((practice, practiceIndex) => (
-                    <div key={practiceIndex} className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-konneqt-green rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <span className="text-white text-xs">✓</span>
-                      </div>
-                      <span className="text-sm">{practice}</span>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 text-center">
-              <div className="inline-flex items-center space-x-4 bg-white/50 dark:bg-black/20 rounded-full px-6 py-3">
-                <span className="text-xl">⚡</span>
-                <span className="font-semibold">Implementação rápida e segura</span>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
       </div>
     </section>
   );

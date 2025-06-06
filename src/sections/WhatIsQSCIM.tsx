@@ -1,14 +1,8 @@
+
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
 
 const WhatIsQSCIM = () => {
-  const capabilities = [
-    { name: 'Joiner Events', color: 'bg-konneqt-green/10' },
-    { name: 'Mover Events', color: 'bg-konneqt-blue/10' },
-    { name: 'Leaver Events', color: 'bg-konneqt-purple/10' },
-    { name: 'Sync Attributes', color: 'bg-konneqt-orange/10' }
-  ];
-
   return (
     <section className="py-20 px-4">
       <div className="container mx-auto">
@@ -52,25 +46,9 @@ const WhatIsQSCIM = () => {
             </ScrollReveal>
           </div>
 
-          <div>
-            <ScrollReveal delay={300}>
-              <h3 className="text-2xl font-semibold mb-6">Capacidades Principais</h3>
-            </ScrollReveal>
-
-            <div className="grid grid-cols-2 gap-4">
-              {capabilities.map((capability, index) => (
-                <ScrollReveal key={index} delay={400 + index * 100}>
-                  <div className={`${capability.color} rounded-lg p-6 text-center hover:shadow-md transition-shadow`}>
-                    <span className="text-xl font-medium">
-                      {capability.name}
-                    </span>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-
-            <ScrollReveal delay={800}>
-              <div className="bg-gradient-to-br from-konneqt-green/10 to-konneqt-blue/10 rounded-xl p-6 mt-8">
+          <div className="flex justify-center">
+            <ScrollReveal delay={400}>
+              <div className="bg-gradient-to-br from-konneqt-green/10 to-konneqt-blue/10 rounded-xl p-8 max-w-md">
                 <div className="text-center">
                   <div className="text-4xl mb-4">⚡</div>
                   <h4 className="text-lg font-semibold mb-2">Automação Inteligente</h4>
