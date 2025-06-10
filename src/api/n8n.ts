@@ -8,7 +8,7 @@ interface ContactFormData {
 }
 
 export async function submitContactForm(data: ContactFormData) {
-  const webhookUrl = 'https://automation.cloud.konneqt.io/webhook/form-contact';
+  const webhookUrl = 'https://automation.cloud.konneqt.io/webhook/qscim-education';
   
   try {
     const response = await fetch(webhookUrl, {

@@ -1,4 +1,3 @@
-
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
@@ -62,10 +61,6 @@ const Hero = () => {
                   >
                     Solicitar Demonstração
                   </Button>
-                  <div className="bg-konneqt-green/20 text-konneqt-green font-medium px-4 py-2 rounded-full border border-konneqt-green/30 flex items-center gap-2 text-xs md:text-sm w-full sm:w-auto justify-center">
-                    <span className="text-base md:text-lg">🎉</span>
-                    <span>50% OFF no primeiro ano</span>
-                  </div>
                 </div>
               </ScrollReveal>
             </div>
@@ -81,7 +76,7 @@ const Hero = () => {
                     }}
                   />
                   
-                  <div className="absolute top-4 left-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg px-3 md:px-4 py-2 md:py-3 shadow-lg animate-float">
+                  <div className="absolute top-4 left-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg px-3 md:px-4 py-2 md:py-3 shadow-lg animate-bounce">
                     <div className="flex items-center gap-2 md:gap-3">
                       <div className="w-8 h-8 md:w-10 md:h-10 bg-konneqt-blue/20 rounded-full flex items-center justify-center">
                         <span className="text-base md:text-xl">🚀</span>
@@ -97,17 +92,17 @@ const Hero = () => {
                     </div>
                   </div>
                   
-                  <div className="absolute bottom-4 right-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg px-3 md:px-4 py-2 md:py-3 shadow-lg animate-float" style={{ animationDelay: '1s' }}>
+                  <div className="absolute bottom-4 right-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg px-3 md:px-4 py-2 md:py-3 shadow-lg animate-pulse">
                     <div className="flex items-center gap-2 md:gap-3">
                       <div className="w-8 h-8 md:w-10 md:h-10 bg-konneqt-purple/20 rounded-full flex items-center justify-center">
-                        <span className="text-base md:text-xl">🔒</span>
+                        <span className="text-base md:text-xl">⚡</span>
                       </div>
                       <div>
                         <div className="text-xs md:text-sm font-semibold text-konneqt-purple">
-                          Desprovisionamento Seguro
+                          Automação Inteligente
                         </div>
                         <div className="text-[10px] md:text-xs text-muted-foreground">
-                          100% automatizado
+                          Provisiona e desprovisiona usuários automaticamente com base em eventos
                         </div>
                       </div>
                     </div>

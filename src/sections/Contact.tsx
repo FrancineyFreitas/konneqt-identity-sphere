@@ -202,14 +202,6 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-
-              <div className="bg-gradient-to-r from-konneqt-green/20 to-konneqt-green/30 border-2 border-konneqt-green rounded-2xl p-8 text-center relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-konneqt-green via-green-400 to-konneqt-green"></div>
-                <div className="text-5xl font-black text-konneqt-white mb-2 animate-pulse">50% OFF</div>
-                <div className="text-lg font-bold text-konneqt-green mb-2">No primeiro ano de implementação</div>
-                <div className="text-sm font-semibold text-konneqt-green/80">Para instituições educacionais</div>
-                <div className="absolute -right-4 -bottom-4 text-6xl opacity-20">🎓</div>
-              </div>
             </div>
           </ScrollReveal>
         </div>
