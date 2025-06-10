@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -70,7 +71,7 @@ const Contact = () => {
               Descubra como o QSCIM pode transformar a gestão de identidades da sua instituição
             </p>
             <div className="flex justify-center items-center">
-              <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-konneqt-green/20 to-konneqt-blue/20 rounded-full px-8 py-5 shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-konneqt-green/20 to-konneqt-blue/20 rounded-full px-8 py-5 shadow-lg hover:shadow-xl transition-all duration-300 animate-float">
                 <span className="text-3xl">🎯</span>
                 <div className="text-left">
                   <div className="text-sm text-muted-foreground">Demonstração personalizada</div>
@@ -181,22 +182,22 @@ const Contact = () => {
 
           <ScrollReveal delay={200}>
             <div className="space-y-8">
-              <div className="bg-gradient-to-br from-konneqt-blue/10 to-konneqt-purple/10 rounded-2xl p-8">
+              <div className="bg-gradient-to-br from-konneqt-blue/10 to-konneqt-purple/10 rounded-2xl p-8 animate-float">
                 <h3 className="text-2xl font-bold mb-6">Por que escolher o QSCIM?</h3>
                 <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
+                  <div className="flex items-center space-x-3 animate-float">
                     <span className="w-8 h-8 bg-konneqt-green rounded-full flex items-center justify-center text-white text-sm">✓</span>
                     <span>Implementação rápida e segura</span>
                   </div>
-                  <div className="flex items-center space-x-3">
+                  <div className="flex items-center space-x-3 animate-float">
                     <span className="w-8 h-8 bg-konneqt-blue rounded-full flex items-center justify-center text-white text-sm">✓</span>
                     <span>ROI comprovado em 3 meses</span>
                   </div>
-                  <div className="flex items-center space-x-3">
+                  <div className="flex items-center space-x-3 animate-float">
                     <span className="w-8 h-8 bg-konneqt-purple rounded-full flex items-center justify-center text-white text-sm">✓</span>
                     <span>Suporte especializado 24/7</span>
                   </div>
-                  <div className="flex items-center space-x-3">
+                  <div className="flex items-center space-x-3 animate-float">
                     <span className="w-8 h-8 bg-konneqt-orange rounded-full flex items-center justify-center text-white text-sm">✓</span>
                     <span>Conformidade total com LGPD</span>
                   </div>
