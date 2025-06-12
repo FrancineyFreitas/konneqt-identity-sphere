@@ -189,10 +189,6 @@ const Contact = () => {
                     <span>Implementação rápida e segura</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <span className="w-8 h-8 bg-konneqt-blue rounded-full flex items-center justify-center text-white text-sm">✓</span>
-                    <span>ROI comprovado em 3 meses</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
                     <span className="w-8 h-8 bg-konneqt-purple rounded-full flex items-center justify-center text-white text-sm">✓</span>
                     <span>Suporte especializado 24/7</span>
                   </div>
