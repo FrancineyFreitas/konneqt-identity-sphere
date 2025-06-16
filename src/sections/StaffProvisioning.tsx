@@ -8,19 +8,37 @@ const StaffProvisioning = () => {
   const profiles = [
     {
       title: t('staffProvisioning.professor.title'),
-      accesses: ['LMS', 'Sistema de notas', 'Laboratórios', 'Biblioteca', 'E-mail'],
+      accesses: [
+        t('staffProvisioning.professor.lms'), 
+        t('staffProvisioning.professor.grades'), 
+        t('staffProvisioning.professor.labs'), 
+        t('staffProvisioning.professor.library'), 
+        t('staffProvisioning.professor.email')
+      ],
       icon: '👨‍🏫',
       color: 'konneqt-blue'
     },
     {
       title: t('staffProvisioning.admin.title'),
-      accesses: ['SIS', 'Sistema RH', 'Financeiro', 'Relatórios', 'E-mail'],
+      accesses: [
+        t('staffProvisioning.admin.sis'), 
+        t('staffProvisioning.admin.hr'), 
+        t('staffProvisioning.admin.financial'), 
+        t('staffProvisioning.admin.reports'), 
+        t('staffProvisioning.admin.email')
+      ],
       icon: '👩‍💼',
       color: 'konneqt-purple'
     },
     {
       title: t('staffProvisioning.visiting.title'),
-      accesses: ['Acesso temporário com expiração automática', 'WiFi Guest', 'LMS Limitado', 'Biblioteca', 'Labs Específicos'],
+      accesses: [
+        t('staffProvisioning.visiting.temporary'), 
+        t('staffProvisioning.visiting.wifi'), 
+        t('staffProvisioning.visiting.lms'), 
+        t('staffProvisioning.visiting.library'), 
+        t('staffProvisioning.visiting.labs')
+      ],
       icon: '👨‍🎓',
       color: 'konneqt-green'
     }

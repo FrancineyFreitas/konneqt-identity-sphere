@@ -27,7 +27,12 @@ const IntegratedSystems = () => {
     },
     {
       title: t('integratedSystems.others'),
-      systems: ['Wi-Fi', 'Laboratórios', 'Controle de acesso', 'Impressão'],
+      systems: [
+        t('integratedSystems.others.wifi'), 
+        t('integratedSystems.others.labs'), 
+        t('integratedSystems.others.access'), 
+        t('integratedSystems.others.printing')
+      ],
       icon: '🔗',
       color: 'konneqt-orange'
     }
