@@ -17,7 +17,7 @@ const Header = () => {
               rel="noopener noreferrer"
               className="hover:opacity-80 transition-opacity"
             >
-              <KonneqtLogo width={120} height={32} className="w-auto h-6 sm:h-8" />
+              <KonneqtLogo width={120} height={32} className="w-auto h-4 sm:h-6 md:h-8" />
             </a>
           </div>
 
@@ -29,12 +29,12 @@ const Header = () => {
               rel="noopener noreferrer"
               className="hover:opacity-80 transition-opacity"
             >
-              <QSCIMLogo width={120} height={32} className="w-auto h-6 sm:h-8" />
+              <QSCIMLogo width={120} height={32} className="w-auto h-4 sm:h-6 md:h-8" />
             </a>
           </div>
 
           {/* Right side - Language and Theme toggles */}
-          <div className="flex justify-end items-center gap-2">
+          <div className="flex justify-end items-center gap-1 sm:gap-2">
             <LanguageToggle />
             <ThemeToggle />
           </div>
