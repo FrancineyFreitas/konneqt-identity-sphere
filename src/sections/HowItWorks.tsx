@@ -1,25 +1,29 @@
+
 import ScrollReveal from '../components/ScrollReveal';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const HowItWorks = () => {
+  const { t } = useLanguage();
+
   const steps = [
     {
       number: '1',
-      title: 'Fonte de dados',
-      description: 'SIS, RH ou CRM',
+      title: t('howItWorks.step1.title'),
+      description: t('howItWorks.step1.description'),
       icon: '📊',
       color: 'konneqt-blue'
     },
     {
       number: '2',
-      title: 'Gateway QSCIM',
-      description: 'Processamento e mapeamento SCIM',
+      title: t('howItWorks.step2.title'),
+      description: t('howItWorks.step2.description'),
       icon: '⚙️',
       color: 'konneqt-purple'
     },
     {
       number: '3',
-      title: 'Sistemas de destino',
-      description: 'Azure AD, Google, Okta, Active Directory, etc.',
+      title: t('howItWorks.step3.title'),
+      description: t('howItWorks.step3.description'),
       icon: '🎯',
       color: 'konneqt-green'
     }
@@ -31,10 +35,10 @@ const HowItWorks = () => {
         <ScrollReveal>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Como <span className="gradient-text">Funciona</span>
+              {t('howItWorks.title')} <span className="gradient-text">{t('howItWorks.title.works')}</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Um fluxo simples e eficiente em três etapas
+              {t('howItWorks.description')}
             </p>
           </div>
         </ScrollReveal>
@@ -68,7 +72,7 @@ const HowItWorks = () => {
           <div className="mt-16 text-center">
             <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-konneqt-blue/10 to-konneqt-green/10 rounded-full px-8 py-4">
               <span className="text-2xl">🚀</span>
-              <span className="text-lg font-semibold">Provisionamento em tempo real</span>
+              <span className="text-lg font-semibold">{t('howItWorks.realtime')}</span>
             </div>
           </div>
         </ScrollReveal>

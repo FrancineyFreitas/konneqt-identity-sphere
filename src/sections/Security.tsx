@@ -1,53 +1,56 @@
 
 import { Card, CardContent } from '../components/ui/card';
 import ScrollReveal from '../components/ScrollReveal';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Security = () => {
+  const { t } = useLanguage();
+
   const securityFeatures = [
     {
-      title: 'Acesso baseado em função',
-      description: 'Controle granular de permissões por perfil',
+      title: t('security.rbac.title'),
+      description: t('security.rbac.description'),
       icon: '👥',
       color: 'konneqt-blue'
     },
     {
-      title: 'Trilha de auditoria completa',
-      description: 'Registro detalhado de todas as ações',
+      title: t('security.audit.title'),
+      description: t('security.audit.description'),
       icon: '📋',
       color: 'konneqt-purple'
     },
     {
-      title: 'Criptografia TLS 1.3',
-      description: 'Dados protegidos em trânsito',
+      title: t('security.tls.title'),
+      description: t('security.tls.description'),
       icon: '🔐',
       color: 'konneqt-green'
     },
     {
-      title: 'Criptografia AES-256',
-      description: 'Dados protegidos em repouso',
+      title: t('security.aes.title'),
+      description: t('security.aes.description'),
       icon: '🛡️',
       color: 'konneqt-orange'
     }
   ];
 
   const compliance = [
-    { standard: 'FERPA', description: 'Proteção de dados educacionais' },
-    { standard: 'LGPD', description: 'Conformidade brasileira' },
-    { standard: 'GDPR', description: 'Regulamentação europeia' },
-    { standard: 'SOC 2', description: 'Segurança e disponibilidade' }
+    { standard: 'FERPA', description: t('security.compliance.ferpa') },
+    { standard: 'LGPD', description: t('security.compliance.lgpd') },
+    { standard: 'GDPR', description: t('security.compliance.gdpr') },
+    { standard: 'SOC 2', description: t('security.compliance.soc2') }
   ];
 
   const securityLayers = [
-    'Autenticação multifator (MFA)',
-    'Controle de acesso por função',
-    'Criptografia',
-    'Monitoramento em tempo real',
-    'Logs e relatórios de auditoria'
+    t('security.layers.mfa'),
+    t('security.layers.rbac'),
+    t('security.layers.encryption'),
+    t('security.layers.monitoring'),
+    t('security.layers.logs')
   ];
 
   const metrics = [
-    { metric: '99,9%', label: 'Disponibilidade' },
-    { metric: '<1s', label: 'Tempo de resposta' }
+    { metric: '99,9%', label: t('security.metrics.availability') },
+    { metric: '<1s', label: t('security.metrics.response') }
   ];
 
   return (
@@ -56,10 +59,10 @@ const Security = () => {
         <ScrollReveal>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Segurança e <span className="gradient-text">Conformidade</span>
+              {t('security.title')} <span className="gradient-text">{t('security.title.compliance')}</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Proteção robusta com os mais altos padrões de segurança
+              {t('security.description')}
             </p>
           </div>
         </ScrollReveal>
@@ -81,7 +84,7 @@ const Security = () => {
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           <ScrollReveal>
             <div className="bg-gradient-to-br from-konneqt-blue/10 to-konneqt-purple/10 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-6">Conformidade Regulatória</h3>
+              <h3 className="text-2xl font-bold mb-6">{t('security.compliance.title')}</h3>
               <div className="space-y-4">
                 {compliance.map((item, index) => (
                   <div key={index} className="flex items-center space-x-4">
@@ -100,7 +103,7 @@ const Security = () => {
 
           <ScrollReveal delay={200}>
             <div className="bg-gradient-to-br from-konneqt-green/10 to-konneqt-orange/10 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-6">Camadas de Segurança</h3>
+              <h3 className="text-2xl font-bold mb-6">{t('security.layers.title')}</h3>
               <div className="space-y-3">
                 {securityLayers.map((layer, index) => (
                   <div key={index} className="flex items-center">

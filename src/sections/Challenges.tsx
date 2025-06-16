@@ -1,23 +1,27 @@
+
 import { Card, CardContent } from '../components/ui/card';
 import ScrollReveal from '../components/ScrollReveal';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Challenges = () => {
+  const { t } = useLanguage();
+
   const challenges = [
     {
-      title: 'Volume massivo de usuários',
-      description: '10.000+ alunos, 500+ professores, 200+ funcionários',
+      title: t('challenges.volume.title'),
+      description: t('challenges.volume.description'),
       icon: '👥',
       color: 'konneqt-blue'
     },
     {
-      title: 'Sazonalidade extrema',
-      description: '85% dos acessos criados em 2 semanas',
+      title: t('challenges.seasonality.title'),
+      description: t('challenges.seasonality.description'),
       icon: '📈',
       color: 'konneqt-purple'
     },
     {
-      title: 'Diversidade de perfis',
-      description: 'Graduação, pós-graduação, intercâmbio, visitantes',
+      title: t('challenges.diversity.title'),
+      description: t('challenges.diversity.description'),
       icon: '🎓',
       color: 'konneqt-green'
     }
@@ -26,22 +30,22 @@ const Challenges = () => {
   const impacts = [
     {
       metric: '72%',
-      description: 'Tempo gasto em tarefas manuais',
+      description: t('challenges.impacts.time'),
       color: 'text-red-500'
     },
     {
       metric: '45%',
-      description: 'Erros em provisionamento manual',
+      description: t('challenges.impacts.errors'),
       color: 'text-orange-500'
     },
     {
       metric: '3 a 5 dias',
-      description: 'Dias para provisionar novos usuários',
+      description: t('challenges.impacts.days'),
       color: 'text-yellow-500'
     },
     {
       metric: 'US$ 50 mil',
-      description: 'Custo anual de gestão manual',
+      description: t('challenges.impacts.cost'),
       color: 'text-red-600'
     }
   ];
@@ -52,10 +56,10 @@ const Challenges = () => {
         <ScrollReveal>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Desafios na <span className="gradient-text">Educação</span>
+              {t('challenges.title')} <span className="gradient-text">{t('challenges.title.education')}</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Instituições educacionais enfrentam desafios únicos na gestão de identidades
+              {t('challenges.description')}
             </p>
           </div>
         </ScrollReveal>
@@ -80,7 +84,7 @@ const Challenges = () => {
         <ScrollReveal>
           <div className="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-center mb-8 text-red-700 dark:text-red-400">
-              Impactos Negativos
+              {t('challenges.impacts.title')}
             </h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {impacts.map((impact, index) => (

@@ -1,42 +1,45 @@
 
 import { Card, CardContent } from '../components/ui/card';
 import ScrollReveal from '../components/ScrollReveal';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const StudentLifecycle = () => {
+  const { t } = useLanguage();
+
   const events = [
     {
-      title: 'Matrícula',
-      description: 'Provisiona e-mail, LMS, Wi-Fi, biblioteca e laboratórios',
+      title: t('studentLifecycle.enrollment.title'),
+      description: t('studentLifecycle.enrollment.description'),
       icon: '📝',
       color: 'konneqt-blue'
     },
     {
-      title: 'Mudança de curso',
-      description: 'Atualiza grupos e permissões automaticamente',
+      title: t('studentLifecycle.courseChange.title'),
+      description: t('studentLifecycle.courseChange.description'),
       icon: '🔄',
       color: 'konneqt-purple'
     },
     {
-      title: 'Graduação',
-      description: 'Remove acessos acadêmicos e migra para ex-aluno',
+      title: t('studentLifecycle.graduation.title'),
+      description: t('studentLifecycle.graduation.description'),
       icon: '🎓',
       color: 'konneqt-green'
     },
     {
-      title: 'Novo semestre',
-      description: '1.500 alunos provisionados automaticamente, sem erros',
+      title: t('studentLifecycle.semester.title'),
+      description: t('studentLifecycle.semester.description'),
       icon: '📅',
       color: 'konneqt-orange'
     },
     {
-      title: 'Intercambistas',
-      description: 'Acessos temporários com expiração automática',
+      title: t('studentLifecycle.exchange.title'),
+      description: t('studentLifecycle.exchange.description'),
       icon: '✈️',
       color: 'konneqt-blue'
     },
     {
-      title: 'Suspensão de emergência',
-      description: 'Bloqueio imediato e auditável de todos os acessos',
+      title: t('studentLifecycle.emergency.title'),
+      description: t('studentLifecycle.emergency.description'),
       icon: '🚨',
       color: 'red-500'
     }
@@ -48,10 +51,10 @@ const StudentLifecycle = () => {
         <ScrollReveal>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ciclo de Vida do <span className="gradient-text">Estudante</span>
+              {t('studentLifecycle.title')} <span className="gradient-text">{t('studentLifecycle.title.student')}</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Automação completa em todas as fases da jornada acadêmica
+              {t('studentLifecycle.description')}
             </p>
           </div>
         </ScrollReveal>
@@ -75,10 +78,9 @@ const StudentLifecycle = () => {
         <ScrollReveal delay={600}>
           <div className="mt-16 bg-gradient-to-r from-konneqt-green/10 to-konneqt-blue/10 rounded-2xl p-8 text-center">
             <div className="text-4xl mb-4">⚡</div>
-            <h3 className="text-2xl font-bold mb-4">Automação Instantânea</h3>
+            <h3 className="text-2xl font-bold mb-4">{t('studentLifecycle.instant.title')}</h3>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Todos os eventos do ciclo de vida são processados automaticamente, 
-              garantindo que os estudantes tenham acesso aos recursos certos no momento certo.
+              {t('studentLifecycle.instant.description')}
             </p>
           </div>
         </ScrollReveal>

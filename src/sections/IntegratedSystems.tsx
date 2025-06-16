@@ -1,29 +1,32 @@
 
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const IntegratedSystems = () => {
+  const { t } = useLanguage();
+
   const systemCategories = [
     {
-      title: 'Sistemas SIS',
+      title: t('integratedSystems.sis'),
       systems: ['Banner', 'PeopleSoft', 'Ellucian', 'Campus Solution'],
       icon: '🏫',
       color: 'konneqt-blue'
     },
     {
-      title: 'LMS',
+      title: t('integratedSystems.lms'),
       systems: ['Moodle', 'Canvas', 'Blackboard', 'Google Classroom'],
       icon: '📚',
       color: 'konneqt-purple'
     },
     {
-      title: 'Diretórios',
+      title: t('integratedSystems.directories'),
       systems: ['Azure AD', 'Google Workspace', 'Active Directory', 'Okta'],
       icon: '📁',
       color: 'konneqt-green'
     },
     {
-      title: 'Outros Sistemas',
+      title: t('integratedSystems.others'),
       systems: ['Wi-Fi', 'Laboratórios', 'Controle de acesso', 'Impressão'],
       icon: '🔗',
       color: 'konneqt-orange'
@@ -36,10 +39,10 @@ const IntegratedSystems = () => {
         <ScrollReveal>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Sistemas <span className="gradient-text">Integrados</span>
+              {t('integratedSystems.title')} <span className="gradient-text">{t('integratedSystems.title.integrated')}</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Conecte todos os sistemas da sua instituição em uma única solução
+              {t('integratedSystems.description')}
             </p>
           </div>
         </ScrollReveal>
@@ -73,7 +76,7 @@ const IntegratedSystems = () => {
           <div className="mt-16 text-center">
             <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-konneqt-blue/10 to-konneqt-green/10 rounded-full px-8 py-4">
               <span className="text-2xl">🔄</span>
-              <span className="text-lg font-semibold">Sincronização em tempo real</span>
+              <span className="text-lg font-semibold">{t('integratedSystems.realtime')}</span>
               <span className="text-2xl">⚡</span>
             </div>
           </div>

@@ -1,22 +1,25 @@
 
 import ScrollReveal from '../components/ScrollReveal';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const StaffProvisioning = () => {
+  const { t } = useLanguage();
+
   const profiles = [
     {
-      title: 'Professor Titular',
+      title: t('staffProvisioning.professor.title'),
       accesses: ['LMS', 'Sistema de notas', 'Laboratórios', 'Biblioteca', 'E-mail'],
       icon: '👨‍🏫',
       color: 'konneqt-blue'
     },
     {
-      title: 'Funcionário Administrativo',
+      title: t('staffProvisioning.admin.title'),
       accesses: ['SIS', 'Sistema RH', 'Financeiro', 'Relatórios', 'E-mail'],
       icon: '👩‍💼',
       color: 'konneqt-purple'
     },
     {
-      title: 'Professor Visitante',
+      title: t('staffProvisioning.visiting.title'),
       accesses: ['Acesso temporário com expiração automática', 'WiFi Guest', 'LMS Limitado', 'Biblioteca', 'Labs Específicos'],
       icon: '👨‍🎓',
       color: 'konneqt-green'
@@ -24,10 +27,10 @@ const StaffProvisioning = () => {
   ];
 
   const flowSteps = [
-    { step: '1', title: 'Contratação no RH', icon: '📋' },
-    { step: '2', title: 'Processamento pelo QSCIM', icon: '⚙️' },
-    { step: '3', title: 'Provisionamento', icon: '👤' },
-    { step: '4', title: 'Envio de credenciais', icon: '📧' }
+    { step: '1', title: t('staffProvisioning.flow.hiring'), icon: '📋' },
+    { step: '2', title: t('staffProvisioning.flow.processing'), icon: '⚙️' },
+    { step: '3', title: t('staffProvisioning.flow.provisioning'), icon: '👤' },
+    { step: '4', title: t('staffProvisioning.flow.credentials'), icon: '📧' }
   ];
 
   return (
@@ -36,10 +39,10 @@ const StaffProvisioning = () => {
         <ScrollReveal>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Provisionamento de <span className="gradient-text">Professores e Funcionários</span>
+              {t('staffProvisioning.title')} <span className="gradient-text">{t('staffProvisioning.title.staff')}</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Gestão automatizada para todos os tipos de colaboradores
+              {t('staffProvisioning.description')}
             </p>
           </div>
         </ScrollReveal>
@@ -55,7 +58,7 @@ const StaffProvisioning = () => {
                 
                 <div className="space-y-3">
                   <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wide">
-                    Acessos Automáticos:
+                    {t('staffProvisioning.accesses')}
                   </h4>
                   <ul className="space-y-2">
                     {profile.accesses.map((access, accessIndex) => (
@@ -73,7 +76,7 @@ const StaffProvisioning = () => {
 
         <ScrollReveal>
           <div className="bg-gradient-to-r from-konneqt-blue/10 to-konneqt-purple/10 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-center mb-8">Fluxo de Provisionamento</h3>
+            <h3 className="text-2xl font-bold text-center mb-8">{t('staffProvisioning.flow.title')}</h3>
             
             <div className="grid sm:grid-cols-4 gap-6">
               {flowSteps.map((step, index) => (
