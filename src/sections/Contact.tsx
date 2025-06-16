@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -6,8 +7,10 @@ import { Card, CardContent } from '../components/ui/card';
 import ScrollReveal from '../components/ScrollReveal';
 import { toast } from '@/hooks/use-toast';
 import { submitContactForm } from '../api/n8n';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Contact = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -64,17 +67,17 @@ const Contact = () => {
         <ScrollReveal>
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Solicite uma <span className="gradient-text">Demonstração</span>
+              {t('contact.title')} <span className="gradient-text">{t('contact.title.demo')}</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              Descubra como o QSCIM pode transformar a gestão de identidades da sua instituição
+              {t('contact.description')}
             </p>
             <div className="flex justify-center items-center">
               <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-konneqt-green/20 to-konneqt-blue/20 rounded-full px-8 py-5 shadow-lg hover:shadow-xl transition-all duration-300">
                 <span className="text-3xl">🎯</span>
                 <div className="text-left">
-                  <div className="text-sm text-muted-foreground">Demonstração personalizada</div>
-                  <div className="text-lg font-semibold">Adaptada à sua instituição</div>
+                  <div className="text-sm text-muted-foreground">{t('contact.personalized')}</div>
+                  <div className="text-lg font-semibold">{t('contact.adapted')}</div>
                 </div>
               </div>
             </div>
@@ -89,7 +92,7 @@ const Contact = () => {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="firstName" className="text-sm font-semibold">
-                        Nome *
+                        {t('contact.form.firstName')}
                       </Label>
                       <Input
                         id="firstName"
@@ -99,12 +102,12 @@ const Contact = () => {
                         value={formData.firstName}
                         onChange={handleInputChange}
                         className="mt-2 border-2 focus:border-konneqt-blue"
-                        placeholder="Seu nome"
+                        placeholder={t('contact.form.firstName.placeholder')}
                       />
                     </div>
                     <div>
                       <Label htmlFor="lastName" className="text-sm font-semibold">
-                        Sobrenome *
+                        {t('contact.form.lastName')}
                       </Label>
                       <Input
                         id="lastName"
@@ -114,14 +117,14 @@ const Contact = () => {
                         value={formData.lastName}
                         onChange={handleInputChange}
                         className="mt-2 border-2 focus:border-konneqt-blue"
-                        placeholder="Seu sobrenome"
+                        placeholder={t('contact.form.lastName.placeholder')}
                       />
                     </div>
                   </div>
 
                   <div>
                     <Label htmlFor="institution" className="text-sm font-semibold">
-                      Nome da instituição *
+                      {t('contact.form.institution')}
                     </Label>
                     <Input
                       id="institution"
@@ -131,13 +134,13 @@ const Contact = () => {
                       value={formData.institution}
                       onChange={handleInputChange}
                       className="mt-2 border-2 focus:border-konneqt-blue"
-                      placeholder="Nome da sua instituição"
+                      placeholder={t('contact.form.institution.placeholder')}
                     />
                   </div>
 
                   <div>
                     <Label htmlFor="email" className="text-sm font-semibold">
-                      E-mail *
+                      {t('contact.form.email')}
                     </Label>
                     <Input
                       id="email"
@@ -147,13 +150,13 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       className="mt-2 border-2 focus:border-konneqt-blue"
-                      placeholder="seu.email@instituicao.edu.br"
+                      placeholder={t('contact.form.email.placeholder')}
                     />
                   </div>
 
                   <div>
                     <Label htmlFor="phone" className="text-sm font-semibold">
-                      Telefone *
+                      {t('contact.form.phone')}
                     </Label>
                     <Input
                       id="phone"
@@ -163,7 +166,7 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       className="mt-2 border-2 focus:border-konneqt-blue"
-                      placeholder="(11) 99999-9999"
+                      placeholder={t('contact.form.phone.placeholder')}
                     />
                   </div>
 
@@ -172,7 +175,7 @@ const Contact = () => {
                     disabled={isSubmitting}
                     className="w-full bg-gradient-to-r from-konneqt-blue to-konneqt-purple text-white py-6 text-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {isSubmitting ? 'Enviando...' : 'Solicitar Demonstração'}
+                    {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
                   </Button>
                 </form>
               </CardContent>
@@ -182,19 +185,19 @@ const Contact = () => {
           <ScrollReveal delay={200}>
             <div className="space-y-8">
               <div className="bg-gradient-to-br from-konneqt-blue/10 to-konneqt-purple/10 rounded-2xl p-8">
-                <h3 className="text-2xl font-bold mb-6">Por que escolher o QSCIM?</h3>
+                <h3 className="text-2xl font-bold mb-6">{t('contact.why.title')}</h3>
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <span className="w-8 h-8 bg-konneqt-green rounded-full flex items-center justify-center text-white text-sm">✓</span>
-                    <span>Implementação rápida e segura</span>
+                    <span>{t('contact.why.implementation')}</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <span className="w-8 h-8 bg-konneqt-purple rounded-full flex items-center justify-center text-white text-sm">✓</span>
-                    <span>Suporte especializado 24/7</span>
+                    <span>{t('contact.why.support')}</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <span className="w-8 h-8 bg-konneqt-orange rounded-full flex items-center justify-center text-white text-sm">✓</span>
-                    <span>Conformidade total com LGPD</span>
+                    <span>{t('contact.why.compliance')}</span>
                   </div>
                 </div>
               </div>

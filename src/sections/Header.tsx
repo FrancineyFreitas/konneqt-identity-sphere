@@ -1,4 +1,6 @@
+
 import ThemeToggle from '../components/ThemeToggle';
+import LanguageToggle from '../components/LanguageToggle';
 import KonneqtLogo from '../components/KonneqtLogo';
 import QSCIMLogo from '../components/QSCIMLogo';
 
@@ -31,8 +33,9 @@ const Header = () => {
             </a>
           </div>
 
-          {/* Right side - Theme toggle */}
-          <div className="flex justify-end">
+          {/* Right side - Language and Theme toggles */}
+          <div className="flex justify-end items-center gap-2">
+            <LanguageToggle />
             <ThemeToggle />
           </div>
         </div>

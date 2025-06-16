@@ -1,8 +1,11 @@
 
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
 import KonneqtLogo from '../components/KonneqtLogo';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-background border-t border-border py-12 px-4">
       <div className="container mx-auto">
@@ -20,7 +23,7 @@ const Footer = () => {
 
           <div className="text-center">
             <p className="text-sm text-muted-foreground mb-2">
-              © 2025 Konneqt. Todos os direitos reservados.
+              {t('footer.rights')}
             </p>
             
           </div>

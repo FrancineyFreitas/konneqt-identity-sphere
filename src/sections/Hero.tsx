@@ -1,8 +1,12 @@
+
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero = () => {
+  const { t } = useLanguage();
+  
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -16,38 +20,37 @@ const Hero = () => {
               <ScrollReveal>
                 <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-konneqt-blue/10 to-konneqt-purple/10 rounded-full px-3 md:px-4 py-2 mb-4 mt-16 md:mt-4">
                   <span className="text-base md:text-lg">⭐</span>
-                  <span className="text-xs md:text-sm font-medium">Solução Líder em Gestão de Identidades</span>
+                  <span className="text-xs md:text-sm font-medium">{t('hero.badge')}</span>
                 </div>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.3] md:leading-[1.2]">
-                  <span style={{ color: '#1ee391' }}>QSCIM</span> para{' '}
-                  <span className="text-konneqt-blue">Escolas</span> e{' '}
-                  <span className="text-konneqt-purple">Universidades</span>
+                  <span style={{ color: '#1ee391' }}>{t('hero.title.qscim')}</span> {t('hero.title.for')}{' '}
+                  <span className="text-konneqt-blue">{t('hero.title.schools')}</span> {t('hero.title.and')}{' '}
+                  <span className="text-konneqt-purple">{t('hero.title.universities')}</span>
                 </h1>
               </ScrollReveal>
 
               <ScrollReveal delay={200}>
                 <h2 className="text-lg md:text-xl lg:text-2xl text-muted-foreground font-medium">
-                  Revolucionando o Provisionamento de Identidades
+                  {t('hero.subtitle')}
                 </h2>
               </ScrollReveal>
 
               <ScrollReveal delay={400}>
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                  Transforme a gestão de identidades em sua instituição educacional 
-                  com a solução QSCIM da Konneqt.
+                  {t('hero.description')}
                 </p>
               </ScrollReveal>
 
               <ScrollReveal delay={600}>
                 <div className="flex flex-wrap gap-2 md:gap-3">
                   <Badge className="bg-konneqt-green text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm">
-                    ✅ Automação Completa
+                    {t('hero.badge.automation')}
                   </Badge>
                   <Badge className="bg-konneqt-blue text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm">
-                    ✅ Segurança Avançada
+                    {t('hero.badge.security')}
                   </Badge>
                   <Badge className="bg-konneqt-purple text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm">
-                    ✅ Escalabilidade
+                    {t('hero.badge.scalability')}
                   </Badge>
                 </div>
               </ScrollReveal>
@@ -59,7 +62,7 @@ const Hero = () => {
                     size="lg"
                     className="w-full sm:w-auto bg-gradient-to-r from-konneqt-blue to-konneqt-purple text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300"
                   >
-                    Solicitar Demonstração
+                    {t('hero.cta')}
                   </Button>
                 </div>
               </ScrollReveal>
@@ -83,10 +86,10 @@ const Hero = () => {
                       </div>
                       <div>
                         <div className="text-xs md:text-sm font-semibold text-konneqt-blue">
-                          Provisionamento Automático
+                          {t('hero.floating.provisioning')}
                         </div>
                         <div className="text-[10px] md:text-xs text-muted-foreground">
-                          Em minutos, não dias
+                          {t('hero.floating.provisioning.desc')}
                         </div>
                       </div>
                     </div>
@@ -99,10 +102,10 @@ const Hero = () => {
                       </div>
                       <div>
                         <div className="text-xs md:text-sm font-semibold text-konneqt-purple">
-                          Automação Inteligente
+                          {t('hero.floating.automation')}
                         </div>
                         <div className="text-[10px] md:text-xs text-muted-foreground">
-                          Provisiona e desprovisiona usuários automaticamente com base em eventos
+                          {t('hero.floating.automation.desc')}
                         </div>
                       </div>
                     </div>
