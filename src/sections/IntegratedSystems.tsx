@@ -1,4 +1,5 @@
 
+
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -9,7 +10,7 @@ const IntegratedSystems = () => {
   const systemCategories = [
     {
       title: t('integratedSystems.sis'),
-      systems: ['Banner', 'PeopleSoft', 'Ellucian', 'Campus Solution'],
+      systems: ['Banner', 'PeopleSoft', 'Ellucian', 'Solução de Campus'],
       icon: '🏫',
       color: 'konneqt-blue'
     },
@@ -92,3 +93,4 @@ const IntegratedSystems = () => {
 };
 
 export default IntegratedSystems;
+
