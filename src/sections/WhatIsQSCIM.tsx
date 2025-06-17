@@ -1,4 +1,3 @@
-
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -28,58 +27,42 @@ const WhatIsQSCIM = () => {
       </div>
 
       <div className="container mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <ScrollReveal>
-              <h2 className="text-3xl md:text-4xl font-light text-white">
-                <span className="font-light">{t('whatIsQscim.title')}</span> <span className="font-bold" style={{ color: '#1ee391' }}>{t('whatIsQscim.title.qscim')}</span>?
-              </h2>
-            </ScrollReveal>
+        <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl font-light text-white">
+              <span className="font-light">{t('whatIsQscim.title')}</span> <span className="font-bold" style={{ color: '#1ee391' }}>{t('whatIsQscim.title.qscim')}</span>?
+            </h2>
+          </ScrollReveal>
 
-            <ScrollReveal delay={200}>
-              <p className="text-lg text-slate-300 leading-relaxed font-inter">
-                {t('whatIsQscim.description')}
-              </p>
-            </ScrollReveal>
+          <ScrollReveal delay={200}>
+            <p className="text-lg text-slate-300 leading-relaxed font-inter">
+              {t('whatIsQscim.description')}
+            </p>
+          </ScrollReveal>
 
-            <ScrollReveal delay={300}>
-              <div className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg rounded-xl p-6">
-                <h3 className="text-xl font-semibold mb-4 text-white font-inter">{t('whatIsQscim.protocol.title')}</h3>
-                <ul className="space-y-2 text-slate-300">
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-konneqt-green rounded-full mr-3"></span>
-                    {t('whatIsQscim.protocol.standard')}
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-konneqt-blue rounded-full mr-3"></span>
-                    {t('whatIsQscim.protocol.faster')}
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-konneqt-purple rounded-full mr-3"></span>
-                    {t('whatIsQscim.protocol.interoperability')}
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-konneqt-orange rounded-full mr-3"></span>
-                    {t('whatIsQscim.protocol.errors')}
-                  </li>
-                </ul>
-              </div>
-            </ScrollReveal>
-          </div>
-
-          <div className="flex justify-center">
-            <ScrollReveal delay={400}>
-              <div className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg rounded-xl p-8 max-w-md">
-                <div className="text-center">
-                  <div className="text-4xl mb-4">⚡</div>
-                  <h4 className="text-lg font-semibold mb-2 text-white font-inter">{t('whatIsQscim.automation.title')}</h4>
-                  <p className="text-sm text-slate-300 font-inter">
-                    {t('whatIsQscim.automation.description')}
-                  </p>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
+          <ScrollReveal delay={300}>
+            <div className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg rounded-xl p-6 w-full max-w-2xl">
+              <h3 className="text-xl font-semibold mb-4 text-white font-inter">{t('whatIsQscim.protocol.title')}</h3>
+              <ul className="space-y-2 text-slate-300">
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-konneqt-green rounded-full mr-3"></span>
+                  {t('whatIsQscim.protocol.standard')}
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-konneqt-blue rounded-full mr-3"></span>
+                  {t('whatIsQscim.protocol.faster')}
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-konneqt-purple rounded-full mr-3"></span>
+                  {t('whatIsQscim.protocol.interoperability')}
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-konneqt-orange rounded-full mr-3"></span>
+                  {t('whatIsQscim.protocol.errors')}
+                </li>
+              </ul>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
