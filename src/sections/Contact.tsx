@@ -77,14 +77,17 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-20 px-4">
-      <div className="container mx-auto">
+    <section id="contact" className="py-20 px-4 bg-slate-900 relative">
+      {/* Tech grid background */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+      
+      <div className="container mx-auto relative z-10">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t('contact.title')} <span className="gradient-text">{t('contact.title.demo')}</span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+              {t('contact.title')} <span className="text-cyan-400 font-mono">{t('contact.title.demo')}</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
               {t('contact.description')}
             </p>
           </div>
@@ -94,21 +97,25 @@ const Contact = () => {
           {/* Left side - Contact Form */}
           <div>
             <ScrollReveal>
-              <div className="bg-card border rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden">
+                {/* Subtle tech border animation */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent animate-pulse"></div>
+                
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 relative z-10">
                     <FormField
                       control={form.control}
                       name="firstName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>{t('contact.form.firstName')}</FormLabel>
+                          <FormLabel className="text-slate-300 font-mono text-sm">{t('contact.form.firstName')}</FormLabel>
                           <FormControl>
-                            <Input placeholder={t('contact.form.firstName.placeholder')} {...field} />
+                            <Input 
+                              placeholder={t('contact.form.firstName.placeholder')} 
+                              {...field} 
+                              className="bg-slate-900/50 border-slate-600 text-white placeholder-slate-500 focus:border-cyan-500 focus:ring-cyan-500/20"
+                            />
                           </FormControl>
-                          <FormDescription>
-                            {/* Add a description if needed */}
-                          </FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -118,13 +125,14 @@ const Contact = () => {
                       name="lastName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>{t('contact.form.lastName')}</FormLabel>
+                          <FormLabel className="text-slate-300 font-mono text-sm">{t('contact.form.lastName')}</FormLabel>
                           <FormControl>
-                            <Input placeholder={t('contact.form.lastName.placeholder')} {...field} />
+                            <Input 
+                              placeholder={t('contact.form.lastName.placeholder')} 
+                              {...field} 
+                              className="bg-slate-900/50 border-slate-600 text-white placeholder-slate-500 focus:border-cyan-500 focus:ring-cyan-500/20"
+                            />
                           </FormControl>
-                          <FormDescription>
-                            {/* Add a description if needed */}
-                          </FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -134,13 +142,14 @@ const Contact = () => {
                       name="institution"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>{t('contact.form.institution')}</FormLabel>
+                          <FormLabel className="text-slate-300 font-mono text-sm">{t('contact.form.institution')}</FormLabel>
                           <FormControl>
-                            <Input placeholder={t('contact.form.institution.placeholder')} {...field} />
+                            <Input 
+                              placeholder={t('contact.form.institution.placeholder')} 
+                              {...field} 
+                              className="bg-slate-900/50 border-slate-600 text-white placeholder-slate-500 focus:border-cyan-500 focus:ring-cyan-500/20"
+                            />
                           </FormControl>
-                          <FormDescription>
-                            {/* Add a description if needed */}
-                          </FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -150,13 +159,14 @@ const Contact = () => {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>{t('contact.form.email')}</FormLabel>
+                          <FormLabel className="text-slate-300 font-mono text-sm">{t('contact.form.email')}</FormLabel>
                           <FormControl>
-                            <Input placeholder={t('contact.form.email.placeholder')} {...field} />
+                            <Input 
+                              placeholder={t('contact.form.email.placeholder')} 
+                              {...field} 
+                              className="bg-slate-900/50 border-slate-600 text-white placeholder-slate-500 focus:border-cyan-500 focus:ring-cyan-500/20"
+                            />
                           </FormControl>
-                          <FormDescription>
-                            {/* Add a description if needed */}
-                          </FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -166,18 +176,23 @@ const Contact = () => {
                       name="phone"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>{t('contact.form.phone')}</FormLabel>
+                          <FormLabel className="text-slate-300 font-mono text-sm">{t('contact.form.phone')}</FormLabel>
                           <FormControl>
-                            <Input placeholder={t('contact.form.phone.placeholder')} {...field} />
+                            <Input 
+                              placeholder={t('contact.form.phone.placeholder')} 
+                              {...field} 
+                              className="bg-slate-900/50 border-slate-600 text-white placeholder-slate-500 focus:border-cyan-500 focus:ring-cyan-500/20"
+                            />
                           </FormControl>
-                          <FormDescription>
-                            {/* Add a description if needed */}
-                          </FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
-                    <Button type="submit" disabled={isSubmitting} className="w-full">
+                    <Button 
+                      type="submit" 
+                      disabled={isSubmitting} 
+                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
+                    >
                       {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
                     </Button>
                   </form>
@@ -189,20 +204,20 @@ const Contact = () => {
           {/* Right side - Why choose QSCIM */}
           <div>
             <ScrollReveal delay={200}>
-              <div className="bg-card border rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-                <h3 className="text-xl font-semibold mb-4">{t('contact.why.title')}</h3>
+              <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 shadow-2xl backdrop-blur-sm">
+                <h3 className="text-xl font-semibold mb-4 text-white font-mono">{t('contact.why.title')}</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start">
-                    <span className="mr-3 text-konneqt-green">✅</span>
-                    <span>{t('contact.why.implementation')}</span>
+                    <span className="mr-3 text-green-400 text-lg">✓</span>
+                    <span className="text-slate-300">{t('contact.why.implementation')}</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="mr-3 text-konneqt-green">✅</span>
-                    <span>{t('contact.why.support')}</span>
+                    <span className="mr-3 text-green-400 text-lg">✓</span>
+                    <span className="text-slate-300">{t('contact.why.support')}</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="mr-3 text-konneqt-green">✅</span>
-                    <span>{t('contact.why.compliance')}</span>
+                    <span className="mr-3 text-green-400 text-lg">✓</span>
+                    <span className="text-slate-300">{t('contact.why.compliance')}</span>
                   </li>
                 </ul>
               </div>
