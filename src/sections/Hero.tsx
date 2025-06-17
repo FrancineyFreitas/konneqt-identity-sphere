@@ -24,7 +24,7 @@ const Hero = () => {
         <div className="absolute bottom-20 right-10 w-1 h-1 bg-cyan-400 rounded-full animate-pulse delay-500"></div>
       </div>
 
-      <div className="w-full py-12 md:py-24 px-4 relative z-10 pt-32 md:pt-24">
+      <div className="w-full py-12 md:py-24 px-4 relative z-10 pt-32 md:pt-32">
         <div className="container mx-auto">
           <div className="flex flex-col items-center text-center space-y-8 md:space-y-12">
             {/* Main content - centered */}
@@ -81,7 +81,7 @@ const Hero = () => {
             </div>
 
             {/* Image section - moved below and centered */}
-            <div className="w-full max-w-4xl mt-16">
+            <div className="w-full max-w-4xl mt-16 md:mt-24">
               <ScrollReveal delay={1000} className="relative">
                 <div className="bg-slate-800/30 border border-slate-700 rounded-2xl p-4 md:p-7 relative overflow-hidden backdrop-blur-sm">
                   {/* Scanning line effect */}
