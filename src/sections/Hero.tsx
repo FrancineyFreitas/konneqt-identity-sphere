@@ -51,7 +51,7 @@ const Hero = () => {
 
               <ScrollReveal delay={200}>
                 <h2 className="text-lg md:text-xl lg:text-2xl text-slate-400 font-medium font-inter mt-8">
-                  {t('hero.subtitle')}
+                  Transform identity management in your institution with Konneqt's QSCIM
                 </h2>
               </ScrollReveal>
 
