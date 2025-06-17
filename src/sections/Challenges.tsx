@@ -52,7 +52,7 @@ const Challenges = () => {
         <ScrollReveal>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-light mb-4 text-white font-inter">
-              {t('challenges.title')} <span style={{ color: '#1de28f' }}>{t('challenges.title.education')}</span>
+              {t('challenges.title')} <span className="font-bold" style={{ color: '#1de28f' }}>{t('challenges.title.education')}</span>
             </h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto font-inter">
               {t('challenges.description')}
