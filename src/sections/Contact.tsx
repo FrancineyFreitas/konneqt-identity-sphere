@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -237,17 +236,6 @@ const Contact = () => {
                     <span className="text-slate-300">{t('contact.why.compliance')}</span>
                   </li>
                 </ul>
-              </div>
-            </ScrollReveal>
-            
-            {/* University Image */}
-            <ScrollReveal delay={400}>
-              <div className="mt-8 rounded-2xl overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Students and teachers at university"
-                  className="w-full h-64 object-cover rounded-2xl"
-                />
               </div>
             </ScrollReveal>
           </div>
