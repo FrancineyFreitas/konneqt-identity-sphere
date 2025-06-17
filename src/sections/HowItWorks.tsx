@@ -10,21 +10,18 @@ const HowItWorks = () => {
       number: '1',
       title: t('howItWorks.step1.title'),
       description: t('howItWorks.step1.description'),
-      icon: '📊',
       color: 'konneqt-blue'
     },
     {
       number: '2',
       title: t('howItWorks.step2.title'),
       description: t('howItWorks.step2.description'),
-      icon: '⚙️',
       color: 'konneqt-purple'
     },
     {
       number: '3',
       title: t('howItWorks.step3.title'),
       description: t('howItWorks.step3.description'),
-      icon: '🎯',
       color: 'konneqt-green'
     }
   ];
@@ -76,8 +73,6 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   
-                  <div className="text-4xl mb-4">{step.icon}</div>
-                  
                   <h3 className="text-xl font-semibold mb-3 text-white font-inter">{step.title}</h3>
                   
                   <p className="text-slate-300 font-inter">{step.description}</p>
@@ -90,7 +85,6 @@ const HowItWorks = () => {
         <ScrollReveal delay={600}>
           <div className="mt-16 text-center">
             <div className="inline-flex items-center space-x-4 bg-transparent rounded-full px-8 py-4">
-              <span className="text-2xl">🚀</span>
               <span className="text-lg font-semibold text-white font-inter">{t('howItWorks.realtime')}</span>
             </div>
           </div>

@@ -14,7 +14,6 @@ const Benefits = () => {
         t('benefits.automation.deprovisioning'),
         t('benefits.automation.sync')
       ],
-      icon: '🤖',
       color: 'konneqt-blue'
     },
     {
@@ -24,7 +23,6 @@ const Benefits = () => {
         t('benefits.security.audit'),
         t('benefits.security.compliance')
       ],
-      icon: '🔒',
       color: 'konneqt-purple'
     },
     {
@@ -34,7 +32,6 @@ const Benefits = () => {
         t('benefits.efficiency.errors'),
         t('benefits.efficiency.scalability')
       ],
-      icon: '📈',
       color: 'konneqt-green'
     }
   ];
@@ -77,7 +74,6 @@ const Benefits = () => {
             <ScrollReveal key={index} delay={index * 200}>
               <Card className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg">
                 <CardContent className="p-6">
-                  <div className="text-4xl mb-4">{benefit.icon}</div>
                   <h3 className="text-xl font-semibold mb-4 text-white font-inter">{benefit.title}</h3>
                   <ul className="space-y-2">
                     {benefit.items.map((item, itemIndex) => (
