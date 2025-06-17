@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -10,6 +11,7 @@ import { useToast } from '../components/ui/use-toast';
 import { useLanguage } from '../contexts/LanguageContext';
 import ScrollReveal from '../components/ScrollReveal';
 import { trackFormSubmission } from '../contexts/TrackingContext';
+import { submitContactForm } from '../api/n8n';
 
 const formSchema = z.object({
   firstName: z.string().min(2, {
@@ -52,37 +54,16 @@ const Contact = () => {
     console.log('Form submission started with data:', data);
 
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL!, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          firstName: data.firstName,
-          lastName: data.lastName,
-          institution: data.institution,
-          email: data.email,
-          phone: data.phone,
-          language: language,
-          timestamp: new Date().toISOString(),
-          source: 'qscim-landing-page'
-        }),
+      await submitContactForm(data);
+      
+      // Track form submission
+      trackFormSubmission('contact_form');
+      
+      toast({
+        title: t('contact.form.success.title') || "Formulário enviado!",
+        description: t('contact.form.success.description') || "Entraremos em contato em breve.",
       });
-
-      console.log('N8N webhook response status:', response.status);
-
-      if (response.ok) {
-        // Track form submission
-        trackFormSubmission('contact_form');
-        
-        toast({
-          title: t('contact.form.success.title') || "Formulário enviado!",
-          description: t('contact.form.success.description') || "Entraremos em contato em breve.",
-        });
-        form.reset();
-      } else {
-        throw new Error(`HTTP ${response.status}`);
-      }
+      form.reset();
     } catch (error) {
       console.error('Error submitting form:', error);
       toast({
@@ -113,93 +94,95 @@ const Contact = () => {
           {/* Left side - Contact Form */}
           <div>
             <ScrollReveal>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <FormField
-                    control={form.control}
-                    name="firstName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t('contact.form.firstName')}</FormLabel>
-                        <FormControl>
-                          <Input placeholder={t('contact.form.firstName.placeholder')} {...field} />
-                        </FormControl>
-                        <FormDescription>
-                          {/* Add a description if needed */}
-                        </FormDescription>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="lastName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t('contact.form.lastName')}</FormLabel>
-                        <FormControl>
-                          <Input placeholder={t('contact.form.lastName.placeholder')} {...field} />
-                        </FormControl>
-                        <FormDescription>
-                          {/* Add a description if needed */}
-                        </FormDescription>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="institution"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t('contact.form.institution')}</FormLabel>
-                        <FormControl>
-                          <Input placeholder={t('contact.form.institution.placeholder')} {...field} />
-                        </FormControl>
-                        <FormDescription>
-                          {/* Add a description if needed */}
-                        </FormDescription>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t('contact.form.email')}</FormLabel>
-                        <FormControl>
-                          <Input placeholder={t('contact.form.email.placeholder')} {...field} />
-                        </FormControl>
-                        <FormDescription>
-                          {/* Add a description if needed */}
-                        </FormDescription>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t('contact.form.phone')}</FormLabel>
-                        <FormControl>
-                          <Input placeholder={t('contact.form.phone.placeholder')} {...field} />
-                        </FormControl>
-                        <FormDescription>
-                          {/* Add a description if needed */}
-                        </FormDescription>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Button type="submit" disabled={isSubmitting} className="w-full">
-                    {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
-                  </Button>
-                </form>
-              </Form>
+              <div className="bg-card border rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <FormField
+                      control={form.control}
+                      name="firstName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.form.firstName')}</FormLabel>
+                          <FormControl>
+                            <Input placeholder={t('contact.form.firstName.placeholder')} {...field} />
+                          </FormControl>
+                          <FormDescription>
+                            {/* Add a description if needed */}
+                          </FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="lastName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.form.lastName')}</FormLabel>
+                          <FormControl>
+                            <Input placeholder={t('contact.form.lastName.placeholder')} {...field} />
+                          </FormControl>
+                          <FormDescription>
+                            {/* Add a description if needed */}
+                          </FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="institution"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.form.institution')}</FormLabel>
+                          <FormControl>
+                            <Input placeholder={t('contact.form.institution.placeholder')} {...field} />
+                          </FormControl>
+                          <FormDescription>
+                            {/* Add a description if needed */}
+                          </FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.form.email')}</FormLabel>
+                          <FormControl>
+                            <Input placeholder={t('contact.form.email.placeholder')} {...field} />
+                          </FormControl>
+                          <FormDescription>
+                            {/* Add a description if needed */}
+                          </FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.form.phone')}</FormLabel>
+                          <FormControl>
+                            <Input placeholder={t('contact.form.phone.placeholder')} {...field} />
+                          </FormControl>
+                          <FormDescription>
+                            {/* Add a description if needed */}
+                          </FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <Button type="submit" disabled={isSubmitting} className="w-full">
+                      {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
+                    </Button>
+                  </form>
+                </Form>
+              </div>
             </ScrollReveal>
           </div>
 
