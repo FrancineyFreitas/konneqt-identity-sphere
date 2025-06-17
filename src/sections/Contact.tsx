@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -121,7 +122,7 @@ const Contact = () => {
                       name="firstName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-slate-300 font-mono text-sm">{t('contact.form.firstName')}</FormLabel>
+                          <FormLabel className="text-slate-300 font-inter text-sm">{t('contact.form.firstName')}</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder={t('contact.form.firstName.placeholder')} 
@@ -138,7 +139,7 @@ const Contact = () => {
                       name="lastName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-slate-300 font-mono text-sm">{t('contact.form.lastName')}</FormLabel>
+                          <FormLabel className="text-slate-300 font-inter text-sm">{t('contact.form.lastName')}</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder={t('contact.form.lastName.placeholder')} 
@@ -155,7 +156,7 @@ const Contact = () => {
                       name="institution"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-slate-300 font-mono text-sm">{t('contact.form.institution')}</FormLabel>
+                          <FormLabel className="text-slate-300 font-inter text-sm">{t('contact.form.institution')}</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder={t('contact.form.institution.placeholder')} 
@@ -172,7 +173,7 @@ const Contact = () => {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-slate-300 font-mono text-sm">{t('contact.form.email')}</FormLabel>
+                          <FormLabel className="text-slate-300 font-inter text-sm">{t('contact.form.email')}</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder={t('contact.form.email.placeholder')} 
@@ -189,7 +190,7 @@ const Contact = () => {
                       name="phone"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-slate-300 font-mono text-sm">{t('contact.form.phone')}</FormLabel>
+                          <FormLabel className="text-slate-300 font-inter text-sm">{t('contact.form.phone')}</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder={t('contact.form.phone.placeholder')} 
@@ -221,7 +222,7 @@ const Contact = () => {
           <div>
             <ScrollReveal delay={200}>
               <div className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg rounded-2xl p-6 shadow-lg">
-                <h3 className="text-xl font-semibold mb-4 text-white font-mono">{t('contact.why.title')}</h3>
+                <h3 className="text-xl font-semibold mb-4 text-white font-inter">{t('contact.why.title')}</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start">
                     <span className="mr-3 text-green-400 text-lg">✓</span>
