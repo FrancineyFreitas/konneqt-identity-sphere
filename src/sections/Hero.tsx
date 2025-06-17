@@ -1,3 +1,4 @@
+
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
@@ -25,10 +26,11 @@ const Hero = () => {
 
       <div className="w-full py-12 md:py-24 px-4 relative z-10">
         <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div className="space-y-6 md:space-y-8">
+          <div className="flex flex-col items-center text-center space-y-8 md:space-y-12">
+            {/* Main content - centered */}
+            <div className="max-w-4xl space-y-6 md:space-y-8">
               <ScrollReveal>
-                <div className="inline-flex items-center space-x-2 bg-slate-800/50 border border-slate-700 rounded-full px-3 md:px-4 py-2 mb-4 mt-16 md:mt-4 backdrop-blur-sm">
+                <div className="inline-flex items-center space-x-2 bg-slate-800/50 border border-slate-700 rounded-full px-3 md:px-4 py-2 mb-4 backdrop-blur-sm">
                   <span className="text-base md:text-lg">⚡</span>
                   <span className="text-xs md:text-sm font-medium text-slate-300 font-inter">{t('hero.badge')}</span>
                 </div>
@@ -46,13 +48,13 @@ const Hero = () => {
               </ScrollReveal>
 
               <ScrollReveal delay={400}>
-                <p className="text-base md:text-lg text-slate-300 leading-relaxed font-inter">
+                <p className="text-base md:text-lg text-slate-300 leading-relaxed font-inter max-w-3xl mx-auto">
                   {t('hero.description')}
                 </p>
               </ScrollReveal>
 
               <ScrollReveal delay={600}>
-                <div className="flex flex-wrap gap-2 md:gap-3">
+                <div className="flex flex-wrap justify-center gap-2 md:gap-3">
                   <Badge className="bg-slate-800 border border-green-500/30 text-green-400 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-green-500/10 font-inter">
                     {t('hero.badge.automation')}
                   </Badge>
@@ -66,11 +68,11 @@ const Hero = () => {
               </ScrollReveal>
 
               <ScrollReveal delay={800}>
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                <div className="flex justify-center">
                   <Button
                     onClick={scrollToContact}
                     size="lg"
-                    className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 border border-blue-500/30 font-inter"
+                    className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 border border-blue-500/30 font-inter"
                   >
                     {t('hero.cta')}
                   </Button>
@@ -78,14 +80,15 @@ const Hero = () => {
               </ScrollReveal>
             </div>
 
-            <div className="relative mt-8 lg:mt-0">
-              <ScrollReveal delay={400} className="relative">
+            {/* Image section - moved below and centered */}
+            <div className="w-full max-w-4xl mt-12">
+              <ScrollReveal delay={1000} className="relative">
                 <div className="bg-slate-800/30 border border-slate-700 rounded-2xl p-4 md:p-7 relative overflow-hidden backdrop-blur-sm">
                   {/* Scanning line effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent h-full w-2 animate-pulse"></div>
                   
                   <div 
-                    className="w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-lg border border-slate-600 bg-cover bg-center relative overflow-hidden"
+                    className="w-full h-[250px] md:h-[350px] lg:h-[400px] rounded-lg border border-slate-600 bg-cover bg-center relative overflow-hidden"
                     style={{
                       backgroundImage: 'url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80")',
                       backgroundPosition: 'center',
