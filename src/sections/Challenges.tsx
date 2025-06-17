@@ -63,7 +63,7 @@ const Challenges = () => {
                 <h1 className="text-4xl md:text-6xl font-light mb-4 text-white font-inter">
                   Challenges in <span className="font-bold" style={{ color: '#1de28f' }}>Education</span>
                 </h1>
-                <p className="text-xl md:text-2xl text-slate-200 max-w-4xl font-inter">
+                <p className="text-lg md:text-xl text-slate-200 max-w-4xl font-inter">
                   Educational institutions face unique challenges in identity management
                 </p>
               </div>
