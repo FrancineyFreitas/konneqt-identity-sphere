@@ -44,8 +44,8 @@ const Hero = () => {
                 </div>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.3] md:leading-[1.2] text-white font-inter">
                   <span className="font-inter" style={{ color: '#1de28f' }}>{t('hero.title.qscim')}</span> <span className="text-white font-light">{t('hero.title.for')}</span>{' '}
-                  <span className="text-blue-400">{t('hero.title.schools')}</span> <span className="text-white font-light">{t('hero.title.and')}</span>{' '}
-                  <span className="text-purple-400">{t('hero.title.universities')}</span>
+                  <span style={{ color: '#1de28f' }}>{t('hero.title.schools')}</span> <span className="text-white font-light">{t('hero.title.and')}</span>{' '}
+                  <span style={{ color: '#1de28f' }}>{t('hero.title.universities')}</span>
                 </h1>
               </ScrollReveal>
 
@@ -63,13 +63,13 @@ const Hero = () => {
 
               <ScrollReveal delay={600}>
                 <div className="flex flex-wrap justify-center gap-2 md:gap-3">
-                  <Badge className="bg-slate-800 border border-green-500/30 text-green-400 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-green-500/10 font-inter">
+                  <Badge className="bg-slate-800 border border-green-500/30 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-green-500/10 font-inter">
                     {t('hero.badge.automation')}
                   </Badge>
-                  <Badge className="bg-slate-800 border border-blue-500/30 text-blue-400 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-blue-500/10 font-inter">
+                  <Badge className="bg-slate-800 border border-blue-500/30 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-blue-500/10 font-inter">
                     {t('hero.badge.security')}
                   </Badge>
-                  <Badge className="bg-slate-800 border border-purple-500/30 text-purple-400 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-purple-500/10 font-inter">
+                  <Badge className="bg-slate-800 border border-purple-500/30 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-purple-500/10 font-inter">
                     {t('hero.badge.scalability')}
                   </Badge>
                 </div>
