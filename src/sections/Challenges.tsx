@@ -46,6 +46,31 @@ const Challenges = () => {
       </div>
 
       <div className="container mx-auto relative z-10">
+        {/* Hero Image with Overlay Text */}
+        <ScrollReveal>
+          <div className="relative mb-16 rounded-2xl overflow-hidden">
+            <div className="relative h-96 md:h-[500px]">
+              <img 
+                src="/lovable-uploads/2ac37b45-98fe-4c74-8583-bea89e0fc22d.png" 
+                alt="Student studying" 
+                className="w-full h-full object-cover"
+              />
+              {/* Gradient overlay matching page color palette */}
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-gray-900/60 to-slate-800/70"></div>
+              
+              {/* Text overlay */}
+              <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
+                <h1 className="text-4xl md:text-6xl font-light mb-4 text-white font-inter">
+                  Challenges in <span className="font-bold" style={{ color: '#1de28f' }}>Education</span>
+                </h1>
+                <p className="text-xl md:text-2xl text-slate-200 max-w-4xl font-inter">
+                  Educational institutions face unique challenges in identity management
+                </p>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
         <ScrollReveal>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-light mb-4 text-white font-inter">
