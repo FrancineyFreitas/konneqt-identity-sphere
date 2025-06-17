@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -202,13 +201,16 @@ const Contact = () => {
                         </FormItem>
                       )}
                     />
-                    <Button 
-                      type="submit" 
-                      disabled={isSubmitting} 
-                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
-                    >
-                      {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
-                    </Button>
+                    <div className="flex justify-center">
+                      <Button 
+                        type="submit" 
+                        disabled={isSubmitting} 
+                        size="lg"
+                        className="bg-transparent border border-blue-500/40 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg hover:bg-blue-500/10 hover:border-blue-400 transform hover:scale-105 transition-all duration-300 font-inter"
+                      >
+                        {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
+                      </Button>
+                    </div>
                   </form>
                 </Form>
               </div>
