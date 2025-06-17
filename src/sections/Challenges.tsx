@@ -10,19 +10,16 @@ const Challenges = () => {
     {
       title: t('challenges.volume.title'),
       description: t('challenges.volume.description'),
-      icon: '👥',
       color: 'konneqt-blue'
     },
     {
       title: t('challenges.seasonality.title'),
       description: t('challenges.seasonality.description'),
-      icon: '📈',
       color: 'konneqt-purple'
     },
     {
       title: t('challenges.diversity.title'),
       description: t('challenges.diversity.description'),
-      icon: '🎓',
       color: 'konneqt-green'
     }
   ];
@@ -65,9 +62,6 @@ const Challenges = () => {
             <ScrollReveal key={index} delay={index * 200}>
               <Card className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg">
                 <CardContent className="p-6 text-center min-h-[200px] flex flex-col justify-center">
-                  <div className="text-4xl mb-4">
-                    {challenge.icon}
-                  </div>
                   <h3 className="text-xl font-semibold mb-3 text-white font-inter">{challenge.title}</h3>
                   <p className="text-slate-300 font-inter">{challenge.description}</p>
                   <div className={`mt-4 h-1 w-12 mx-auto rounded-full bg-${challenge.color} opacity-70`}></div>
