@@ -58,14 +58,28 @@ const Benefits = () => {
       </div>
 
       <div className="container mx-auto relative z-10">
+        {/* Hero Image with Overlay Text */}
         <ScrollReveal>
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light mb-4 text-white font-inter">
-              <span className="font-light">{t('benefits.title')}</span> <span className="font-bold" style={{ color: '#1de28f' }}>{t('benefits.title.institutions')}</span>
-            </h2>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto font-inter">
-              {t('benefits.description')}
-            </p>
+          <div className="relative mb-16 rounded-2xl overflow-hidden">
+            <div className="relative h-96 md:h-[500px]">
+              <img 
+                src="/lovable-uploads/36cea072-2297-4153-83d5-486bf4c21b75.png" 
+                alt="Students collaborating" 
+                className="w-full h-full object-cover"
+              />
+              {/* Gradient overlay matching page color palette */}
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-gray-900/60 to-slate-800/70"></div>
+              
+              {/* Text overlay - positioned at bottom of image */}
+              <div className="absolute bottom-0 left-0 right-0 flex flex-col justify-end items-center text-center px-6 pb-12">
+                <h1 className="text-4xl md:text-6xl font-light mb-4 text-white font-inter">
+                  <span className="font-light">{t('benefits.title')}</span> <span className="font-bold" style={{ color: '#1de28f' }}>{t('benefits.title.institutions')}</span>
+                </h1>
+                <p className="text-lg md:text-xl text-slate-200 max-w-4xl font-inter">
+                  {t('benefits.description')}
+                </p>
+              </div>
+            </div>
           </div>
         </ScrollReveal>
 
