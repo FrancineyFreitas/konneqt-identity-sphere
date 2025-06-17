@@ -18,10 +18,18 @@ const Hero = () => {
       
       {/* Animated particles */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-1 h-1 bg-blue-400 rounded-full animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-1 h-1 bg-green-400 rounded-full animate-pulse delay-1000"></div>
-        <div className="absolute bottom-40 left-20 w-1 h-1 bg-purple-400 rounded-full animate-pulse delay-2000"></div>
-        <div className="absolute bottom-20 right-10 w-1 h-1 bg-cyan-400 rounded-full animate-pulse delay-500"></div>
+        <div className="absolute top-20 left-10 w-1 h-1 rounded-full animate-pulse" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute top-40 right-20 w-1 h-1 rounded-full animate-pulse delay-1000" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute bottom-40 left-20 w-1 h-1 rounded-full animate-pulse delay-2000" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute bottom-20 right-10 w-1 h-1 rounded-full animate-pulse delay-500" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute top-32 left-1/4 w-1 h-1 rounded-full animate-pulse delay-300" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute top-60 right-1/3 w-1 h-1 rounded-full animate-pulse delay-700" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute bottom-60 left-1/3 w-1 h-1 rounded-full animate-pulse delay-1200" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute bottom-32 right-1/4 w-1 h-1 rounded-full animate-pulse delay-800" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute top-16 left-2/3 w-1 h-1 rounded-full animate-pulse delay-400" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute top-52 left-1/6 w-1 h-1 rounded-full animate-pulse delay-900" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute bottom-16 left-3/4 w-1 h-1 rounded-full animate-pulse delay-600" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute bottom-48 right-1/6 w-1 h-1 rounded-full animate-pulse delay-1100" style={{ backgroundColor: '#637ef2' }}></div>
       </div>
 
       <div className="w-full py-12 md:py-24 px-4 relative z-10 pt-32 md:pt-32">
@@ -35,8 +43,8 @@ const Hero = () => {
                   <span className="text-xs md:text-sm font-medium text-slate-300 font-inter">{t('hero.badge')}</span>
                 </div>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.3] md:leading-[1.2] text-white font-inter">
-                  <span className="text-cyan-400 font-inter">{t('hero.title.qscim')}</span> {t('hero.title.for')}{' '}
-                  <span className="text-blue-400">{t('hero.title.schools')}</span> {t('hero.title.and')}{' '}
+                  <span className="font-inter" style={{ color: '#1de28f' }}>{t('hero.title.qscim')}</span> <span className="text-white font-light">{t('hero.title.for')}</span>{' '}
+                  <span className="text-blue-400">{t('hero.title.schools')}</span> <span className="text-white font-light">{t('hero.title.and')}</span>{' '}
                   <span className="text-purple-400">{t('hero.title.universities')}</span>
                 </h1>
               </ScrollReveal>
