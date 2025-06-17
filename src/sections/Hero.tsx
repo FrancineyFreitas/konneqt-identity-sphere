@@ -30,7 +30,7 @@ const Hero = () => {
             {/* Main content - centered */}
             <div className="max-w-4xl space-y-6 md:space-y-8">
               <ScrollReveal>
-                <div className="inline-flex items-center space-x-2 bg-slate-800/50 border border-slate-700 rounded-full px-3 md:px-4 py-2 mb-4 backdrop-blur-sm">
+                <div className="inline-flex items-center space-x-2 bg-slate-800/50 border border-slate-700 rounded-full px-3 md:px-4 py-2 mb-6 backdrop-blur-sm">
                   <span className="text-base md:text-lg">⚡</span>
                   <span className="text-xs md:text-sm font-medium text-slate-300 font-inter">{t('hero.badge')}</span>
                 </div>
@@ -42,7 +42,7 @@ const Hero = () => {
               </ScrollReveal>
 
               <ScrollReveal delay={200}>
-                <h2 className="text-lg md:text-xl lg:text-2xl text-slate-400 font-medium font-inter">
+                <h2 className="text-lg md:text-xl lg:text-2xl text-slate-400 font-medium font-inter mt-8">
                   {t('hero.subtitle')}
                 </h2>
               </ScrollReveal>
@@ -72,7 +72,7 @@ const Hero = () => {
                   <Button
                     onClick={scrollToContact}
                     size="lg"
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 border border-blue-500/30 font-inter"
+                    className="bg-transparent border border-blue-500/40 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg hover:bg-blue-500/10 hover:border-blue-400 transform hover:scale-105 transition-all duration-300 font-inter"
                   >
                     {t('hero.cta')}
                   </Button>
@@ -81,7 +81,7 @@ const Hero = () => {
             </div>
 
             {/* Image section - moved below and centered */}
-            <div className="w-full max-w-4xl mt-12">
+            <div className="w-full max-w-4xl mt-16">
               <ScrollReveal delay={1000} className="relative">
                 <div className="bg-slate-800/30 border border-slate-700 rounded-2xl p-4 md:p-7 relative overflow-hidden backdrop-blur-sm">
                   {/* Scanning line effect */}
