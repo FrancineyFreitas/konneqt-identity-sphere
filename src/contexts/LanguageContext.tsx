@@ -1,4 +1,6 @@
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 type Language = 'en' | 'pt';
 
@@ -148,6 +150,7 @@ const translations = {
     'integratedSystems.others.access': 'Controle de acesso',
     'integratedSystems.others.printing': 'Impressão',
     'integratedSystems.realtime': 'Sincronização em tempo real',
+    'integratedSystems.campus': 'Solução de Campus',
 
     // Security section
     'security.title': 'Segurança e',
@@ -203,6 +206,9 @@ const translations = {
     'contact.form.success.description': 'Entraremos em contato em breve.',
     'contact.form.error.title': 'Erro no envio',
     'contact.form.error.description': 'Tente novamente mais tarde.',
+
+    // Footer
+    'footer.rights': '© 2024 Konneqt. Todos os direitos reservados.',
   },
   en: {
     // Hero section
@@ -341,6 +347,7 @@ const translations = {
     'integratedSystems.others.access': 'Access control',
     'integratedSystems.others.printing': 'Printing',
     'integratedSystems.realtime': 'Real-time synchronization',
+    'integratedSystems.campus': 'Campus Solution',
 
     // Security section
     'security.title': 'Security and',
@@ -396,23 +403,34 @@ const translations = {
     'contact.form.success.description': 'We will contact you soon.',
     'contact.form.error.title': 'Submission error',
     'contact.form.error.description': 'Please try again later.',
+
+    // Footer
+    'footer.rights': '© 2024 Konneqt. All rights reserved.',
   }
 };
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en'); // Changed default to English
+  const [language, setLanguage] = useState<Language>('en');
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') as Language | null;
-    if (savedLanguage && (savedLanguage === 'pt' || savedLanguage === 'en')) {
-      setLanguage(savedLanguage);
+    // Detectar idioma pela URL
+    if (location.pathname.startsWith('/pt-br')) {
+      setLanguage('pt');
+    } else {
+      setLanguage('en');
     }
-  }, []);
+
+    // Não precisamos mais do localStorage para sincronizar, pois a URL é a fonte da verdade
+  }, [location.pathname]);
 
   const toggleLanguage = () => {
-    const newLanguage = language === 'en' ? 'pt' : 'en'; // Updated toggle logic
-    setLanguage(newLanguage);
-    localStorage.setItem('language', newLanguage);
+    if (language === 'en') {
+      navigate('/pt-br');
+    } else {
+      navigate('/');
+    }
   };
 
   const t = (key: string): string => {
