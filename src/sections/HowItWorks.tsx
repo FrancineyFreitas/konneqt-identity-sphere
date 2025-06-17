@@ -30,14 +30,33 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-muted/30">
-      <div className="container mx-auto">
+    <section className="py-20 px-4 bg-gradient-to-br from-slate-900 via-gray-900 to-black relative overflow-hidden">
+      {/* Tech grid background */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_70%,transparent_100%)]"></div>
+      
+      {/* Animated particles */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-1 h-1 rounded-full animate-pulse" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute top-40 right-20 w-1 h-1 rounded-full animate-pulse delay-1000" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute bottom-40 left-20 w-1 h-1 rounded-full animate-pulse delay-2000" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute bottom-20 right-10 w-1 h-1 rounded-full animate-pulse delay-500" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute top-32 left-1/4 w-1 h-1 rounded-full animate-pulse delay-300" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute top-60 right-1/3 w-1 h-1 rounded-full animate-pulse delay-700" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute bottom-60 left-1/3 w-1 h-1 rounded-full animate-pulse delay-1200" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute bottom-32 right-1/4 w-1 h-1 rounded-full animate-pulse delay-800" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute top-16 left-2/3 w-1 h-1 rounded-full animate-pulse delay-400" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute top-52 left-1/6 w-1 h-1 rounded-full animate-pulse delay-900" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute bottom-16 left-3/4 w-1 h-1 rounded-full animate-pulse delay-600" style={{ backgroundColor: '#637ef2' }}></div>
+        <div className="absolute bottom-48 right-1/6 w-1 h-1 rounded-full animate-pulse delay-1100" style={{ backgroundColor: '#637ef2' }}></div>
+      </div>
+
+      <div className="container mx-auto relative z-10">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t('howItWorks.title')} <span className="gradient-text">{t('howItWorks.title.works')}</span>
+            <h2 className="text-3xl md:text-4xl font-light mb-4 text-white font-inter">
+              <span className="font-light">{t('howItWorks.title')}</span> <span className="font-bold" style={{ color: '#1de28f' }}>{t('howItWorks.title.works')}</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-slate-300 max-w-2xl mx-auto font-inter">
               {t('howItWorks.description')}
             </p>
           </div>
@@ -50,7 +69,7 @@ const HowItWorks = () => {
           <div className="grid md:grid-cols-3 gap-8 relative z-10">
             {steps.map((step, index) => (
               <ScrollReveal key={index} delay={index * 200}>
-                <div className="bg-card border border-border rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 dark:border-konneqt-orange/30 dark:hover:border-konneqt-orange/60 h-full flex flex-col items-center justify-center">
+                <div className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg rounded-2xl p-8 text-center shadow-lg h-full flex flex-col items-center justify-center">
                   <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-konneqt-${step.color} to-konneqt-${step.color}/80 mb-6 relative`}>
                     <div className="absolute inset-0.5 bg-black dark:bg-black rounded-full flex items-center justify-center">
                       <span className="text-[White] dark:text-[#1ee391] text-2xl font-bold">{step.number}</span>
@@ -59,9 +78,9 @@ const HowItWorks = () => {
                   
                   <div className="text-4xl mb-4">{step.icon}</div>
                   
-                  <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
+                  <h3 className="text-xl font-semibold mb-3 text-white font-inter">{step.title}</h3>
                   
-                  <p className="text-muted-foreground">{step.description}</p>
+                  <p className="text-slate-300 font-inter">{step.description}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -70,9 +89,9 @@ const HowItWorks = () => {
 
         <ScrollReveal delay={600}>
           <div className="mt-16 text-center">
-            <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-konneqt-blue/10 to-konneqt-green/10 rounded-full px-8 py-4">
+            <div className="inline-flex items-center space-x-4 bg-transparent rounded-full px-8 py-4">
               <span className="text-2xl">🚀</span>
-              <span className="text-lg font-semibold">{t('howItWorks.realtime')}</span>
+              <span className="text-lg font-semibold text-white font-inter">{t('howItWorks.realtime')}</span>
             </div>
           </div>
         </ScrollReveal>
