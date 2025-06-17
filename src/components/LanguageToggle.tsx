@@ -12,7 +12,7 @@ const LanguageToggle = () => {
       onClick={toggleLanguage}
       className="border-2 border-konneqt-blue/20 hover:border-konneqt-blue/40 transition-colors"
     >
-      {language === 'pt' ? '🇺🇸 EN' : '🇧🇷 PT'}
+      {language === 'en' ? '🇧🇷 PT' : '🇺🇸 EN'}
     </Button>
   );
 };

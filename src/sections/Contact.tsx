@@ -1,60 +1,94 @@
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 
-import { useState } from 'react';
 import { Button } from '../components/ui/button';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '../components/ui/form';
 import { Input } from '../components/ui/input';
-import { Label } from '../components/ui/label';
-import { Card, CardContent } from '../components/ui/card';
-import ScrollReveal from '../components/ScrollReveal';
-import { toast } from '@/hooks/use-toast';
-import { submitContactForm } from '../api/n8n';
+import { useToast } from '../components/ui/use-toast';
 import { useLanguage } from '../contexts/LanguageContext';
+import ScrollReveal from '../components/ScrollReveal';
+import { trackFormSubmission } from '../contexts/TrackingContext';
+
+const formSchema = z.object({
+  firstName: z.string().min(2, {
+    message: "First name must be at least 2 characters.",
+  }),
+  lastName: z.string().min(2, {
+    message: "Last name must be at least 2 characters.",
+  }),
+  institution: z.string().min(2, {
+    message: "Institution name must be at least 2 characters.",
+  }),
+  email: z.string().email({
+    message: "Please enter a valid email address.",
+  }),
+  phone: z.string().min(10, {
+    message: "Please enter a valid phone number.",
+  }),
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 const Contact = () => {
-  const { t } = useLanguage();
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    institution: '',
-    email: '',
-    phone: ''
-  });
+  const { t, language } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  const form = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      institution: "",
+      email: "",
+      phone: "",
+    },
+  });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
+    console.log('Form submission started with data:', data);
 
     try {
-      await submitContactForm(formData);
-      
-      toast({
-        title: "Solicitação enviada!",
-        description: "Sua solicitação foi enviada com sucesso. Entraremos em contato em breve para agendar uma demonstração.",
-        duration: 5000,
+      const response = await fetch(process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL!, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: data.firstName,
+          lastName: data.lastName,
+          institution: data.institution,
+          email: data.email,
+          phone: data.phone,
+          language: language,
+          timestamp: new Date().toISOString(),
+          source: 'qscim-landing-page'
+        }),
       });
 
-      setFormData({
-        firstName: '',
-        lastName: '',
-        institution: '',
-        email: '',
-        phone: ''
-      });
+      console.log('N8N webhook response status:', response.status);
+
+      if (response.ok) {
+        // Track form submission
+        trackFormSubmission('contact_form');
+        
+        toast({
+          title: t('contact.form.success.title') || "Formulário enviado!",
+          description: t('contact.form.success.description') || "Entraremos em contato em breve.",
+        });
+        form.reset();
+      } else {
+        throw new Error(`HTTP ${response.status}`);
+      }
     } catch (error) {
-      console.error('Erro no envio:', error);
+      console.error('Error submitting form:', error);
       toast({
-        title: "Erro ao enviar solicitação",
-        description: "Houve um problema ao enviar sua solicitação. Tente novamente em alguns instantes.",
+        title: t('contact.form.error.title') || "Erro no envio",
+        description: t('contact.form.error.description') || "Tente novamente mais tarde.",
         variant: "destructive",
-        duration: 5000,
       });
     } finally {
       setIsSubmitting(false);
@@ -62,147 +96,135 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 bg-muted/30">
+    <section className="py-20 px-4">
       <div className="container mx-auto">
         <ScrollReveal>
-          <div className="text-center mb-8">
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               {t('contact.title')} <span className="gradient-text">{t('contact.title.demo')}</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               {t('contact.description')}
             </p>
-            <div className="flex justify-center items-center">
-              <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-konneqt-green/20 to-konneqt-blue/20 rounded-full px-8 py-5 shadow-lg hover:shadow-xl transition-all duration-300">
-                <span className="text-3xl">🎯</span>
-                <div className="text-left">
-                  <div className="text-sm text-muted-foreground">{t('contact.personalized')}</div>
-                  <div className="text-lg font-semibold">{t('contact.adapted')}</div>
-                </div>
-              </div>
-            </div>
           </div>
         </ScrollReveal>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <ScrollReveal>
-            <Card className="shadow-xl border-2 border-transparent hover:border-konneqt-blue/20 transition-all duration-300">
-              <CardContent className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="firstName" className="text-sm font-semibold">
-                        {t('contact.form.firstName')}
-                      </Label>
-                      <Input
-                        id="firstName"
-                        name="firstName"
-                        type="text"
-                        required
-                        value={formData.firstName}
-                        onChange={handleInputChange}
-                        className="mt-2 border-2 focus:border-konneqt-blue"
-                        placeholder={t('contact.form.firstName.placeholder')}
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="lastName" className="text-sm font-semibold">
-                        {t('contact.form.lastName')}
-                      </Label>
-                      <Input
-                        id="lastName"
-                        name="lastName"
-                        type="text"
-                        required
-                        value={formData.lastName}
-                        onChange={handleInputChange}
-                        className="mt-2 border-2 focus:border-konneqt-blue"
-                        placeholder={t('contact.form.lastName.placeholder')}
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <Label htmlFor="institution" className="text-sm font-semibold">
-                      {t('contact.form.institution')}
-                    </Label>
-                    <Input
-                      id="institution"
-                      name="institution"
-                      type="text"
-                      required
-                      value={formData.institution}
-                      onChange={handleInputChange}
-                      className="mt-2 border-2 focus:border-konneqt-blue"
-                      placeholder={t('contact.form.institution.placeholder')}
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="email" className="text-sm font-semibold">
-                      {t('contact.form.email')}
-                    </Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="mt-2 border-2 focus:border-konneqt-blue"
-                      placeholder={t('contact.form.email.placeholder')}
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="phone" className="text-sm font-semibold">
-                      {t('contact.form.phone')}
-                    </Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      required
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="mt-2 border-2 focus:border-konneqt-blue"
-                      placeholder={t('contact.form.phone.placeholder')}
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-konneqt-blue to-konneqt-purple text-white py-6 text-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Left side - Contact Form */}
+          <div>
+            <ScrollReveal>
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <FormField
+                    control={form.control}
+                    name="firstName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t('contact.form.firstName')}</FormLabel>
+                        <FormControl>
+                          <Input placeholder={t('contact.form.firstName.placeholder')} {...field} />
+                        </FormControl>
+                        <FormDescription>
+                          {/* Add a description if needed */}
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="lastName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t('contact.form.lastName')}</FormLabel>
+                        <FormControl>
+                          <Input placeholder={t('contact.form.lastName.placeholder')} {...field} />
+                        </FormControl>
+                        <FormDescription>
+                          {/* Add a description if needed */}
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="institution"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t('contact.form.institution')}</FormLabel>
+                        <FormControl>
+                          <Input placeholder={t('contact.form.institution.placeholder')} {...field} />
+                        </FormControl>
+                        <FormDescription>
+                          {/* Add a description if needed */}
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t('contact.form.email')}</FormLabel>
+                        <FormControl>
+                          <Input placeholder={t('contact.form.email.placeholder')} {...field} />
+                        </FormControl>
+                        <FormDescription>
+                          {/* Add a description if needed */}
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t('contact.form.phone')}</FormLabel>
+                        <FormControl>
+                          <Input placeholder={t('contact.form.phone.placeholder')} {...field} />
+                        </FormControl>
+                        <FormDescription>
+                          {/* Add a description if needed */}
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button type="submit" disabled={isSubmitting} className="w-full">
                     {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
                   </Button>
                 </form>
-              </CardContent>
-            </Card>
-          </ScrollReveal>
+              </Form>
+            </ScrollReveal>
+          </div>
 
-          <ScrollReveal delay={200}>
-            <div className="space-y-8">
-              <div className="bg-gradient-to-br from-konneqt-blue/10 to-konneqt-purple/10 rounded-2xl p-8">
-                <h3 className="text-2xl font-bold mb-6">{t('contact.why.title')}</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <span className="w-8 h-8 bg-konneqt-green rounded-full flex items-center justify-center text-white text-sm">✓</span>
+          {/* Right side - Why choose QSCIM */}
+          <div>
+            <ScrollReveal delay={200}>
+              <div className="bg-card border rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+                <h3 className="text-xl font-semibold mb-4">{t('contact.why.title')}</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <span className="mr-3 text-konneqt-green">✅</span>
                     <span>{t('contact.why.implementation')}</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <span className="w-8 h-8 bg-konneqt-purple rounded-full flex items-center justify-center text-white text-sm">✓</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3 text-konneqt-green">✅</span>
                     <span>{t('contact.why.support')}</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <span className="w-8 h-8 bg-konneqt-orange rounded-full flex items-center justify-center text-white text-sm">✓</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3 text-konneqt-green">✅</span>
                     <span>{t('contact.why.compliance')}</span>
-                  </div>
-                </div>
+                  </li>
+                </ul>
               </div>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          </div>
         </div>
       </div>
     </section>

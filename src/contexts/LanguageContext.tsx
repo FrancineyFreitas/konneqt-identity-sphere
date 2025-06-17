@@ -1,7 +1,6 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-type Language = 'pt' | 'en';
+type Language = 'en' | 'pt';
 
 interface LanguageContextType {
   language: Language;
@@ -199,8 +198,11 @@ const translations = {
     'contact.why.support': 'Suporte especializado 24/7',
     'contact.why.compliance': 'Conformidade total com LGPD',
     
-    // Footer
-    'footer.rights': '© 2025 Konneqt. Todos os direitos reservados.',
+    // Contact form success/error messages
+    'contact.form.success.title': 'Formulário enviado!',
+    'contact.form.success.description': 'Entraremos em contato em breve.',
+    'contact.form.error.title': 'Erro no envio',
+    'contact.form.error.description': 'Tente novamente mais tarde.',
   },
   en: {
     // Hero section
@@ -389,13 +391,16 @@ const translations = {
     'contact.why.support': '24/7 specialized support',
     'contact.why.compliance': 'Full GDPR compliance',
     
-    // Footer
-    'footer.rights': '© 2025 Konneqt. All rights reserved.',
+    // Contact form success/error messages
+    'contact.form.success.title': 'Form submitted!',
+    'contact.form.success.description': 'We will contact you soon.',
+    'contact.form.error.title': 'Submission error',
+    'contact.form.error.description': 'Please try again later.',
   }
 };
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('pt');
+  const [language, setLanguage] = useState<Language>('en'); // Changed default to English
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language') as Language | null;
@@ -405,7 +410,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   }, []);
 
   const toggleLanguage = () => {
-    const newLanguage = language === 'pt' ? 'en' : 'pt';
+    const newLanguage = language === 'en' ? 'pt' : 'en'; // Updated toggle logic
     setLanguage(newLanguage);
     localStorage.setItem('language', newLanguage);
   };
