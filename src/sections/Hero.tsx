@@ -24,7 +24,7 @@ const Hero = () => {
         <div className="absolute bottom-20 right-10 w-1 h-1 bg-cyan-400 rounded-full animate-pulse delay-500"></div>
       </div>
 
-      <div className="w-full py-12 md:py-24 px-4 relative z-10">
+      <div className="w-full py-12 md:py-24 px-4 relative z-10 pt-24 md:pt-12">
         <div className="container mx-auto">
           <div className="flex flex-col items-center text-center space-y-8 md:space-y-12">
             {/* Main content - centered */}
