@@ -87,59 +87,6 @@ const Hero = () => {
                 </div>
               </ScrollReveal>
             </div>
-
-            {/* Image section - moved below and centered with increased top margin */}
-            <div className="w-full max-w-4xl mt-24 md:mt-32">
-              <ScrollReveal delay={1000} className="relative">
-                <div className="bg-slate-800/30 border border-slate-700 rounded-2xl p-4 md:p-7 relative overflow-hidden backdrop-blur-sm">
-                  {/* Scanning line effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent h-full w-2 animate-pulse"></div>
-                  
-                  <div 
-                    className="w-full h-[250px] md:h-[350px] lg:h-[400px] rounded-lg border border-slate-600 bg-cover bg-center relative overflow-hidden"
-                    style={{
-                      backgroundImage: 'url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80")',
-                      backgroundPosition: 'center',
-                    }}
-                  >
-                    {/* Tech overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                  </div>
-                  
-                  <div className="absolute top-4 left-4 bg-slate-900/90 border border-slate-600 backdrop-blur-sm rounded-lg px-3 md:px-4 py-2 md:py-3 shadow-lg">
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <div className="w-8 h-8 md:w-10 md:h-10 bg-blue-500/20 border border-blue-500/30 rounded-full flex items-center justify-center">
-                        <span className="text-base md:text-xl">🚀</span>
-                      </div>
-                      <div>
-                        <div className="text-xs md:text-sm font-semibold text-blue-400 font-inter">
-                          {t('hero.floating.provisioning')}
-                        </div>
-                        <div className="text-[10px] md:text-xs text-slate-400 font-inter">
-                          {t('hero.floating.provisioning.desc')}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="absolute bottom-4 right-4 bg-slate-900/90 border border-slate-600 backdrop-blur-sm rounded-lg px-3 md:px-4 py-2 md:py-3 shadow-lg">
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <div className="w-8 h-8 md:w-10 md:h-10 bg-purple-500/20 border border-purple-500/30 rounded-full flex items-center justify-center">
-                        <span className="text-base md:text-xl">⚡</span>
-                      </div>
-                      <div>
-                        <div className="text-xs md:text-sm font-semibold text-purple-400 font-inter">
-                          {t('hero.floating.automation')}
-                        </div>
-                        <div className="text-[10px] md:text-xs text-slate-400 font-inter">
-                          {t('hero.floating.automation.desc')}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            </div>
           </div>
         </div>
       </div>
