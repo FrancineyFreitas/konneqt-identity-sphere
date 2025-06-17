@@ -51,7 +51,7 @@ const Hero = () => {
 
               <ScrollReveal delay={200}>
                 <h2 className="text-lg md:text-xl lg:text-2xl text-slate-400 font-medium font-inter mt-8">
-                  Transform identity management in your institution with Konneqt's QSCIM
+                  Revolutionizing Identity Provisioning
                 </h2>
               </ScrollReveal>
 
@@ -88,8 +88,8 @@ const Hero = () => {
               </ScrollReveal>
             </div>
 
-            {/* Image section - moved below and centered */}
-            <div className="w-full max-w-4xl mt-16 md:mt-24">
+            {/* Image section - moved below and centered with increased top margin */}
+            <div className="w-full max-w-4xl mt-24 md:mt-32">
               <ScrollReveal delay={1000} className="relative">
                 <div className="bg-slate-800/30 border border-slate-700 rounded-2xl p-4 md:p-7 relative overflow-hidden backdrop-blur-sm">
                   {/* Scanning line effect */}
