@@ -1,4 +1,3 @@
-
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
@@ -31,36 +30,36 @@ const Hero = () => {
               <ScrollReveal>
                 <div className="inline-flex items-center space-x-2 bg-slate-800/50 border border-slate-700 rounded-full px-3 md:px-4 py-2 mb-4 mt-16 md:mt-4 backdrop-blur-sm">
                   <span className="text-base md:text-lg">⚡</span>
-                  <span className="text-xs md:text-sm font-medium text-slate-300">{t('hero.badge')}</span>
+                  <span className="text-xs md:text-sm font-medium text-slate-300 font-inter">{t('hero.badge')}</span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.3] md:leading-[1.2] text-white">
-                  <span className="text-cyan-400 font-mono">{t('hero.title.qscim')}</span> {t('hero.title.for')}{' '}
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.3] md:leading-[1.2] text-white font-inter">
+                  <span className="text-cyan-400 font-inter">{t('hero.title.qscim')}</span> {t('hero.title.for')}{' '}
                   <span className="text-blue-400">{t('hero.title.schools')}</span> {t('hero.title.and')}{' '}
                   <span className="text-purple-400">{t('hero.title.universities')}</span>
                 </h1>
               </ScrollReveal>
 
               <ScrollReveal delay={200}>
-                <h2 className="text-lg md:text-xl lg:text-2xl text-slate-400 font-medium">
+                <h2 className="text-lg md:text-xl lg:text-2xl text-slate-400 font-medium font-inter">
                   {t('hero.subtitle')}
                 </h2>
               </ScrollReveal>
 
               <ScrollReveal delay={400}>
-                <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+                <p className="text-base md:text-lg text-slate-300 leading-relaxed font-inter">
                   {t('hero.description')}
                 </p>
               </ScrollReveal>
 
               <ScrollReveal delay={600}>
                 <div className="flex flex-wrap gap-2 md:gap-3">
-                  <Badge className="bg-slate-800 border border-green-500/30 text-green-400 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-green-500/10">
+                  <Badge className="bg-slate-800 border border-green-500/30 text-green-400 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-green-500/10 font-inter">
                     {t('hero.badge.automation')}
                   </Badge>
-                  <Badge className="bg-slate-800 border border-blue-500/30 text-blue-400 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-blue-500/10">
+                  <Badge className="bg-slate-800 border border-blue-500/30 text-blue-400 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-blue-500/10 font-inter">
                     {t('hero.badge.security')}
                   </Badge>
-                  <Badge className="bg-slate-800 border border-purple-500/30 text-purple-400 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-purple-500/10">
+                  <Badge className="bg-slate-800 border border-purple-500/30 text-purple-400 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-purple-500/10 font-inter">
                     {t('hero.badge.scalability')}
                   </Badge>
                 </div>
@@ -71,7 +70,7 @@ const Hero = () => {
                   <Button
                     onClick={scrollToContact}
                     size="lg"
-                    className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 border border-blue-500/30"
+                    className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 border border-blue-500/30 font-inter"
                   >
                     {t('hero.cta')}
                   </Button>
@@ -102,10 +101,10 @@ const Hero = () => {
                         <span className="text-base md:text-xl">🚀</span>
                       </div>
                       <div>
-                        <div className="text-xs md:text-sm font-semibold text-blue-400 font-mono">
+                        <div className="text-xs md:text-sm font-semibold text-blue-400 font-inter">
                           {t('hero.floating.provisioning')}
                         </div>
-                        <div className="text-[10px] md:text-xs text-slate-400">
+                        <div className="text-[10px] md:text-xs text-slate-400 font-inter">
                           {t('hero.floating.provisioning.desc')}
                         </div>
                       </div>
@@ -118,10 +117,10 @@ const Hero = () => {
                         <span className="text-base md:text-xl">⚡</span>
                       </div>
                       <div>
-                        <div className="text-xs md:text-sm font-semibold text-purple-400 font-mono">
+                        <div className="text-xs md:text-sm font-semibold text-purple-400 font-inter">
                           {t('hero.floating.automation')}
                         </div>
-                        <div className="text-[10px] md:text-xs text-slate-400">
+                        <div className="text-[10px] md:text-xs text-slate-400 font-inter">
                           {t('hero.floating.automation.desc')}
                         </div>
                       </div>
