@@ -3,9 +3,9 @@ name: Mirroring to gitlab internal (gitlab.konneqt.io)
 on:
   push:
     branches:
-      - main 
+      - main
       - staging
-      - develop 
+      - develop
       - DEVOPS*
       - MKT*
       - mkt-updates
