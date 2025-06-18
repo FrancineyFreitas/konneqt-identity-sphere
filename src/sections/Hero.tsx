@@ -87,7 +87,7 @@ const Hero = () => {
                   <div className="container mx-auto relative z-10">
                     <div className="relative mb-16">
                       <div className="relative h-96 md:h-[500px]" style={{
-                        clipPath: 'polygon(10% 0%, 90% 0%, 100% 15%, 100% 85%, 90% 100%, 10% 100%, 0% 85%, 0% 15%)'
+                        clipPath: 'polygon(0 0, 95% 0, 100% 10%, 100% 100%, 5% 100%, 0 90%)'
                       }}>
                         <img 
                           src="/lovable-uploads/cf9adc94-1e1f-4971-87b5-5ed1c844658d.png" 
