@@ -96,21 +96,21 @@ const Challenges = () => {
                       <span className="text-slate-300 font-inter">
                         {t('challenges.scenario.operational')}
                       </span>
-                      <span className="text-xl font-bold text-blue-400 font-inter">R$156M</span>
+                      <span className="text-xl font-bold text-red-400 font-inter">R$156M</span>
                     </div>
                     
                     <div className="flex justify-between items-center p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
                       <span className="text-slate-300 font-inter">
                         {t('challenges.scenario.lost')}
                       </span>
-                      <span className="text-xl font-bold text-yellow-400 font-inter">R$89M</span>
+                      <span className="text-xl font-bold text-red-400 font-inter">R$89M</span>
                     </div>
                     
                     <div className="flex justify-between items-center p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
                       <span className="text-slate-300 font-inter">
                         {t('challenges.scenario.compliance')}
                       </span>
-                      <span className="text-xl font-bold text-purple-400 font-inter">R$34M</span>
+                      <span className="text-xl font-bold text-red-400 font-inter">R$34M</span>
                     </div>
                   </div>
                 </div>
@@ -139,7 +139,7 @@ const Challenges = () => {
                             </linearGradient>
                           </defs>
                           <path
-                            d="M20,100 Q60,80 100,40 Q140,20 180,10"
+                            d="M20,100 L80,60 L140,30 L180,10"
                             stroke="url(#lineGradient)"
                             strokeWidth="3"
                             fill="none"
@@ -151,9 +151,10 @@ const Challenges = () => {
                             }}
                           />
                           {/* Data points */}
-                          <circle cx="20" cy="100" r="4" fill="#3b82f6" className="animate-pulse delay-500" />
-                          <circle cx="100" cy="40" r="4" fill="#f59e0b" className="animate-pulse delay-1000" />
-                          <circle cx="180" cy="10" r="4" fill="#dc2626" className="animate-pulse delay-1500" />
+                          <circle cx="20" cy="100" r="4" fill="#dc2626" className="animate-pulse delay-500" />
+                          <circle cx="80" cy="60" r="4" fill="#dc2626" className="animate-pulse delay-1000" />
+                          <circle cx="140" cy="30" r="4" fill="#dc2626" className="animate-pulse delay-1500" />
+                          <circle cx="180" cy="10" r="4" fill="#dc2626" className="animate-pulse delay-2000" />
                         </svg>
                         
                         {/* Value indicator */}
@@ -168,20 +169,23 @@ const Challenges = () => {
                   <div className="grid grid-cols-2 gap-4 w-full max-w-xs">
                     {/* Graph for R$156M */}
                     <div className="relative h-24">
-                      <div className="absolute inset-0 bg-slate-700/20 rounded-lg border border-slate-600/30 p-2">
+                      <div className="absolute inset-0 bg-red-500/10 rounded-lg border border-red-500/30 p-2">
                         <div className="h-full relative">
                           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 60">
                             <path
-                              d="M10,50 Q30,40 50,25 Q70,15 90,5"
-                              stroke="#3b82f6"
+                              d="M10,50 L35,35 L65,20 L90,5"
+                              stroke="#dc2626"
                               strokeWidth="2"
                               fill="none"
                               className="animate-pulse"
                             />
-                            <circle cx="90" cy="5" r="2" fill="#3b82f6" className="animate-pulse delay-700" />
+                            <circle cx="10" cy="50" r="2" fill="#dc2626" className="animate-pulse delay-300" />
+                            <circle cx="35" cy="35" r="2" fill="#dc2626" className="animate-pulse delay-500" />
+                            <circle cx="65" cy="20" r="2" fill="#dc2626" className="animate-pulse delay-700" />
+                            <circle cx="90" cy="5" r="2" fill="#dc2626" className="animate-pulse delay-900" />
                           </svg>
-                          <div className="absolute bottom-1 right-1 bg-blue-500/20 border border-blue-500/40 rounded px-1 py-0.5">
-                            <span className="text-xs font-bold text-blue-400 font-inter">R$156M</span>
+                          <div className="absolute bottom-1 right-1 bg-red-500/20 border border-red-500/40 rounded px-1 py-0.5">
+                            <span className="text-xs font-bold text-red-400 font-inter">R$156M</span>
                           </div>
                         </div>
                       </div>
@@ -189,20 +193,23 @@ const Challenges = () => {
 
                     {/* Graph for R$89M */}
                     <div className="relative h-24">
-                      <div className="absolute inset-0 bg-slate-700/20 rounded-lg border border-slate-600/30 p-2">
+                      <div className="absolute inset-0 bg-red-500/10 rounded-lg border border-red-500/30 p-2">
                         <div className="h-full relative">
                           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 60">
                             <path
-                              d="M10,50 Q30,35 50,20 Q70,10 90,8"
-                              stroke="#f59e0b"
+                              d="M10,50 L35,30 L65,15 L90,8"
+                              stroke="#dc2626"
                               strokeWidth="2"
                               fill="none"
                               className="animate-pulse"
                             />
-                            <circle cx="90" cy="8" r="2" fill="#f59e0b" className="animate-pulse delay-900" />
+                            <circle cx="10" cy="50" r="2" fill="#dc2626" className="animate-pulse delay-400" />
+                            <circle cx="35" cy="30" r="2" fill="#dc2626" className="animate-pulse delay-600" />
+                            <circle cx="65" cy="15" r="2" fill="#dc2626" className="animate-pulse delay-800" />
+                            <circle cx="90" cy="8" r="2" fill="#dc2626" className="animate-pulse delay-1000" />
                           </svg>
-                          <div className="absolute bottom-1 right-1 bg-yellow-500/20 border border-yellow-500/40 rounded px-1 py-0.5">
-                            <span className="text-xs font-bold text-yellow-400 font-inter">R$89M</span>
+                          <div className="absolute bottom-1 right-1 bg-red-500/20 border border-red-500/40 rounded px-1 py-0.5">
+                            <span className="text-xs font-bold text-red-400 font-inter">R$89M</span>
                           </div>
                         </div>
                       </div>
