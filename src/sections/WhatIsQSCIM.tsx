@@ -42,35 +42,35 @@ const WhatIsQSCIM = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={300}>
-            <div className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg rounded-xl p-6 w-full max-w-2xl">
-              <h3 className="text-xl font-semibold mb-4 text-white font-inter">{t('whatIsQscim.protocol.title')}</h3>
-              <ul className="space-y-2 text-slate-300">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-konneqt-green rounded-full mr-3"></span>
-                  {t('whatIsQscim.protocol.standard')}
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-konneqt-blue rounded-full mr-3"></span>
-                  {t('whatIsQscim.protocol.faster')}
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-konneqt-purple rounded-full mr-3"></span>
-                  {t('whatIsQscim.protocol.interoperability')}
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-konneqt-orange rounded-full mr-3"></span>
-                  {t('whatIsQscim.protocol.errors')}
-                </li>
-              </ul>
-            </div>
-          </ScrollReveal>
+            <div className="grid md:grid-cols-2 gap-6 w-full max-w-4xl">
+              <div className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg rounded-xl p-6 h-full">
+                <h3 className="text-xl font-semibold mb-4 text-white font-inter">{t('whatIsQscim.protocol.title')}</h3>
+                <ul className="space-y-2 text-slate-300">
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-konneqt-green rounded-full mr-3"></span>
+                    {t('whatIsQscim.protocol.standard')}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-konneqt-blue rounded-full mr-3"></span>
+                    {t('whatIsQscim.protocol.faster')}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-konneqt-purple rounded-full mr-3"></span>
+                    {t('whatIsQscim.protocol.interoperability')}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-konneqt-orange rounded-full mr-3"></span>
+                    {t('whatIsQscim.protocol.errors')}
+                  </li>
+                </ul>
+              </div>
 
-          <ScrollReveal delay={400}>
-            <div className="border border-green-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-green-400 transition-all duration-300 hover:shadow-lg rounded-xl p-6 w-full max-w-2xl">
-              <h3 className="text-xl font-semibold mb-4 text-white font-inter">Experience our SCIM Agentic AI</h3>
-              <p className="text-slate-300 leading-relaxed font-inter">
-                Our MCP(Model Context Protocol), enables an autonomous/Agentic AI capacity to interact with several AI Engines such as Chat GPT, Gemini, Claude, enabling communication with any channel: Chat, Voice, WhatsApp etc.
-              </p>
+              <div className="border border-green-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-green-400 transition-all duration-300 hover:shadow-lg rounded-xl p-6 h-full">
+                <h3 className="text-xl font-semibold mb-4 text-white font-inter">Experience our SCIM Agentic AI</h3>
+                <p className="text-slate-300 leading-relaxed font-inter">
+                  Our MCP(Model Context Protocol), enables an autonomous/Agentic AI capacity to interact with several AI Engines such as Chat GPT, Gemini, Claude, enabling communication with any channel: Chat, Voice, WhatsApp etc.
+                </p>
+              </div>
             </div>
           </ScrollReveal>
         </div>
