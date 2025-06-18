@@ -1,685 +1,470 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useTranslation } from 'react-i18next';
-import i18n from '../i18n';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-interface LanguageContextProps {
-  language: string;
-  setLanguage: (lang: string) => void;
-  t: (key: string, params?: Record<string, any>) => string;
+type Language = 'en' | 'pt';
+
+interface LanguageContextType {
+  language: Language;
+  toggleLanguage: () => void;
+  t: (key: string) => string;
 }
 
-const LanguageContext = createContext<LanguageContextProps>({
-  language: 'en',
-  setLanguage: () => {},
-  t: (key: string) => key,
-});
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 const translations = {
   en: {
-    nav: {
-      home: "Home",
-      challenges: "Challenges",
-      whatIsQSCIM: "What is QSCIM?",
-      howItWorks: "How it Works",
-      benefits: "Benefits",
-      studentLifecycle: "Student Lifecycle",
-      staffProvisioning: "Staff Provisioning",
-      integratedSystems: "Integrated Systems",
-      security: "Security & Compliance",
-      contact: "Contact"
-    },
-    hero: {
-      badge: "Automated Identity Provisioning",
-      title: {
-        qscim: "QSCIM",
-        for: "for",
-        schools: "Schools",
-        and: "and",
-        universities: "Universities"
-      },
-      subtitle: "Revolutionizing Identity Provisioning",
-      description: "Automatically provision and manage user identities across all your educational systems. From enrollment to graduation, ensure secure and instant access to the right resources at the right time.",
-      badge: {
-        automation: "Complete Automation",
-        security: "Enhanced Security", 
-        scalability: "Unlimited Scalability"
-      },
-      cta: "Request Demo"
-    },
-    challenges: {
-      title: "Main Challenges",
-      title: {
-        education: "in Education"
-      },
-      description: "Discover the main challenges faced by educational institutions in managing digital identities and how QSCIM can provide effective solutions.",
-      volume: {
-        title: "High Volume of Data",
-        description: "Managing a large volume of student and staff data can be complex and prone to errors, leading to inefficiencies and security risks."
-      },
-      seasonality: {
-        title: "Seasonality of Enrollments",
-        description: "Enrollment periods create peaks in demand for IT resources, requiring scalable solutions to handle the influx of new user accounts and access requests."
-      },
-      diversity: {
-        title: "Diversity of Systems",
-        description: "Educational institutions often use a variety of systems that don't communicate with each other, making it difficult to maintain consistent and secure user access across all platforms."
-      },
-      scenario: {
-        title: "Financial Impact Scenario",
-        total: "Estimated annual financial impact of identity management inefficiencies in a typical educational institution.",
-        operational: "Operational Inefficiencies",
-        lost: "Lost Productivity",
-        compliance: "Compliance Penalties"
-      }
-    },
-    whatIsQscim: {
-      title: "What is",
-      title: {
-        qscim: "QSCIM"
-      },
-      description: "QSCIM (Quantum School and Campus Identity Management) is a comprehensive solution designed to automate and streamline identity management processes in educational institutions. It ensures that students, faculty, and staff have the right access to the right resources at the right time, enhancing security, compliance, and operational efficiency.",
-      protocol: {
-        title: "Based on SCIM protocol",
-        standard: "Standardized identity management",
-        faster: "Faster and more efficient provisioning",
-        interoperability: "Improved interoperability between systems",
-        errors: "Reduced manual errors"
-      },
-      automation: {
-        title: "Complete Automation",
-        description: "Automate user provisioning, deprovisioning, and access management across all your systems, reducing manual effort and improving accuracy."
-      }
-    },
-    howItWorks: {
-      title: "How it",
-      title: {
-        works: "Works"
-      },
-      description: "QSCIM integrates seamlessly with your existing systems to automate identity management processes, ensuring efficient and secure access to resources.",
-      step1: {
-        title: "Data Source",
-        description: "QSCIM connects to your primary data sources, such as SIS and HR systems, to gather user information."
-      },
-      step2: {
-        title: "QSCIM Gateway",
-        description: "The QSCIM Gateway processes and transforms the data, ensuring it is consistent and accurate."
-      },
-      step3: {
-        title: "Target Systems",
-        description: "QSCIM automatically provisions and manages user access across all connected systems, such as LMS, email, and directories."
-      },
-      realtime: "Real-time Provisioning"
-    },
-    benefits: {
-      title: "Benefits for Educational",
-      title: {
-        institutions: "Institutions"
-      },
-      description: "QSCIM offers a range of benefits that enhance security, compliance, and operational efficiency for educational institutions.",
-      automation: {
-        title: "Complete Automation",
-        realtime: "Real-time provisioning and deprovisioning",
-        deprovisioning: "Automated deprovisioning upon graduation or departure",
-        sync: "Automatic synchronization of user data across systems"
-      },
-      security: {
-        title: "Enhanced Security",
-        rbac: "Role-based access control (RBAC)",
-        audit: "Complete audit trail of user access and changes",
-        compliance: "Compliance with regulatory requirements (FERPA, GDPR, etc.)"
-      },
-      efficiency: {
-        title: "Operational Efficiency",
-        time: "Reduced time spent on manual provisioning tasks",
-        errors: "Minimized errors and inconsistencies in user data",
-        scalability: "Improved scalability to handle peak enrollment periods"
-      },
-      metrics: {
-        provisioning: "Average Provisioning Time",
-        compliance: "Data Accuracy & Compliance",
-        reduction: "Manual Effort Reduction",
-        systems: "Integrated Systems"
-      }
-    },
-    studentLifecycle: {
-      title: "Student",
-      title: {
-        student: "Lifecycle"
-      },
-      description: "QSCIM automates identity management throughout the student lifecycle, from enrollment to graduation, ensuring secure and efficient access to resources.",
-      enrollment: {
-        title: "Enrollment",
-        description: "Automatic account creation and access provisioning upon enrollment."
-      },
-      courseChange: {
-        title: "Course change",
-        description: "Automated access adjustments when students change courses."
-      },
-      graduation: {
-        title: "Graduation",
-        description: "Automatic account deprovisioning and access revocation upon graduation."
-      },
-      semester: {
-        title: "New semester",
-        description: "Batch processing of account updates and access renewals at the start of each semester."
-      },
-      exchange: {
-        title: "Exchange students",
-        description: "Temporary account provisioning and access management for exchange students."
-      },
-      emergency: {
-        title: "Emergency suspension",
-        description: "Immediate suspension of access in case of disciplinary actions or emergencies."
-      },
-      instant: {
-        title: "Instant Access",
-        description: "Students gain immediate access to essential resources upon enrollment, enhancing their learning experience and productivity."
-      }
-    },
-    staffProvisioning: {
-      title: "Provisioning of Teachers and",
-      title: {
-        staff: "Staff"
-      },
-      description: "QSCIM streamlines the provisioning of teachers and staff, ensuring they have the necessary access to perform their duties efficiently and securely.",
-      professor: {
-        title: "Full Professor",
-        lms: "Access to Learning Management System (LMS)",
-        grades: "Access to grade submission system",
-        labs: "Access to research labs and resources",
-        library: "Access to digital library resources",
-        email: "University email account"
-      },
-      admin: {
-        title: "Administrative Staff",
-        sis: "Access to Student Information System (SIS)",
-        hr: "Access to Human Resources (HR) system",
-        financial: "Access to financial management system",
-        reports: "Access to administrative reports",
-        email: "University email account"
-      },
-      visiting: {
-        title: "Visiting Professor",
-        temporary: "Temporary access to university systems",
-        wifi: "Access to campus Wi-Fi network",
-        lms: "Limited access to Learning Management System (LMS)",
-        library: "Access to digital library resources",
-        labs: "Access to specific research labs"
-      },
-      accesses: "Common Accesses",
-      flow: {
-        title: "Automated Provisioning Flow",
-        hiring: "Hiring Process",
-        processing: "HR Data Processing",
-        provisioning: "Automated Account Provisioning",
-        credentials: "Credential Delivery"
-      }
-    },
-    integratedSystems: {
-      title: "Integrated",
-      title: {
-        integrated: "Systems"
-      },
-      description: "QSCIM integrates seamlessly with a variety of systems commonly used in educational institutions, ensuring consistent and secure identity management across all platforms.",
-      sis: "SIS Systems",
-      lms: "LMS",
-      directories: "Directories",
-      others: "Other Systems",
-      others: {
-        wifi: "Wi-Fi Access",
-        labs: "Lab Access",
-        access: "Physical Access Control",
-        printing: "Printing Services"
-      },
-      realtime: "Real-time Integration"
-    },
-    security: {
-      title: "Security and",
-      title: {
-        compliance: "Compliance"
-      },
-      description: "QSCIM ensures the highest levels of security and compliance with industry standards, protecting sensitive data and maintaining regulatory adherence.",
-      rbac: {
-        title: "Role-based access",
-        description: "Role-based access control (RBAC) ensures that users have only the necessary permissions."
-      },
-      audit: {
-        title: "Complete audit trail",
-        description: "A comprehensive audit trail tracks all user access and changes for security and compliance purposes."
-      },
-      tls: {
-        title: "TLS 1.3 encryption",
-        description: "End-to-end encryption with TLS 1.3 protects data in transit."
-      },
-      aes: {
-        title: "AES-256 encryption",
-        description: "AES-256 encryption secures data at rest."
-      },
-      compliance: {
-        title: "Regulatory Compliance",
-        ferpa: "Compliance with the Family Educational Rights and Privacy Act (FERPA).",
-        lgpd: "Compliance with the Lei Geral de Proteção de Dados (LGPD).",
-        gdpr: "Compliance with the General Data Protection Regulation (GDPR).",
-        soc2: "Compliance with SOC 2 standards."
-      },
-      layers: {
-        title: "Multi-Layered Security",
-        mfa: "Multi-Factor Authentication (MFA)",
-        rbac: "Role-Based Access Control (RBAC)",
-        encryption: "End-to-End Encryption",
-        monitoring: "Real-Time Monitoring",
-        logs: "Detailed Audit Logs"
-      },
-      metrics: {
-        availability: "System Availability",
-        response: "Average Response Time"
-      }
-    },
-    contact: {
-      title: "Request a",
-      title: {
-        demo: "Demo"
-      },
-      description: "Contact us to learn more about how QSCIM can transform identity management at your educational institution.",
-      form: {
-        firstName: "First Name",
-        firstName: {
-          placeholder: "Enter your first name"
-        },
-        lastName: "Last Name",
-        lastName: {
-          placeholder: "Enter your last name"
-        },
-        institution: "Institution",
-        institution: {
-          placeholder: "Enter your institution name"
-        },
-        email: "Email",
-        email: {
-          placeholder: "Enter your email address"
-        },
-        phone: "Phone Number",
-        phone: {
-          placeholder: "Enter your phone number"
-        },
-        submit: "Submit",
-        submitting: "Submitting...",
-        success: {
-          title: "Form submitted!",
-          description: "We'll get in touch with you soon."
-        },
-        error: {
-          title: "Submission error",
-          description: "Please try again later."
-        }
-      },
-      why: {
-        title: "Why choose QSCIM?",
-        implementation: "Fast and seamless implementation",
-        support: "Dedicated support team",
-        compliance: "Ensured regulatory compliance"
-      }
-    },
-    footer: {
-      copyright: "© 2024 QSCIM. All rights reserved."
-    }
+    // Hero section
+    'hero.badge': 'Leading Identity Management Solution',
+    'hero.title.qscim': 'QSCIM',
+    'hero.title.for': 'for',
+    'hero.title.schools': 'Schools',
+    'hero.title.and': 'and',
+    'hero.title.universities': 'Universities',
+    'hero.subtitle': 'Revolutionizing Identity Provisioning',
+    'hero.description': 'Transform identity management in your educational institution with Konneqt\'s QSCIM solution.',
+    'hero.cta': 'Request Demo',
+    'hero.badge.automation': '✅ Complete Automation',
+    'hero.badge.security': '✅ Advanced Security',
+    'hero.badge.scalability': '✅ Scalability',
+    'hero.floating.provisioning': 'Automatic Provisioning',
+    'hero.floating.provisioning.desc': 'In minutes, not days',
+    'hero.floating.automation': 'Smart Automation',
+    'hero.floating.automation.desc': 'Automatically provisions and deprovisions users based on events',
+    
+    // What is QSCIM section
+    'whatIsQscim.title': 'What is',
+    'whatIsQscim.title.qscim': 'QSCIM',
+    'whatIsQscim.description': 'User onboarding solution that imports data from SIS, HR, CRM systems to directories like AD, Azure AD, Google and Okta and many others.',
+    'whatIsQscim.protocol.title': 'Based on SCIM protocol',
+    'whatIsQscim.protocol.standard': 'Open standard for identity management',
+    'whatIsQscim.protocol.faster': 'Faster and cheaper provisioning',
+    'whatIsQscim.protocol.interoperability': 'Interoperability between systems',
+    'whatIsQscim.protocol.errors': 'Reduction of manual errors',
+    'whatIsQscim.automation.title': 'Experience our SCIM Agentic AI',
+    'whatIsQscim.automation.description': 'Our MCP(Model Context Protocol), enables an autonomous/Agentic AI capacity to interact with several AI Engines such as Chat GPT, Gemini, Claude, enabling communication with any channel: Chat, Voice, WhatsApp etc.',
+
+    // How it works section
+    'howItWorks.title': 'How It',
+    'howItWorks.title.works': 'Works',
+    'howItWorks.description': 'A simple and efficient three-step flow',
+    'howItWorks.step1.title': 'Data source',
+    'howItWorks.step1.description': 'SIS, HR or CRM',
+    'howItWorks.step2.title': 'QSCIM Gateway',
+    'howItWorks.step2.description': 'SCIM processing and mapping',
+    'howItWorks.step3.title': 'Target systems',
+    'howItWorks.step3.description': 'Azure AD, Google, Okta, Active Directory, etc.',
+    'howItWorks.realtime': 'Real-time provisioning',
+
+    // Challenges section
+    'challenges.title': 'Challenges in',
+    'challenges.title.education': 'Education',
+    'challenges.description': 'Educational institutions face unique challenges in identity management',
+    'challenges.scenario.title': 'The Current Academic Scenario',
+    'challenges.scenario.total': 'in unnecessary costs in manual identity management',
+    'challenges.scenario.operational': 'Operational Costs',
+    'challenges.scenario.lost': 'Lost Revenue',
+    'challenges.scenario.compliance': 'Compliance Costs',
+    'challenges.volume.title': 'Massive user volume',
+    'challenges.volume.description': '10,000+ students, 500+ teachers, 200+ staff',
+    'challenges.seasonality.title': 'Extreme seasonality',
+    'challenges.seasonality.description': '85% of access created in 2 weeks',
+    'challenges.diversity.title': 'Profile diversity',
+    'challenges.diversity.description': 'Undergraduate, graduate, exchange, visitors',
+    'challenges.impacts.title': 'Negative Impacts',
+    'challenges.impacts.time': 'Time spent on manual tasks',
+    'challenges.impacts.errors': 'Errors in manual provisioning',
+    'challenges.impacts.days': 'Days to provision new users',
+    'challenges.impacts.cost': 'Annual manual management cost',
+
+    // Benefits section
+    'benefits.title': 'Benefits for',
+    'benefits.title.institutions': 'Educational Institutions',
+    'benefits.description': 'Transform identity management with measurable results',
+    'benefits.automation.title': 'Complete Automation',
+    'benefits.automation.realtime': 'Real-time provisioning and deprovisioning',
+    'benefits.automation.deprovisioning': 'Automatic access revocation',
+    'benefits.automation.sync': 'Synchronized data across all systems',
+    'benefits.security.title': 'Enhanced Security',
+    'benefits.security.rbac': 'Role-based access control (RBAC)',
+    'benefits.security.audit': 'Complete audit trails',
+    'benefits.security.compliance': 'Regulatory compliance',
+    'benefits.efficiency.title': 'Operational Efficiency',
+    'benefits.efficiency.time': 'Reduced processing time',
+    'benefits.efficiency.errors': 'Elimination of manual errors',
+    'benefits.efficiency.scalability': 'Infinite scalability',
+    'benefits.metrics.provisioning': 'Provisioning and deprovisioning',
+    'benefits.metrics.compliance': 'LGPD/MEC Compliance',
+    'benefits.metrics.reduction': 'Reduction in Calls',
+    'benefits.metrics.systems': 'Integrated Systems',
+
+    // Student Lifecycle section
+    'studentLifecycle.title': 'Student',
+    'studentLifecycle.title.student': 'Lifecycle',
+    'studentLifecycle.description': 'Complete automation at all stages of the academic journey',
+    'studentLifecycle.enrollment.title': 'Enrollment',
+    'studentLifecycle.enrollment.description': 'Provisions email, LMS, Wi-Fi, library and labs',
+    'studentLifecycle.courseChange.title': 'Course change',
+    'studentLifecycle.courseChange.description': 'Updates groups and permissions automatically',
+    'studentLifecycle.graduation.title': 'Graduation',
+    'studentLifecycle.graduation.description': 'Removes academic access and migrates to alumni',
+    'studentLifecycle.semester.title': 'New semester',
+    'studentLifecycle.semester.description': '1,500 students provisioned automatically, error-free',
+    'studentLifecycle.exchange.title': 'Exchange students',
+    'studentLifecycle.exchange.description': 'Temporary access with automatic expiration',
+    'studentLifecycle.emergency.title': 'Emergency suspension',
+    'studentLifecycle.emergency.description': 'Immediate and auditable blocking of all access',
+    'studentLifecycle.instant.title': 'Instant Automation',
+    'studentLifecycle.instant.description': 'All lifecycle events are processed automatically, ensuring students have access to the right resources at the right time.',
+
+    // Staff Provisioning section
+    'staffProvisioning.title': 'Provisioning of',
+    'staffProvisioning.title.staff': 'Teachers and Staff',
+    'staffProvisioning.description': 'Automated management for all types of collaborators',
+    'staffProvisioning.professor.title': 'Full Professor',
+    'staffProvisioning.admin.title': 'Administrative Staff',
+    'staffProvisioning.visiting.title': 'Visiting Professor',
+    'staffProvisioning.accesses': 'Automatic Access:',
+    'staffProvisioning.professor.lms': 'LMS',
+    'staffProvisioning.professor.grades': 'Grading system',
+    'staffProvisioning.professor.labs': 'Laboratories',
+    'staffProvisioning.professor.library': 'Library',
+    'staffProvisioning.professor.email': 'Email',
+    'staffProvisioning.admin.sis': 'SIS',
+    'staffProvisioning.admin.hr': 'HR System',
+    'staffProvisioning.admin.financial': 'Financial',
+    'staffProvisioning.admin.reports': 'Reports',
+    'staffProvisioning.admin.email': 'Email',
+    'staffProvisioning.visiting.temporary': 'Temporary access with automatic expiration',
+    'staffProvisioning.visiting.wifi': 'WiFi Guest',
+    'staffProvisioning.visiting.lms': 'Limited LMS',
+    'staffProvisioning.visiting.library': 'Library',
+    'staffProvisioning.visiting.labs': 'Specific Labs',
+    'staffProvisioning.flow.title': 'Provisioning Flow',
+    'staffProvisioning.flow.hiring': 'HR Hiring',
+    'staffProvisioning.flow.processing': 'QSCIM Processing',
+    'staffProvisioning.flow.provisioning': 'Provisioning',
+    'staffProvisioning.flow.credentials': 'Credential Sending',
+
+    // Integrated Systems section
+    'integratedSystems.title': 'Integrated',
+    'integratedSystems.title.integrated': 'Systems',
+    'integratedSystems.description': 'Connect all your institution\'s systems in a single solution',
+    'integratedSystems.sis': 'SIS Systems',
+    'integratedSystems.lms': 'LMS',
+    'integratedSystems.directories': 'Directories',
+    'integratedSystems.others': 'Other Systems',
+    'integratedSystems.others.wifi': 'Wi-Fi',
+    'integratedSystems.others.labs': 'Laboratories',
+    'integratedSystems.others.access': 'Access control',
+    'integratedSystems.others.printing': 'Printing',
+    'integratedSystems.realtime': 'Real-time synchronization',
+    'integratedSystems.campus': 'Campus Solution',
+
+    // Security section
+    'security.title': 'Security and',
+    'security.title.compliance': 'Compliance',
+    'security.description': 'Robust protection with the highest security standards',
+    'security.rbac.title': 'Role-based access',
+    'security.rbac.description': 'Granular permission control by profile',
+    'security.audit.title': 'Complete audit trail',
+    'security.audit.description': 'Detailed record of all actions',
+    'security.tls.title': 'TLS 1.3 encryption',
+    'security.tls.description': 'Data protected in transit',
+    'security.aes.title': 'AES-256 encryption',
+    'security.aes.description': 'Data protected at rest',
+    'security.compliance.title': 'Regulatory Compliance',
+    'security.compliance.ferpa': 'Educational data protection',
+    'security.compliance.lgpd': 'Brazilian compliance',
+    'security.compliance.gdpr': 'European regulation',
+    'security.compliance.soc2': 'Security and availability',
+    'security.layers.title': 'Security Layers',
+    'security.layers.mfa': 'Multi-factor authentication (MFA)',
+    'security.layers.rbac': 'Role-based access control',
+    'security.layers.encryption': 'Encryption',
+    'security.layers.monitoring': 'Real-time monitoring',
+    'security.layers.logs': 'Audit logs and reports',
+    'security.metrics.availability': 'Availability',
+    'security.metrics.response': 'Response time',
+    
+    // Contact section
+    'contact.title': 'Request a',
+    'contact.title.demo': 'Demo',
+    'contact.description': 'Discover how QSCIM can transform your institution\'s identity management',
+    'contact.personalized': 'Personalized demonstration',
+    'contact.adapted': 'Adapted to your institution',
+    'contact.form.firstName': 'First Name *',
+    'contact.form.lastName': 'Last Name *',
+    'contact.form.institution': 'Institution Name *',
+    'contact.form.email': 'Email *',
+    'contact.form.phone': 'Phone *',
+    'contact.form.firstName.placeholder': 'Your first name',
+    'contact.form.lastName.placeholder': 'Your last name',
+    'contact.form.institution.placeholder': 'Your institution name',
+    'contact.form.email.placeholder': 'your.email@institution.edu',
+    'contact.form.phone.placeholder': '+1 (555) 123-4567',
+    'contact.form.submit': 'Request Demo',
+    'contact.form.submitting': 'Sending...',
+    'contact.why.title': 'Why choose QSCIM?',
+    'contact.why.implementation': 'Fast and secure implementation',
+    'contact.why.support': '24/7 specialized support',
+    'contact.why.compliance': 'Full GDPR compliance',
+    
+    // Contact form success/error messages
+    'contact.form.success.title': 'Form submitted!',
+    'contact.form.success.description': 'We will contact you soon.',
+    'contact.form.error.title': 'Submission error',
+    'contact.form.error.description': 'Please try again later.',
+
+    // Footer
+    'footer.rights': '© 2024 Konneqt. All rights reserved.',
   },
   pt: {
-    nav: {
-      home: "Início",
-      challenges: "Desafios",
-      whatIsQSCIM: "O que é QSCIM?",
-      howItWorks: "Como Funciona",
-      benefits: "Benefícios",
-      studentLifecycle: "Ciclo de Vida do Aluno",
-      staffProvisioning: "Provisionamento de Colaboradores",
-      integratedSystems: "Sistemas Integrados",
-      security: "Segurança e Compliance",
-      contact: "Contato"
-    },
-    hero: {
-      badge: "Provisionamento Automatizado de Identidades",
-      title: {
-        qscim: "QSCIM",
-        for: "para",
-        schools: "Escolas",
-        and: "e",
-        universities: "Universidades"
-      },
-      subtitle: "Revolucionando o Provisionamento de Identidades",
-      description: "Provisione e gerencie automaticamente identidades de usuários em todos os seus sistemas educacionais. Da matrícula à formatura, garanta acesso seguro e instantâneo aos recursos certos no momento certo.",
-      badge: {
-        automation: "Automação Completa",
-        security: "Segurança Aprimorada",
-        scalability: "Escalabilidade Ilimitada"
-      },
-      cta: "Solicitar Demo"
-    },
-    challenges: {
-      title: "Principais Desafios",
-      title: {
-        education: "na Educação"
-      },
-      description: "Descubra os principais desafios enfrentados pelas instituições de ensino no gerenciamento de identidades digitais e como o QSCIM pode fornecer soluções eficazes.",
-      volume: {
-        title: "Alto Volume de Dados",
-        description: "Gerenciar um grande volume de dados de alunos e funcionários pode ser complexo e propenso a erros, levando a ineficiências e riscos de segurança."
-      },
-      seasonality: {
-        title: "Sazonalidade das Matrículas",
-        description: "Os períodos de matrícula criam picos na demanda por recursos de TI, exigindo soluções escaláveis para lidar com o influxo de novas contas de usuário e solicitações de acesso."
-      },
-      diversity: {
-        title: "Diversidade de Sistemas",
-        description: "As instituições de ensino geralmente usam uma variedade de sistemas que não se comunicam entre si, dificultando a manutenção de acesso de usuário consistente e seguro em todas as plataformas."
-      },
-      scenario: {
-        title: "Cenário de Impacto Financeiro",
-        total: "Impacto financeiro anual estimado das ineficiências de gerenciamento de identidade em uma instituição de ensino típica.",
-        operational: "Ineficiências Operacionais",
-        lost: "Perda de Produtividade",
-        compliance: "Penalidades de Compliance"
-      }
-    },
-    whatIsQscim: {
-      title: "O que é",
-      title: {
-        qscim: "QSCIM"
-      },
-      description: "QSCIM (Quantum School and Campus Identity Management) é uma solução abrangente projetada para automatizar e otimizar os processos de gerenciamento de identidade em instituições de ensino. Ele garante que alunos, professores e funcionários tenham o acesso certo aos recursos certos no momento certo, aumentando a segurança, a conformidade e a eficiência operacional.",
-      protocol: {
-        title: "Baseado no protocolo SCIM",
-        standard: "Gerenciamento de identidade padronizado",
-        faster: "Provisionamento mais rápido e eficiente",
-        interoperability: "Melhor interoperabilidade entre sistemas",
-        errors: "Redução de erros manuais"
-      },
-      automation: {
-        title: "Automação Completa",
-        description: "Automatize o provisionamento, desprovisionamento e gerenciamento de acesso de usuários em todos os seus sistemas, reduzindo o esforço manual e melhorando a precisão."
-      }
-    },
-    howItWorks: {
-      title: "Como",
-      title: {
-        works: "Funciona"
-      },
-      description: "O QSCIM integra-se perfeitamente com seus sistemas existentes para automatizar os processos de gerenciamento de identidade, garantindo acesso eficiente e seguro aos recursos.",
-      step1: {
-        title: "Fonte de Dados",
-        description: "O QSCIM conecta-se às suas fontes de dados primárias, como sistemas SIS e HR, para coletar informações do usuário."
-      },
-      step2: {
-        title: "Gateway QSCIM",
-        description: "O Gateway QSCIM processa e transforma os dados, garantindo que sejam consistentes e precisos."
-      },
-      step3: {
-        title: "Sistemas Alvo",
-        description: "O QSCIM provisiona e gerencia automaticamente o acesso do usuário em todos os sistemas conectados, como LMS, e-mail e diretórios."
-      },
-      realtime: "Provisionamento em Tempo Real"
-    },
-    benefits: {
-      title: "Benefícios para Instituições",
-      title: {
-        institutions: "Educacionais"
-      },
-      description: "O QSCIM oferece uma gama de benefícios que melhoram a segurança, a conformidade e a eficiência operacional para instituições de ensino.",
-      automation: {
-        title: "Automação Completa",
-        realtime: "Provisionamento e desprovisionamento em tempo real",
-        deprovisioning: "Desprovisionamento automatizado após a formatura ou partida",
-        sync: "Sincronização automática de dados do usuário entre sistemas"
-      },
-      security: {
-        title: "Segurança Aprimorada",
-        rbac: "Controle de acesso baseado em função (RBAC)",
-        audit: "Trilha de auditoria completa do acesso e alterações do usuário",
-        compliance: "Conformidade com os requisitos regulatórios (FERPA, GDPR, etc.)"
-      },
-      efficiency: {
-        title: "Eficiência Operacional",
-        time: "Tempo reduzido gasto em tarefas manuais de provisionamento",
-        errors: "Erros e inconsistências minimizados nos dados do usuário",
-        scalability: "Escalabilidade aprimorada para lidar com os períodos de pico de matrícula"
-      },
-       metrics: {
-        provisioning: "Tempo Médio de Provisionamento",
-        compliance: "Precisão e Compliance de Dados",
-        reduction: "Redução de Esforço Manual",
-        systems: "Sistemas Integrados"
-      }
-    },
-    studentLifecycle: {
-      title: "Ciclo de Vida do",
-      title: {
-        student: "Aluno"
-      },
-      description: "O QSCIM automatiza o gerenciamento de identidade ao longo do ciclo de vida do aluno, desde a matrícula até a formatura, garantindo acesso seguro e eficiente aos recursos.",
-      enrollment: {
-        title: "Matrícula",
-        description: "Criação automática de conta e provisionamento de acesso após a matrícula."
-      },
-      courseChange: {
-        title: "Mudança de curso",
-        description: "Ajustes de acesso automatizados quando os alunos mudam de curso."
-      },
-      graduation: {
-        title: "Formatura",
-        description: "Desprovisionamento automático de conta e revogação de acesso após a formatura."
-      },
-      semester: {
-        title: "Novo semestre",
-        description: "Processamento em lote de atualizações de conta e renovações de acesso no início de cada semestre."
-      },
-      exchange: {
-        title: "Alunos de intercâmbio",
-        description: "Provisionamento de conta temporária e gerenciamento de acesso para alunos de intercâmbio."
-      },
-      emergency: {
-        title: "Suspensão de emergência",
-        description: "Suspensão imediata do acesso em caso de ações disciplinares ou emergências."
-      },
-      instant: {
-        title: "Acesso Imediato",
-        description: "Os alunos ganham acesso imediato aos recursos essenciais após a matrícula, melhorando sua experiência de aprendizado e produtividade."
-      }
-    },
-    staffProvisioning: {
-      title: "Provisionamento de Professores e",
-      title: {
-        staff: "Colaboradores"
-      },
-      description: "O QSCIM agiliza o provisionamento de professores e funcionários, garantindo que eles tenham o acesso necessário para desempenhar suas funções de forma eficiente e segura.",
-      professor: {
-        title: "Professor Titular",
-        lms: "Acesso ao Sistema de Gerenciamento de Aprendizagem (LMS)",
-        grades: "Acesso ao sistema de envio de notas",
-        labs: "Acesso a laboratórios e recursos de pesquisa",
-        library: "Acesso a recursos de biblioteca digital",
-        email: "Conta de e-mail da universidade"
-      },
-      admin: {
-        title: "Equipe Administrativa",
-        sis: "Acesso ao Sistema de Informações do Aluno (SIS)",
-        hr: "Acesso ao sistema de Recursos Humanos (RH)",
-        financial: "Acesso ao sistema de gestão financeira",
-        reports: "Acesso a relatórios administrativos",
-        email: "Conta de e-mail da universidade"
-      },
-      visiting: {
-        title: "Professor Visitante",
-        temporary: "Acesso temporário aos sistemas universitários",
-        wifi: "Acesso à rede Wi-Fi do campus",
-        lms: "Acesso limitado ao Sistema de Gerenciamento de Aprendizagem (LMS)",
-        library: "Acesso a recursos de biblioteca digital",
-        labs: "Acesso a laboratórios de pesquisa específicos"
-      },
-      accesses: "Acessos Comuns",
-      flow: {
-        title: "Fluxo de Provisionamento Automatizado",
-        hiring: "Processo de Contratação",
-        processing: "Processamento de Dados de RH",
-        provisioning: "Provisionamento Automatizado de Contas",
-        credentials: "Entrega de Credenciais"
-      }
-    },
-    integratedSystems: {
-      title: "Sistemas",
-      title: {
-        integrated: "Integrados"
-      },
-      description: "O QSCIM integra-se perfeitamente com uma variedade de sistemas comumente usados em instituições de ensino, garantindo gerenciamento de identidade consistente e seguro em todas as plataformas.",
-      sis: "Sistemas SIS",
-      lms: "LMS",
-      directories: "Diretórios",
-      others: "Outros Sistemas",
-      others: {
-        wifi: "Acesso Wi-Fi",
-        labs: "Acesso ao Laboratório",
-        access: "Controle de Acesso Físico",
-        printing: "Serviços de Impressão"
-      },
-      realtime: "Integração em Tempo Real"
-    },
-    security: {
-      title: "Segurança e",
-      title: {
-        compliance: "Compliance"
-      },
-      description: "O QSCIM garante os mais altos níveis de segurança e conformidade com os padrões da indústria, protegendo dados confidenciais e mantendo a adesão regulatória.",
-      rbac: {
-        title: "Acesso baseado em função",
-        description: "O controle de acesso baseado em função (RBAC) garante que os usuários tenham apenas as permissões necessárias."
-      },
-      audit: {
-        title: "Trilha de auditoria completa",
-        description: "Uma trilha de auditoria abrangente rastreia todo o acesso e alterações do usuário para fins de segurança e conformidade."
-      },
-      tls: {
-        title: "Criptografia TLS 1.3",
-        description: "A criptografia de ponta a ponta com TLS 1.3 protege os dados em trânsito."
-      },
-      aes: {
-        title: "Criptografia AES-256",
-        description: "A criptografia AES-256 protege os dados em repouso."
-      },
-      compliance: {
-        title: "Compliance Regulatória",
-        ferpa: "Conformidade com a Lei de Direitos Educacionais e Privacidade da Família (FERPA).",
-        lgpd: "Conformidade com a Lei Geral de Proteção de Dados (LGPD).",
-        gdpr: "Conformidade com o Regulamento Geral de Proteção de Dados (GDPR).",
-        soc2: "Conformidade com os padrões SOC 2."
-      },
-      layers: {
-        title: "Segurança Multicamadas",
-        mfa: "Autenticação Multifator (MFA)",
-        rbac: "Controle de Acesso Baseado em Função (RBAC)",
-        encryption: "Criptografia de Ponta a Ponta",
-        monitoring: "Monitoramento em Tempo Real",
-        logs: "Logs de Auditoria Detalhados"
-      },
-      metrics: {
-        availability: "Disponibilidade do Sistema",
-        response: "Tempo Médio de Resposta"
-      }
-    },
-    contact: {
-      title: "Solicite uma",
-      title: {
-        demo: "Demonstração"
-      },
-      description: "Entre em contato conosco para saber mais sobre como o QSCIM pode transformar o gerenciamento de identidade em sua instituição de ensino.",
-      form: {
-        firstName: "Nome",
-        firstName: {
-          placeholder: "Digite seu nome"
-        },
-        lastName: "Sobrenome",
-        lastName: {
-          placeholder: "Digite seu sobrenome"
-        },
-        institution: "Instituição",
-        institution: {
-          placeholder: "Digite o nome da sua instituição"
-        },
-        email: "Email",
-        email: {
-          placeholder: "Digite seu endereço de email"
-        },
-        phone: "Número de Telefone",
-        phone: {
-          placeholder: "Digite seu número de telefone"
-        },
-        submit: "Enviar",
-        submitting: "Enviando...",
-        success: {
-          title: "Formulário enviado!",
-          description: "Entraremos em contato em breve."
-        },
-        error: {
-          title: "Erro no envio",
-          description: "Tente novamente mais tarde."
-        }
-      },
-      why: {
-        title: "Por que escolher o QSCIM?",
-        implementation: "Implementação rápida e perfeita",
-        support: "Equipe de suporte dedicada",
-        compliance: "Conformidade regulatória garantida"
-      }
-    },
-    footer: {
-      copyright: "© 2024 QSCIM. Todos os direitos reservados."
-    }
+    // Hero section
+    'hero.badge': 'Solução Líder em Gestão de Identidades',
+    'hero.title.qscim': 'QSCIM',
+    'hero.title.for': 'para',
+    'hero.title.schools': 'Escolas',
+    'hero.title.and': 'e',
+    'hero.title.universities': 'Universidades',
+    'hero.subtitle': 'Revolucionando o Provisionamento de Identidades',
+    'hero.description': 'Transforme a gestão de identidades em sua instituição educacional com a solução QSCIM da Konneqt.',
+    'hero.cta': 'Solicitar Demonstração',
+    'hero.badge.automation': '✅ Automação Completa',
+    'hero.badge.security': '✅ Segurança Avançada',
+    'hero.badge.scalability': '✅ Escalabilidade',
+    'hero.floating.provisioning': 'Provisionamento Automático',
+    'hero.floating.provisioning.desc': 'Em minutos, não dias',
+    'hero.floating.automation': 'Automação Inteligente',
+    'hero.floating.automation.desc': 'Provisiona e desprovisiona usuários automaticamente com base em eventos',
+    
+    // What is QSCIM section
+    'whatIsQscim.title': 'O que é o',
+    'whatIsQscim.title.qscim': 'QSCIM',
+    'whatIsQscim.description': 'Solução de onboarding de usuários que importa dados de sistemas SIS, RH, CRM para diretórios como AD, Azure AD, Google e Okta e muitos outros.',
+    'whatIsQscim.protocol.title': 'Baseado no protocolo SCIM',
+    'whatIsQscim.protocol.standard': 'Padrão aberto para gestão de identidades',
+    'whatIsQscim.protocol.faster': 'Provisionamento mais rápido e barato',
+    'whatIsQscim.protocol.interoperability': 'Interoperabilidade entre sistemas',
+    'whatIsQscim.protocol.errors': 'Redução de erros manuais',
+    'whatIsQscim.automation.title': 'Experimente nossa IA Agêntica SCIM',
+    'whatIsQscim.automation.description': 'Nosso MCP (Protocolo de Contexto de Modelo), permite uma capacidade autônoma/Agêntica de IA para interagir com vários Motores de IA como Chat GPT, Gemini, Claude, permitindo comunicação com qualquer canal: Chat, Voz, WhatsApp etc.',
+
+    // How it works section
+    'howItWorks.title': 'Como',
+    'howItWorks.title.works': 'Funciona',
+    'howItWorks.description': 'Um fluxo simples e eficiente em três etapas',
+    'howItWorks.step1.title': 'Fonte de dados',
+    'howItWorks.step1.description': 'SIS, RH ou CRM',
+    'howItWorks.step2.title': 'Gateway QSCIM',
+    'howItWorks.step2.description': 'Processamento e mapeamento SCIM',
+    'howItWorks.step3.title': 'Sistemas de destino',
+    'howItWorks.step3.description': 'Azure AD, Google, Okta, Active Directory, etc.',
+    'howItWorks.realtime': 'Provisionamento em tempo real',
+
+    // Challenges section
+    'challenges.title': 'Desafios na',
+    'challenges.title.education': 'Educação',
+    'challenges.description': 'Instituições educacionais enfrentam desafios únicos na gestão de identidades',
+    'challenges.scenario.title': 'O Cenário Atual Acadêmico',
+    'challenges.scenario.total': 'de custos desnecessários em gestão manual de identidades',
+    'challenges.scenario.operational': 'Custos Operacionais',
+    'challenges.scenario.lost': 'Perda de Receita',
+    'challenges.scenario.compliance': 'Custos de Compliance',
+    'challenges.volume.title': 'Volume massivo de usuários',
+    'challenges.volume.description': '10.000+ alunos, 500+ professores, 200+ funcionários',
+    'challenges.seasonality.title': 'Sazonalidade extrema',
+    'challenges.seasonality.description': '85% dos acessos criados em 2 semanas',
+    'challenges.diversity.title': 'Diversidade de perfis',
+    'challenges.diversity.description': 'Graduação, pós-graduação, intercâmbio, visitantes',
+    'challenges.impacts.title': 'Impactos Negativos',
+    'challenges.impacts.time': 'Tempo gasto em tarefas manuais',
+    'challenges.impacts.errors': 'Erros em provisionamento manual',
+    'challenges.impacts.days': 'Dias para provisionar novos usuários',
+    'challenges.impacts.cost': 'Custo anual de gestão manual',
+
+    // Benefits section
+    'benefits.title': 'Benefícios para',
+    'benefits.title.institutions': 'Instituições Educacionais',
+    'benefits.description': 'Transforme a gestão de identidades com resultados mensuráveis',
+    'benefits.automation.title': 'Automação Completa',
+    'benefits.automation.realtime': 'Provisionamento em tempo real',
+    'benefits.automation.deprovisioning': 'Desprovisionamento seguro',
+    'benefits.automation.sync': 'Sincronização em tempo real',
+    'benefits.security.title': 'Segurança Avançada',
+    'benefits.security.rbac': 'Controle de acesso baseado em função',
+    'benefits.security.audit': 'Auditoria completa de acessos',
+    'benefits.security.compliance': 'Conformidade com FERPA/LGPD',
+    'benefits.efficiency.title': 'Eficiência Operacional',
+    'benefits.efficiency.time': 'Economia de tempo',
+    'benefits.efficiency.errors': 'Eliminação de erros humanos',
+    'benefits.efficiency.scalability': 'Escalabilidade ilimitada',
+    'benefits.metrics.provisioning': 'Provisionamento e desprovisionamento',
+    'benefits.metrics.compliance': 'Conformidade LGPD/MEC',
+    'benefits.metrics.reduction': 'Redução em Chamados',
+    'benefits.metrics.systems': 'Sistemas Integrados',
+
+    // Student Lifecycle section
+    'studentLifecycle.title': 'Ciclo de Vida do',
+    'studentLifecycle.title.student': 'Estudante',
+    'studentLifecycle.description': 'Automação completa em todas as fases da jornada acadêmica',
+    'studentLifecycle.enrollment.title': 'Matrícula',
+    'studentLifecycle.enrollment.description': 'Provisiona e-mail, LMS, Wi-Fi, biblioteca e laboratórios',
+    'studentLifecycle.courseChange.title': 'Mudança de curso',
+    'studentLifecycle.courseChange.description': 'Atualiza grupos e permissões automaticamente',
+    'studentLifecycle.graduation.title': 'Graduação',
+    'studentLifecycle.graduation.description': 'Remove acessos acadêmicos e migra para ex-aluno',
+    'studentLifecycle.semester.title': 'Novo semestre',
+    'studentLifecycle.semester.description': '1.500 alunos provisionados automaticamente, sem erros',
+    'studentLifecycle.exchange.title': 'Intercambistas',
+    'studentLifecycle.exchange.description': 'Acessos temporários com expiração automática',
+    'studentLifecycle.emergency.title': 'Suspensão de emergência',
+    'studentLifecycle.emergency.description': 'Bloqueio imediato e auditável de todos os acessos',
+    'studentLifecycle.instant.title': 'Automação Instantânea',
+    'studentLifecycle.instant.description': 'Todos os eventos do ciclo de vida são processados automaticamente, garantindo que os estudantes tenham acesso aos recursos certos no momento certo.',
+
+    // Staff Provisioning section
+    'staffProvisioning.title': 'Provisionamento de',
+    'staffProvisioning.title.staff': 'Professores e Funcionários',
+    'staffProvisioning.description': 'Gestão automatizada para todos os tipos de colaboradores',
+    'staffProvisioning.professor.title': 'Professor Titular',
+    'staffProvisioning.admin.title': 'Funcionário Administrativo',
+    'staffProvisioning.visiting.title': 'Professor Visitante',
+    'staffProvisioning.accesses': 'Acessos Automáticos:',
+    'staffProvisioning.professor.lms': 'LMS',
+    'staffProvisioning.professor.grades': 'Sistema de notas',
+    'staffProvisioning.professor.labs': 'Laboratórios',
+    'staffProvisioning.professor.library': 'Biblioteca',
+    'staffProvisioning.professor.email': 'E-mail',
+    'staffProvisioning.admin.sis': 'SIS',
+    'staffProvisioning.admin.hr': 'Sistema RH',
+    'staffProvisioning.admin.financial': 'Financeiro',
+    'staffProvisioning.admin.reports': 'Relatórios',
+    'staffProvisioning.admin.email': 'E-mail',
+    'staffProvisioning.visiting.temporary': 'Acesso temporário com expiração automática',
+    'staffProvisioning.visiting.wifi': 'WiFi Guest',
+    'staffProvisioning.visiting.lms': 'LMS Limitado',
+    'staffProvisioning.visiting.library': 'Biblioteca',
+    'staffProvisioning.visiting.labs': 'Labs Específicos',
+    'staffProvisioning.flow.title': 'Fluxo de Provisionamento',
+    'staffProvisioning.flow.hiring': 'Contratação no RH',
+    'staffProvisioning.flow.processing': 'Processamento pelo QSCIM',
+    'staffProvisioning.flow.provisioning': 'Provisionamento',
+    'staffProvisioning.flow.credentials': 'Envio de credenciais',
+
+    // Integrated Systems section
+    'integratedSystems.title': 'Sistemas',
+    'integratedSystems.title.integrated': 'Integrados',
+    'integratedSystems.description': 'Conecte todos os sistemas da sua instituição em uma única solução',
+    'integratedSystems.sis': 'Sistemas SIS',
+    'integratedSystems.lms': 'LMS',
+    'integratedSystems.directories': 'Diretórios',
+    'integratedSystems.others': 'Outros Sistemas',
+    'integratedSystems.others.wifi': 'Wi-Fi',
+    'integratedSystems.others.labs': 'Laboratórios',
+    'integratedSystems.others.access': 'Controle de acesso',
+    'integratedSystems.others.printing': 'Impressão',
+    'integratedSystems.realtime': 'Sincronização em tempo real',
+    'integratedSystems.campus': 'Solução de Campus',
+
+    // Security section
+    'security.title': 'Segurança e',
+    'security.title.compliance': 'Conformidade',
+    'security.description': 'Proteção robusta com os mais altos padrões de segurança',
+    'security.rbac.title': 'Acesso baseado em função',
+    'security.rbac.description': 'Controle granular de permissões por perfil',
+    'security.audit.title': 'Trilha de auditoria completa',
+    'security.audit.description': 'Registro detalhado de todas as ações',
+    'security.tls.title': 'Criptografia TLS 1.3',
+    'security.tls.description': 'Dados protegidos em trânsito',
+    'security.aes.title': 'Criptografia AES-256',
+    'security.aes.description': 'Dados protegidos em repouso',
+    'security.compliance.title': 'Conformidade Regulatória',
+    'security.compliance.ferpa': 'Proteção de dados educacionais',
+    'security.compliance.lgpd': 'Conformidade brasileira',
+    'security.compliance.gdpr': 'Regulamentação europeia',
+    'security.compliance.soc2': 'Segurança e disponibilidade',
+    'security.layers.title': 'Camadas de Segurança',
+    'security.layers.mfa': 'Autenticação multifator (MFA)',
+    'security.layers.rbac': 'Controle de acesso por função',
+    'security.layers.encryption': 'Criptografia',
+    'security.layers.monitoring': 'Monitoramento em tempo real',
+    'security.layers.logs': 'Logs e relatórios de auditoria',
+    'security.metrics.availability': 'Disponibilidade',
+    'security.metrics.response': 'Tempo de resposta',
+    
+    // Contact section
+    'contact.title': 'Solicite uma',
+    'contact.title.demo': 'Demonstração',
+    'contact.description': 'Descubra como o QSCIM pode transformar a gestão de identidades da sua instituição',
+    'contact.personalized': 'Demonstração personalizada',
+    'contact.adapted': 'Adaptada à sua instituição',
+    'contact.form.firstName': 'Nome *',
+    'contact.form.lastName': 'Sobrenome *',
+    'contact.form.institution': 'Nome da instituição *',
+    'contact.form.email': 'E-mail *',
+    'contact.form.phone': 'Telefone *',
+    'contact.form.firstName.placeholder': 'Seu nome',
+    'contact.form.lastName.placeholder': 'Seu sobrenome',
+    'contact.form.institution.placeholder': 'Nome da sua instituição',
+    'contact.form.email.placeholder': 'seu.email@instituicao.edu.br',
+    'contact.form.phone.placeholder': '(11) 99999-9999',
+    'contact.form.submit': 'Solicitar Demonstração',
+    'contact.form.submitting': 'Enviando...',
+    'contact.why.title': 'Por que escolher o QSCIM?',
+    'contact.why.implementation': 'Implementação rápida e segura',
+    'contact.why.support': 'Suporte especializado 24/7',
+    'contact.why.compliance': 'Conformidade total com LGPD',
+    
+    // Contact form success/error messages
+    'contact.form.success.title': 'Formulário enviado!',
+    'contact.form.success.description': 'Entraremos em contato em breve.',
+    'contact.form.error.title': 'Erro no envio',
+    'contact.form.error.description': 'Tente novamente mais tarde.',
+
+    // Footer
+    'footer.rights': '© 2024 Konneqt. Todos os direitos reservados.',
   }
 };
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const router = useRouter();
-  const { i18n: i18nInstance } = useTranslation();
-  const [language, setLanguage] = useState(router.locale || 'en');
+  const [language, setLanguage] = useState<Language>('en');
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    const storedLanguage = localStorage.getItem('language') || router.locale || 'en';
-    setLanguage(storedLanguage);
-    i18nInstance.changeLanguage(storedLanguage);
-  }, [router.locale, i18nInstance]);
-
-  useEffect(() => {
-    localStorage.setItem('language', language);
-    i18nInstance.changeLanguage(language);
-    router.push(router.pathname, router.pathname, { locale: language });
-  }, [language, router, i18nInstance]);
-
-  const t = (key: string, params: Record<string, any> = {}) => {
-    const keys = key.split('.');
-    let value: any = translations[language as keyof typeof translations];
-    for (const k of keys) {
-      if (value && typeof value === 'object' && k in value) {
-        value = value[k];
-      } else {
-        return key;
-      }
+    // Detectar idioma pela URL
+    if (location.pathname.startsWith('/pt-br')) {
+      setLanguage('pt');
+    } else {
+      setLanguage('en');
     }
 
-    if (typeof value === 'string') {
-      Object.keys(params).forEach(paramKey => {
-        const regex = new RegExp(`{{${paramKey}}}`, 'g');
-        value = value.replace(regex, params[paramKey]);
-      });
-      return value;
-    }
+    // Não precisamos mais do localStorage para sincronizar, pois a URL é a fonte da verdade
+  }, [location.pathname]);
 
-    return key;
+  const toggleLanguage = () => {
+    if (language === 'en') {
+      navigate('/pt-br');
+    } else {
+      navigate('/');
+    }
+  };
+
+  const t = (key: string): string => {
+    return translations[language][key] || key;
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );
 };
 
-export const useLanguage = () => useContext(LanguageContext);
+export const useLanguage = () => {
+  const context = useContext(LanguageContext);
+  if (context === undefined) {
+    throw new Error('useLanguage must be used within a LanguageProvider');
+  }
+  return context;
+};

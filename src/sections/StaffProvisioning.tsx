@@ -1,3 +1,4 @@
+
 import ScrollReveal from '../components/ScrollReveal';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -97,7 +98,7 @@ const StaffProvisioning = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {profiles.map((profile, index) => (
             <ScrollReveal key={index} delay={index * 200}>
-              <div className="bg-slate-800/30 backdrop-blur-sm transition-all duration-300 rounded-2xl p-6 shadow-lg" style={{ border: '1px solid #2f2f2f' }}>
+              <div className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg rounded-2xl p-6 shadow-lg">
                 <div className="text-center mb-6">
                   <h3 className="text-xl font-semibold text-white font-inter">{profile.title}</h3>
                 </div>
@@ -121,7 +122,7 @@ const StaffProvisioning = () => {
         </div>
 
         <ScrollReveal>
-          <div className="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8" style={{ border: '1px solid #2f2f2f' }}>
+          <div className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-center mb-8 text-white font-inter">{t('staffProvisioning.flow.title')}</h3>
             
             <div className="grid sm:grid-cols-4 gap-6">

@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from '../components/ui/card';
 import ScrollReveal from '../components/ScrollReveal';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -151,7 +152,7 @@ const Benefits = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
             <ScrollReveal key={index} delay={index * 200}>
-              <Card className="bg-slate-800/30 backdrop-blur-sm transition-all duration-300" style={{ border: '1px solid #2f2f2f' }}>
+              <Card className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold mb-4 text-white font-inter">{benefit.title}</h3>
                   <ul className="space-y-2">

@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from '../components/ui/card';
 import ScrollReveal from '../components/ScrollReveal';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -84,7 +85,7 @@ const Security = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {securityFeatures.map((feature, index) => (
             <ScrollReveal key={index} delay={index * 100}>
-              <div className="bg-slate-800/30 backdrop-blur-sm transition-all duration-300 rounded-2xl p-6 shadow-lg" style={{ border: '1px solid #2f2f2f' }}>
+              <div className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg rounded-2xl p-6 shadow-lg">
                 <div className="text-center">
                   <h3 className="text-sm font-semibold mb-2 text-white font-inter">{feature.title}</h3>
                   <p className="text-xs text-slate-300 font-inter">{feature.description}</p>
@@ -96,7 +97,7 @@ const Security = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           <ScrollReveal>
-            <div className="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8" style={{ border: '1px solid #2f2f2f' }}>
+            <div className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8">
               <h3 className="text-2xl font-bold mb-6 text-white font-inter">{t('security.compliance.title')}</h3>
               <div className="space-y-4">
                 {compliance.map((item, index) => (
@@ -115,7 +116,7 @@ const Security = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
-            <div className="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8" style={{ border: '1px solid #2f2f2f' }}>
+            <div className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8">
               <h3 className="text-2xl font-bold mb-6 text-white font-inter">{t('security.layers.title')}</h3>
               <div className="space-y-3">
                 {securityLayers.map((layer, index) => (

@@ -1,3 +1,4 @@
+
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -69,7 +70,7 @@ const IntegratedSystems = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {systemCategories.map((category, index) => (
             <ScrollReveal key={index} delay={index * 200}>
-              <div className="bg-slate-800/30 backdrop-blur-sm transition-all duration-300 rounded-2xl p-6 shadow-lg" style={{ border: '1px solid #2f2f2f' }}>
+              <div className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg rounded-2xl p-6 shadow-lg">
                 <div className="text-center mb-6">
                   <h3 className="text-lg font-semibold text-white font-inter">{category.title}</h3>
                 </div>

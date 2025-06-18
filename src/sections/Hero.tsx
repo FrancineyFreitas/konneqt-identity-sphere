@@ -1,3 +1,4 @@
+
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
@@ -50,7 +51,7 @@ const Hero = () => {
 
               <ScrollReveal delay={200}>
                 <h2 className="text-lg md:text-xl lg:text-2xl text-slate-400 font-medium font-inter mt-8">
-                  {t('hero.subtitle')}
+                  Revolutionizing Identity Provisioning
                 </h2>
               </ScrollReveal>
 
