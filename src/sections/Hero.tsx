@@ -1,3 +1,4 @@
+
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
@@ -77,34 +78,6 @@ const Hero = () => {
                   >
                     {t('hero.cta')}
                   </Button>
-                </div>
-              </ScrollReveal>
-
-              {/* Image section with polygon mask - matching Benefits section width */}
-              <ScrollReveal delay={1000}>
-                <div className="mt-16 space-y-8">
-                  <div className="container mx-auto relative z-10">
-                    <div className="relative mb-16">
-                      <div className="relative h-96 md:h-[500px]" style={{
-                        clipPath: 'polygon(0 0, 95% 0, 100% 10%, 100% 100%, 5% 100%, 0 90%)'
-                      }}>
-                        <img 
-                          src="/lovable-uploads/cf9adc94-1e1f-4971-87b5-5ed1c844658d.png" 
-                          alt="Identity management professionals" 
-                          className="w-full h-full object-cover"
-                        />
-                        {/* Gradient overlay matching page color palette */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-gray-900/60 to-slate-800/70"></div>
-                        
-                        {/* Text overlay - moved to bottom of image */}
-                        <div className="absolute bottom-0 left-0 right-0 flex flex-col justify-end items-center text-center px-6 pb-12">
-                          <h1 className="text-4xl md:text-6xl font-light mb-4 text-white font-inter">
-                            <span className="text-white">Revolutionizing</span> <span className="font-bold" style={{ color: '#1de28f' }}>Identity Provisioning</span>
-                          </h1>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </ScrollReveal>
             </div>
