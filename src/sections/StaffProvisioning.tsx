@@ -72,7 +72,7 @@ const StaffProvisioning = () => {
       <div className="container mx-auto relative z-10">
         {/* Hero Image with Overlay Text */}
         <ScrollReveal>
-          <div className="relative mb-16 rounded-2xl overflow-hidden">
+          <div className="relative mb-16 overflow-hidden">
             <div className="relative h-96 md:h-[500px]">
               <img 
                 src="/lovable-uploads/fe8a2d38-1c42-47ba-9842-b88fef513dca.png" 
