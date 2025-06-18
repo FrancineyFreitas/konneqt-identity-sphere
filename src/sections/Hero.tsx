@@ -1,4 +1,3 @@
-
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
@@ -81,7 +80,7 @@ const Hero = () => {
                 </div>
               </ScrollReveal>
 
-              {/* Image section with polygon mask - matching Challenges section width */}
+              {/* Image section with polygon mask - matching Benefits section width */}
               <ScrollReveal delay={1000}>
                 <div className="mt-16 space-y-8">
                   <div className="container mx-auto relative z-10">
