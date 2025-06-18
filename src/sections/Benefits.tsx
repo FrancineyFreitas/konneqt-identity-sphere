@@ -39,27 +39,19 @@ const Benefits = () => {
   const metrics = [
     {
       value: "5 min",
-      label: t('benefits.metrics.provisioning'),
-      icon: "⚡",
-      color: "blue"
+      label: t('benefits.metrics.provisioning')
     },
     {
       value: "100%",
-      label: t('benefits.metrics.compliance'),
-      icon: "✓",
-      color: "green"
+      label: t('benefits.metrics.compliance')
     },
     {
       value: "95%",
-      label: t('benefits.metrics.reduction'),
-      icon: "📞",
-      color: "purple"
+      label: t('benefits.metrics.reduction')
     },
     {
       value: "10+",
-      label: t('benefits.metrics.systems'),
-      icon: "🔗",
-      color: "cyan"
+      label: t('benefits.metrics.systems')
     }
   ];
 
@@ -117,33 +109,19 @@ const Benefits = () => {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {metrics.map((metric, index) => (
                   <div key={index} className="text-center">
-                    {/* Icon */}
-                    <div className="text-4xl mb-3 animate-pulse" style={{ animationDelay: `${index * 200}ms` }}>
-                      {metric.icon}
-                    </div>
-                    
                     {/* Value with animated background */}
                     <div className="relative mb-3">
                       <div 
-                        className={`text-3xl md:text-4xl font-bold mb-2 font-inter relative z-10 ${
-                          metric.color === 'blue' ? 'text-blue-400' :
-                          metric.color === 'green' ? 'text-green-400' :
-                          metric.color === 'purple' ? 'text-purple-400' :
-                          'text-cyan-400'
-                        }`}
+                        className="text-3xl md:text-4xl font-bold mb-2 font-inter relative z-10"
+                        style={{ color: '#1cd989' }}
                       >
                         {metric.value}
                       </div>
                       
                       {/* Animated background circle */}
                       <div 
-                        className={`absolute inset-0 rounded-full opacity-20 animate-pulse ${
-                          metric.color === 'blue' ? 'bg-blue-500' :
-                          metric.color === 'green' ? 'bg-green-500' :
-                          metric.color === 'purple' ? 'bg-purple-500' :
-                          'bg-cyan-500'
-                        }`}
-                        style={{ animationDelay: `${index * 300}ms` }}
+                        className="absolute inset-0 rounded-full opacity-20 animate-pulse"
+                        style={{ backgroundColor: '#1cd989', animationDelay: `${index * 300}ms` }}
                       ></div>
                     </div>
                     
@@ -155,13 +133,9 @@ const Benefits = () => {
                     {/* Animated progress bar */}
                     <div className="mt-3 h-1 bg-slate-700 rounded-full overflow-hidden">
                       <div 
-                        className={`h-full rounded-full animate-pulse ${
-                          metric.color === 'blue' ? 'bg-blue-400' :
-                          metric.color === 'green' ? 'bg-green-400' :
-                          metric.color === 'purple' ? 'bg-purple-400' :
-                          'bg-cyan-400'
-                        }`}
+                        className="h-full rounded-full animate-pulse"
                         style={{
+                          backgroundColor: '#1cd989',
                           width: '100%',
                           animationDelay: `${index * 400}ms`,
                           animationDuration: '2s'
