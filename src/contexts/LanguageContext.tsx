@@ -216,7 +216,7 @@ const translations = {
     'contact.form.error.description': 'Please try again later.',
 
     // Footer
-    'footer.rights': '© 2024 Konneqt. All rights reserved.',
+    'footer.rights': '© 2025 Konneqt. All rights reserved.',
   },
   pt: {
     // Hero section
@@ -422,7 +422,7 @@ const translations = {
     'contact.form.error.description': 'Tente novamente mais tarde.',
 
     // Footer
-    'footer.rights': '© 2024 Konneqt. Todos os direitos reservados.',
+    'footer.rights': '© 2025 Konneqt. Todos os direitos reservados.',
   }
 };
 
