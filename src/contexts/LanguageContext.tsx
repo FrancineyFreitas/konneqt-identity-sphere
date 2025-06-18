@@ -40,8 +40,8 @@ const translations = {
     'whatIsQscim.protocol.faster': 'Faster and cheaper provisioning',
     'whatIsQscim.protocol.interoperability': 'Interoperability between systems',
     'whatIsQscim.protocol.errors': 'Reduction of manual errors',
-    'whatIsQscim.automation.title': 'Smart Automation',
-    'whatIsQscim.automation.description': 'Automatically provisions and deprovisions users based on events',
+    'whatIsQscim.automation.title': 'Experience our SCIM Agentic AI',
+    'whatIsQscim.automation.description': 'Our MCP(Model Context Protocol), enables an autonomous/Agentic AI capacity to interact with several AI Engines such as Chat GPT, Gemini, Claude, enabling communication with any channel: Chat, Voice, WhatsApp etc.',
 
     // How it works section
     'howItWorks.title': 'How It',
@@ -246,8 +246,8 @@ const translations = {
     'whatIsQscim.protocol.faster': 'Provisionamento mais rápido e barato',
     'whatIsQscim.protocol.interoperability': 'Interoperabilidade entre sistemas',
     'whatIsQscim.protocol.errors': 'Redução de erros manuais',
-    'whatIsQscim.automation.title': 'Automação Inteligente',
-    'whatIsQscim.automation.description': 'Provisiona e desprovisiona usuários automaticamente com base em eventos',
+    'whatIsQscim.automation.title': 'Experimente nossa IA Agêntica SCIM',
+    'whatIsQscim.automation.description': 'Nosso MCP (Protocolo de Contexto de Modelo), permite uma capacidade autônoma/Agêntica de IA para interagir com vários Motores de IA como Chat GPT, Gemini, Claude, permitindo comunicação com qualquer canal: Chat, Voz, WhatsApp etc.',
 
     // How it works section
     'howItWorks.title': 'Como',

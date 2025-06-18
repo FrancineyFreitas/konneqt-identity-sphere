@@ -66,9 +66,9 @@ const WhatIsQSCIM = () => {
               </div>
 
               <div className="border border-green-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-green-400 transition-all duration-300 hover:shadow-lg rounded-xl p-6 h-full">
-                <h3 className="text-xl font-semibold mb-4 text-white font-inter">Experience our SCIM Agentic AI</h3>
+                <h3 className="text-xl font-semibold mb-4 text-white font-inter">{t('whatIsQscim.automation.title')}</h3>
                 <p className="text-slate-300 leading-relaxed font-inter">
-                  Our MCP(Model Context Protocol), enables an autonomous/Agentic AI capacity to interact with several AI Engines such as Chat GPT, Gemini, Claude, enabling communication with any channel: Chat, Voice, WhatsApp etc.
+                  {t('whatIsQscim.automation.description')}
                 </p>
               </div>
             </div>
