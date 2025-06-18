@@ -61,10 +61,10 @@ const Challenges = () => {
               {/* Text overlay - moved to bottom of image */}
               <div className="absolute bottom-0 left-0 right-0 flex flex-col justify-end items-center text-center px-6 pb-12">
                 <h1 className="text-4xl md:text-6xl font-light mb-4 text-white font-inter">
-                  Challenges in <span className="font-bold" style={{ color: '#1de28f' }}>Education</span>
+                  {t('challenges.title')} <span className="font-bold" style={{ color: '#1de28f' }}>{t('challenges.title.education')}</span>
                 </h1>
                 <p className="text-lg md:text-xl text-slate-200 max-w-4xl font-inter">
-                  Educational institutions face unique challenges in identity management
+                  {t('challenges.description')}
                 </p>
               </div>
             </div>
@@ -79,11 +79,7 @@ const Challenges = () => {
                 {/* Left side - Text content */}
                 <div>
                   <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white font-inter">
-                    The Current Academic Scenario
-                    <br />
-                    <span className="text-lg md:text-xl text-slate-300 font-normal">
-                      O Cenário Atual Acadêmico
-                    </span>
+                    {t('challenges.scenario.title')}
                   </h2>
                   
                   <div className="mb-8">
@@ -91,42 +87,38 @@ const Challenges = () => {
                       R$279M
                     </div>
                     <p className="text-slate-300 font-inter">
-                      in unnecessary costs in manual identity management
-                      <br />
-                      <span className="text-sm text-slate-400">
-                        de custos desnecessários em gestão manual de identidades
-                      </span>
+                      {t('challenges.scenario.total')}
                     </p>
                   </div>
 
                   <div className="space-y-4">
                     <div className="flex justify-between items-center p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
                       <span className="text-slate-300 font-inter">
-                        Operational Costs / Custos Operacionais
+                        {t('challenges.scenario.operational')}
                       </span>
                       <span className="text-xl font-bold text-blue-400 font-inter">R$156M</span>
                     </div>
                     
                     <div className="flex justify-between items-center p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
                       <span className="text-slate-300 font-inter">
-                        Lost Revenue / Perda de Receita
+                        {t('challenges.scenario.lost')}
                       </span>
                       <span className="text-xl font-bold text-yellow-400 font-inter">R$89M</span>
                     </div>
                     
                     <div className="flex justify-between items-center p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
                       <span className="text-slate-300 font-inter">
-                        Compliance Costs / Custos de Compliance
+                        {t('challenges.scenario.compliance')}
                       </span>
                       <span className="text-xl font-bold text-purple-400 font-inter">R$34M</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Right side - Animated graph */}
-                <div className="flex items-center justify-center">
-                  <div className="relative w-full max-w-xs h-48">
-                    {/* Graph background */}
+                {/* Right side - Animated graphs */}
+                <div className="flex flex-col items-center justify-center space-y-6">
+                  {/* Main graph for R$279M */}
+                  <div className="relative w-full max-w-xs h-40">
                     <div className="absolute inset-0 bg-slate-700/20 rounded-lg border border-slate-600/30 p-4">
                       <div className="h-full relative">
                         {/* Grid lines */}
@@ -167,6 +159,51 @@ const Challenges = () => {
                         {/* Value indicator */}
                         <div className="absolute top-2 right-2 bg-red-500/20 border border-red-500/40 rounded px-2 py-1">
                           <span className="text-xs font-bold text-red-400 font-inter">↗ R$279M</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Secondary graphs container */}
+                  <div className="grid grid-cols-2 gap-4 w-full max-w-xs">
+                    {/* Graph for R$156M */}
+                    <div className="relative h-24">
+                      <div className="absolute inset-0 bg-slate-700/20 rounded-lg border border-slate-600/30 p-2">
+                        <div className="h-full relative">
+                          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 60">
+                            <path
+                              d="M10,50 Q30,40 50,25 Q70,15 90,5"
+                              stroke="#3b82f6"
+                              strokeWidth="2"
+                              fill="none"
+                              className="animate-pulse"
+                            />
+                            <circle cx="90" cy="5" r="2" fill="#3b82f6" className="animate-pulse delay-700" />
+                          </svg>
+                          <div className="absolute bottom-1 right-1 bg-blue-500/20 border border-blue-500/40 rounded px-1 py-0.5">
+                            <span className="text-xs font-bold text-blue-400 font-inter">R$156M</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Graph for R$89M */}
+                    <div className="relative h-24">
+                      <div className="absolute inset-0 bg-slate-700/20 rounded-lg border border-slate-600/30 p-2">
+                        <div className="h-full relative">
+                          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 60">
+                            <path
+                              d="M10,50 Q30,35 50,20 Q70,10 90,8"
+                              stroke="#f59e0b"
+                              strokeWidth="2"
+                              fill="none"
+                              className="animate-pulse"
+                            />
+                            <circle cx="90" cy="8" r="2" fill="#f59e0b" className="animate-pulse delay-900" />
+                          </svg>
+                          <div className="absolute bottom-1 right-1 bg-yellow-500/20 border border-yellow-500/40 rounded px-1 py-0.5">
+                            <span className="text-xs font-bold text-yellow-400 font-inter">R$89M</span>
+                          </div>
                         </div>
                       </div>
                     </div>
