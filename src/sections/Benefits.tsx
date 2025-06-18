@@ -83,7 +83,157 @@ const Benefits = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        {/* Financial Benefits Card */}
+        <ScrollReveal delay={200}>
+          <Card className="border border-green-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-green-400 transition-all duration-300 hover:shadow-lg mb-16">
+            <CardContent className="p-8">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                {/* Left side - Text content */}
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white font-inter">
+                    {t('benefits.scenario.title')}
+                  </h2>
+                  
+                  <div className="mb-8">
+                    <div className="text-4xl md:text-5xl font-bold text-green-400 mb-2 font-inter">
+                      R$245M
+                    </div>
+                    <p className="text-slate-300 font-inter">
+                      {t('benefits.scenario.total')}
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                      <span className="text-slate-300 font-inter">
+                        {t('benefits.scenario.operational')}
+                      </span>
+                      <span className="text-xl font-bold text-green-400 font-inter">R$135M</span>
+                    </div>
+                    
+                    <div className="flex justify-between items-center p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                      <span className="text-slate-300 font-inter">
+                        {t('benefits.scenario.productivity')}
+                      </span>
+                      <span className="text-xl font-bold text-green-400 font-inter">R$78M</span>
+                    </div>
+                    
+                    <div className="flex justify-between items-center p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                      <span className="text-slate-300 font-inter">
+                        {t('benefits.scenario.security')}
+                      </span>
+                      <span className="text-xl font-bold text-green-400 font-inter">R$32M</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right side - Animated graphs */}
+                <div className="flex flex-col items-center justify-center space-y-6">
+                  {/* Main graph for R$245M */}
+                  <div className="relative w-full max-w-xs h-40">
+                    <div className="absolute inset-0 bg-slate-700/20 rounded-lg border border-slate-600/30 p-4">
+                      <div className="h-full relative">
+                        {/* Grid lines */}
+                        <div className="absolute inset-0 grid grid-rows-4 opacity-20">
+                          <div className="border-b border-slate-500"></div>
+                          <div className="border-b border-slate-500"></div>
+                          <div className="border-b border-slate-500"></div>
+                          <div className="border-b border-slate-500"></div>
+                        </div>
+                        
+                        {/* Animated upward trending line */}
+                        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 120">
+                          <defs>
+                            <linearGradient id="greenLineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                              <stop offset="0%" stopColor="#22c55e" />
+                              <stop offset="50%" stopColor="#16a34a" />
+                              <stop offset="100%" stopColor="#15803d" />
+                            </linearGradient>
+                          </defs>
+                          <path
+                            d="M20,100 L80,60 L140,30 L180,10"
+                            stroke="url(#greenLineGradient)"
+                            strokeWidth="3"
+                            fill="none"
+                            className="animate-pulse"
+                            style={{
+                              strokeDasharray: "300",
+                              strokeDashoffset: "300",
+                              animation: "draw 3s ease-in-out infinite alternate"
+                            }}
+                          />
+                          {/* Data points */}
+                          <circle cx="20" cy="100" r="4" fill="#22c55e" className="animate-pulse delay-500" />
+                          <circle cx="80" cy="60" r="4" fill="#22c55e" className="animate-pulse delay-1000" />
+                          <circle cx="140" cy="30" r="4" fill="#22c55e" className="animate-pulse delay-1500" />
+                          <circle cx="180" cy="10" r="4" fill="#22c55e" className="animate-pulse delay-2000" />
+                        </svg>
+                        
+                        {/* Value indicator */}
+                        <div className="absolute top-2 right-2 bg-green-500/20 border border-green-500/40 rounded px-2 py-1">
+                          <span className="text-xs font-bold text-green-400 font-inter">↗ R$245M</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Secondary graphs container */}
+                  <div className="grid grid-cols-2 gap-4 w-full max-w-xs">
+                    {/* Graph for R$135M */}
+                    <div className="relative h-24">
+                      <div className="absolute inset-0 bg-green-500/10 rounded-lg border border-green-500/30 p-2">
+                        <div className="h-full relative">
+                          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 60">
+                            <path
+                              d="M10,50 L35,35 L65,20 L90,5"
+                              stroke="#22c55e"
+                              strokeWidth="2"
+                              fill="none"
+                              className="animate-pulse"
+                            />
+                            <circle cx="10" cy="50" r="2" fill="#22c55e" className="animate-pulse delay-300" />
+                            <circle cx="35" cy="35" r="2" fill="#22c55e" className="animate-pulse delay-500" />
+                            <circle cx="65" cy="20" r="2" fill="#22c55e" className="animate-pulse delay-700" />
+                            <circle cx="90" cy="5" r="2" fill="#22c55e" className="animate-pulse delay-900" />
+                          </svg>
+                          <div className="absolute bottom-1 right-1 bg-green-500/20 border border-green-500/40 rounded px-1 py-0.5">
+                            <span className="text-xs font-bold text-green-400 font-inter">R$135M</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Graph for R$78M */}
+                    <div className="relative h-24">
+                      <div className="absolute inset-0 bg-green-500/10 rounded-lg border border-green-500/30 p-2">
+                        <div className="h-full relative">
+                          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 60">
+                            <path
+                              d="M10,50 L35,30 L65,15 L90,8"
+                              stroke="#22c55e"
+                              strokeWidth="2"
+                              fill="none"
+                              className="animate-pulse"
+                            />
+                            <circle cx="10" cy="50" r="2" fill="#22c55e" className="animate-pulse delay-400" />
+                            <circle cx="35" cy="30" r="2" fill="#22c55e" className="animate-pulse delay-600" />
+                            <circle cx="65" cy="15" r="2" fill="#22c55e" className="animate-pulse delay-800" />
+                            <circle cx="90" cy="8" r="2" fill="#22c55e" className="animate-pulse delay-1000" />
+                          </svg>
+                          <div className="absolute bottom-1 right-1 bg-green-500/20 border border-green-500/40 rounded px-1 py-0.5">
+                            <span className="text-xs font-bold text-green-400 font-inter">R$78M</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </ScrollReveal>
+
+        <div className="grid md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
             <ScrollReveal key={index} delay={index * 200}>
               <Card className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg">
@@ -103,6 +253,14 @@ const Benefits = () => {
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes draw {
+          to {
+            stroke-dashoffset: 0;
+          }
+        }
+      `}</style>
     </section>
   );
 };
