@@ -90,7 +90,7 @@ const Hero = () => {
                         clipPath: 'polygon(0 0, 95% 0, 100% 10%, 100% 100%, 5% 100%, 0 90%)'
                       }}>
                         <img 
-                          src="/lovable-uploads/506a1b67-a2cf-4953-8c2f-7c48ccad0e94.png" 
+                          src="/lovable-uploads/cf9adc94-1e1f-4971-87b5-5ed1c844658d.png" 
                           alt="Identity management professionals" 
                           className="w-full h-full object-cover"
                         />
