@@ -92,14 +92,15 @@ const Hero = () => {
                   
                   <div className="relative max-w-4xl mx-auto">
                     <div 
-                      className="w-full h-64 md:h-80 lg:h-96 bg-cover bg-center relative"
+                      className="w-full h-64 md:h-80 lg:h-96 bg-cover bg-center relative overflow-hidden"
                       style={{
                         backgroundImage: 'url(/lovable-uploads/528b1525-6f90-4670-a518-48122a0710f3.png)',
-                        clipPath: 'polygon(0 0, calc(100% - 60px) 0, 100% 60px, 100% 100%, 60px 100%, 0 calc(100% - 60px))'
+                        clipPath: 'polygon(0 0, calc(100% - 80px) 0, 100% 80px, 100% 100%, 80px 100%, 0 calc(100% - 80px))',
+                        backgroundColor: 'transparent'
                       }}
                     >
-                      {/* Optional overlay for better text contrast if needed */}
-                      <div className="absolute inset-0 bg-black/20"></div>
+                      {/* Optional overlay for better visual effect */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/10"></div>
                     </div>
                   </div>
                 </div>
