@@ -92,13 +92,10 @@ const translations = {
     'benefits.efficiency.time': 'Reduced processing time',
     'benefits.efficiency.errors': 'Elimination of manual errors',
     'benefits.efficiency.scalability': 'Infinite scalability',
-    'benefits.scenario': {
-      title: 'Annual Savings Achieved',
-      total: 'Total annual savings with QSCIM implementation',
-      operational: 'Operational cost reduction',
-      productivity: 'Productivity gains',
-      security: 'Security incident prevention'
-    },
+    'benefits.metrics.provisioning': 'Provisioning and deprovisioning',
+    'benefits.metrics.compliance': 'LGPD/MEC Compliance',
+    'benefits.metrics.reduction': 'Reduction in Calls',
+    'benefits.metrics.systems': 'Integrated Systems',
 
     // Student Lifecycle section
     'studentLifecycle.title': 'Student',
@@ -301,13 +298,10 @@ const translations = {
     'benefits.efficiency.time': 'Economia de tempo',
     'benefits.efficiency.errors': 'Eliminação de erros humanos',
     'benefits.efficiency.scalability': 'Escalabilidade ilimitada',
-    'benefits.scenario': {
-      title: 'Economia Anual Alcançada',
-      total: 'Total de economia anual com implementação QSCIM',
-      operational: 'Redução de custos operacionais',
-      productivity: 'Ganhos de produtividade',
-      security: 'Prevenção de incidentes de segurança'
-    },
+    'benefits.metrics.provisioning': 'Provisionamento e desprovisionamento',
+    'benefits.metrics.compliance': 'Conformidade LGPD/MEC',
+    'benefits.metrics.reduction': 'Redução em Chamados',
+    'benefits.metrics.systems': 'Sistemas Integrados',
 
     // Student Lifecycle section
     'studentLifecycle.title': 'Ciclo de Vida do',
