@@ -71,6 +71,112 @@ const Challenges = () => {
           </div>
         </ScrollReveal>
 
+        {/* Financial Data Card */}
+        <ScrollReveal delay={200}>
+          <Card className="border border-red-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-red-400 transition-all duration-300 hover:shadow-lg mb-16">
+            <CardContent className="p-8">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                {/* Left side - Text content */}
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white font-inter">
+                    The Current Academic Scenario
+                    <br />
+                    <span className="text-lg md:text-xl text-slate-300 font-normal">
+                      O Cenário Atual Acadêmico
+                    </span>
+                  </h2>
+                  
+                  <div className="mb-8">
+                    <div className="text-4xl md:text-5xl font-bold text-red-400 mb-2 font-inter">
+                      R$279M
+                    </div>
+                    <p className="text-slate-300 font-inter">
+                      in unnecessary costs in manual identity management
+                      <br />
+                      <span className="text-sm text-slate-400">
+                        de custos desnecessários em gestão manual de identidades
+                      </span>
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                      <span className="text-slate-300 font-inter">
+                        Operational Costs / Custos Operacionais
+                      </span>
+                      <span className="text-xl font-bold text-blue-400 font-inter">R$156M</span>
+                    </div>
+                    
+                    <div className="flex justify-between items-center p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                      <span className="text-slate-300 font-inter">
+                        Lost Revenue / Perda de Receita
+                      </span>
+                      <span className="text-xl font-bold text-yellow-400 font-inter">R$89M</span>
+                    </div>
+                    
+                    <div className="flex justify-between items-center p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                      <span className="text-slate-300 font-inter">
+                        Compliance Costs / Custos de Compliance
+                      </span>
+                      <span className="text-xl font-bold text-purple-400 font-inter">R$34M</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right side - Animated graph */}
+                <div className="flex items-center justify-center">
+                  <div className="relative w-full max-w-xs h-48">
+                    {/* Graph background */}
+                    <div className="absolute inset-0 bg-slate-700/20 rounded-lg border border-slate-600/30 p-4">
+                      <div className="h-full relative">
+                        {/* Grid lines */}
+                        <div className="absolute inset-0 grid grid-rows-4 opacity-20">
+                          <div className="border-b border-slate-500"></div>
+                          <div className="border-b border-slate-500"></div>
+                          <div className="border-b border-slate-500"></div>
+                          <div className="border-b border-slate-500"></div>
+                        </div>
+                        
+                        {/* Animated upward trending line */}
+                        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 120">
+                          <defs>
+                            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                              <stop offset="0%" stopColor="#ef4444" />
+                              <stop offset="50%" stopColor="#f59e0b" />
+                              <stop offset="100%" stopColor="#dc2626" />
+                            </linearGradient>
+                          </defs>
+                          <path
+                            d="M20,100 Q60,80 100,40 Q140,20 180,10"
+                            stroke="url(#lineGradient)"
+                            strokeWidth="3"
+                            fill="none"
+                            className="animate-pulse"
+                            style={{
+                              strokeDasharray: "300",
+                              strokeDashoffset: "300",
+                              animation: "draw 3s ease-in-out infinite alternate"
+                            }}
+                          />
+                          {/* Data points */}
+                          <circle cx="20" cy="100" r="4" fill="#3b82f6" className="animate-pulse delay-500" />
+                          <circle cx="100" cy="40" r="4" fill="#f59e0b" className="animate-pulse delay-1000" />
+                          <circle cx="180" cy="10" r="4" fill="#dc2626" className="animate-pulse delay-1500" />
+                        </svg>
+                        
+                        {/* Value indicator */}
+                        <div className="absolute top-2 right-2 bg-red-500/20 border border-red-500/40 rounded px-2 py-1">
+                          <span className="text-xs font-bold text-red-400 font-inter">↗ R$279M</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </ScrollReveal>
+
         <div className="grid md:grid-cols-3 gap-8">
           {challenges.map((challenge, index) => (
             <ScrollReveal key={index} delay={index * 200}>
@@ -85,6 +191,14 @@ const Challenges = () => {
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes draw {
+          to {
+            stroke-dashoffset: 0;
+          }
+        }
+      `}</style>
     </section>
   );
 };
