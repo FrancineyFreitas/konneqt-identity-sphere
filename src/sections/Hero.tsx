@@ -49,12 +49,6 @@ const Hero = () => {
                 </h1>
               </ScrollReveal>
 
-              <ScrollReveal delay={200}>
-                <h2 className="text-lg md:text-xl lg:text-2xl text-slate-400 font-medium font-inter mt-8">
-                  Revolutionizing Identity Provisioning
-                </h2>
-              </ScrollReveal>
-
               <ScrollReveal delay={400}>
                 <p className="text-base md:text-lg text-slate-300 leading-relaxed font-inter max-w-3xl mx-auto">
                   {t('hero.description')}

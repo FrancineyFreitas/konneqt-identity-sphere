@@ -72,15 +72,16 @@ const StaffProvisioning = () => {
       <div className="container mx-auto relative z-10">
         {/* Hero Image with Overlay Text */}
         <ScrollReveal>
-          <div className="relative mb-16 rounded-2xl overflow-hidden">
+          <div className="relative mb-16 overflow-hidden">
             <div className="relative h-96 md:h-[500px]">
               <img 
-                src="/lovable-uploads/c7eea927-3fa3-4a89-8415-38dca8ba6f3b.png" 
+                src="/lovable-uploads/fe8a2d38-1c42-47ba-9842-b88fef513dca.png" 
                 alt="Teachers and staff collaborating" 
                 className="w-full h-full object-cover"
+                style={{ clipPath: 'polygon(0 0, 95% 0, 100% 10%, 100% 100%, 5% 100%, 0 90%)' }}
               />
               {/* Gradient overlay matching page color palette */}
-              <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-gray-900/60 to-slate-800/70"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-gray-900/60 to-slate-800/70" style={{ clipPath: 'polygon(0 0, 95% 0, 100% 10%, 100% 100%, 5% 100%, 0 90%)' }}></div>
               
               {/* Text overlay - positioned at bottom of image */}
               <div className="absolute bottom-0 left-0 right-0 flex flex-col justify-end items-center text-center px-6 pb-12">
