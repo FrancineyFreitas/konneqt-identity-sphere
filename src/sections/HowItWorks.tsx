@@ -66,7 +66,7 @@ const HowItWorks = () => {
           <div className="grid md:grid-cols-3 gap-8 relative z-10">
             {steps.map((step, index) => (
               <ScrollReveal key={index} delay={index * 200}>
-                <div className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg rounded-2xl p-8 text-center shadow-lg h-full flex flex-col items-center justify-center">
+                <div className="border-[#2f2f2f] bg-slate-800/30 backdrop-blur-sm transition-all duration-300 hover:shadow-lg rounded-2xl p-8 text-center shadow-lg h-full flex flex-col items-center justify-center">
                   <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-konneqt-${step.color} to-konneqt-${step.color}/80 mb-6 relative`}>
                     <div className="absolute inset-0.5 bg-black dark:bg-black rounded-full flex items-center justify-center">
                       <span className="text-[White] dark:text-[#1ee391] text-2xl font-bold">{step.number}</span>

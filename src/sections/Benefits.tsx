@@ -104,7 +104,7 @@ const Benefits = () => {
 
         {/* Key Metrics Card */}
         <ScrollReveal delay={200}>
-          <Card className="border border-green-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-green-400 transition-all duration-300 hover:shadow-lg mb-16">
+          <Card className="border-[#2f2f2f] bg-slate-800/30 backdrop-blur-sm transition-all duration-300 hover:shadow-lg mb-16">
             <CardContent className="p-8">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {metrics.map((metric, index) => (
@@ -152,7 +152,7 @@ const Benefits = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
             <ScrollReveal key={index} delay={index * 200}>
-              <Card className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg">
+              <Card className="border-[#2f2f2f] bg-slate-800/30 backdrop-blur-sm transition-all duration-300 hover:shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold mb-4 text-white font-inter">{benefit.title}</h3>
                   <ul className="space-y-2">
