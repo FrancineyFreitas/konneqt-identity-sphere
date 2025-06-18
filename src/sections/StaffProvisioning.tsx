@@ -1,4 +1,3 @@
-
 import ScrollReveal from '../components/ScrollReveal';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -75,7 +74,7 @@ const StaffProvisioning = () => {
           <div className="relative mb-16 rounded-2xl overflow-hidden">
             <div className="relative h-96 md:h-[500px]">
               <img 
-                src="/lovable-uploads/c7eea927-3fa3-4a89-8415-38dca8ba6f3b.png" 
+                src="/lovable-uploads/fe8a2d38-1c42-47ba-9842-b88fef513dca.png" 
                 alt="Teachers and staff collaborating" 
                 className="w-full h-full object-cover"
               />
