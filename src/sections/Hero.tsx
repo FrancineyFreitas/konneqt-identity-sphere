@@ -81,26 +81,28 @@ const Hero = () => {
                 </div>
               </ScrollReveal>
 
-              {/* New section with text and polygonal image */}
+              {/* Duplicated section from Challenges with image and text */}
               <ScrollReveal delay={1000}>
                 <div className="mt-16 space-y-8">
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-inter">
-                    <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-green-400 bg-clip-text text-transparent">
-                      Revolutionizing Identity Provisioning
-                    </span>
-                  </h2>
-                  
-                  <div className="relative max-w-4xl mx-auto">
-                    <div 
-                      className="w-full h-64 md:h-80 lg:h-96 bg-cover bg-center relative overflow-hidden"
-                      style={{
-                        backgroundImage: 'url(/lovable-uploads/528b1525-6f90-4670-a518-48122a0710f3.png)',
-                        clipPath: 'polygon(0 0, calc(100% - 80px) 0, 100% 80px, 100% 100%, 80px 100%, 0 calc(100% - 80px))',
-                        backgroundColor: 'transparent'
-                      }}
-                    >
-                      {/* Optional overlay for better visual effect */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/10"></div>
+                  <div className="relative mb-16 rounded-2xl overflow-hidden">
+                    <div className="relative h-96 md:h-[500px]">
+                      <img 
+                        src="/lovable-uploads/2ac37b45-98fe-4c74-8583-bea89e0fc22d.png" 
+                        alt="Student studying" 
+                        className="w-full h-full object-cover"
+                      />
+                      {/* Gradient overlay matching page color palette */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-gray-900/60 to-slate-800/70"></div>
+                      
+                      {/* Text overlay - moved to bottom of image */}
+                      <div className="absolute bottom-0 left-0 right-0 flex flex-col justify-end items-center text-center px-6 pb-12">
+                        <h1 className="text-4xl md:text-6xl font-light mb-4 text-white font-inter">
+                          {t('challenges.title')} <span className="font-bold" style={{ color: '#1de28f' }}>{t('challenges.title.education')}</span>
+                        </h1>
+                        <p className="text-lg md:text-xl text-slate-200 max-w-4xl font-inter">
+                          {t('challenges.description')}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
