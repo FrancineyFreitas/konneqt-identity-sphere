@@ -49,12 +49,6 @@ const Hero = () => {
                 </h1>
               </ScrollReveal>
 
-              <ScrollReveal delay={200}>
-                <h2 className="text-lg md:text-xl lg:text-2xl text-slate-400 font-medium font-inter mt-8">
-                  Revolutionizing Identity Provisioning
-                </h2>
-              </ScrollReveal>
-
               <ScrollReveal delay={400}>
                 <p className="text-base md:text-lg text-slate-300 leading-relaxed font-inter max-w-3xl mx-auto">
                   {t('hero.description')}
@@ -84,6 +78,30 @@ const Hero = () => {
                   >
                     {t('hero.cta')}
                   </Button>
+                </div>
+              </ScrollReveal>
+
+              {/* New section with text and polygonal image */}
+              <ScrollReveal delay={1000}>
+                <div className="mt-16 space-y-8">
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-inter">
+                    <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-green-400 bg-clip-text text-transparent">
+                      Revolutionizing Identity Provisioning
+                    </span>
+                  </h2>
+                  
+                  <div className="relative max-w-4xl mx-auto">
+                    <div 
+                      className="w-full h-64 md:h-80 lg:h-96 bg-cover bg-center relative"
+                      style={{
+                        backgroundImage: 'url(/lovable-uploads/528b1525-6f90-4670-a518-48122a0710f3.png)',
+                        clipPath: 'polygon(0 0, calc(100% - 60px) 0, 100% 60px, 100% 100%, 60px 100%, 0 calc(100% - 60px))'
+                      }}
+                    >
+                      {/* Optional overlay for better text contrast if needed */}
+                      <div className="absolute inset-0 bg-black/20"></div>
+                    </div>
+                  </div>
                 </div>
               </ScrollReveal>
             </div>
