@@ -81,15 +81,17 @@ const Hero = () => {
                 </div>
               </ScrollReveal>
 
-              {/* Image section with updated text and matching width */}
+              {/* Image section with polygon mask */}
               <ScrollReveal delay={1000}>
                 <div className="mt-16 space-y-8">
                   <div className="container mx-auto relative z-10">
-                    <div className="relative mb-16 rounded-2xl overflow-hidden">
-                      <div className="relative h-96 md:h-[500px]">
+                    <div className="relative mb-16">
+                      <div className="relative h-96 md:h-[500px]" style={{
+                        clipPath: 'polygon(10% 0%, 90% 0%, 100% 15%, 100% 85%, 90% 100%, 10% 100%, 0% 85%, 0% 15%)'
+                      }}>
                         <img 
-                          src="/lovable-uploads/2ac37b45-98fe-4c74-8583-bea89e0fc22d.png" 
-                          alt="Student studying" 
+                          src="/lovable-uploads/cf9adc94-1e1f-4971-87b5-5ed1c844658d.png" 
+                          alt="Identity management professionals" 
                           className="w-full h-full object-cover"
                         />
                         {/* Gradient overlay matching page color palette */}
@@ -100,9 +102,6 @@ const Hero = () => {
                           <h1 className="text-4xl md:text-6xl font-light mb-4 text-white font-inter">
                             <span className="text-white">Revolutionizing</span> <span className="font-bold" style={{ color: '#1de28f' }}>Identity Provisioning</span>
                           </h1>
-                          <p className="text-lg md:text-xl text-slate-200 max-w-4xl font-inter">
-                            {t('challenges.description')}
-                          </p>
                         </div>
                       </div>
                     </div>
