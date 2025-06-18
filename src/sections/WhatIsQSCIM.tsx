@@ -1,4 +1,3 @@
-
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -43,7 +42,7 @@ const WhatIsQSCIM = () => {
 
           <ScrollReveal delay={300}>
             <div className="grid md:grid-cols-2 gap-6 w-full max-w-4xl">
-              <div className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg rounded-xl p-6 h-full">
+              <div className="bg-slate-800/30 backdrop-blur-sm transition-all duration-300 rounded-xl p-6 h-full" style={{ border: '1px solid #2f2f2f' }}>
                 <h3 className="text-xl font-semibold mb-4 text-white font-inter">{t('whatIsQscim.protocol.title')}</h3>
                 <ul className="space-y-2 text-slate-300">
                   <li className="flex items-center">
@@ -65,7 +64,7 @@ const WhatIsQSCIM = () => {
                 </ul>
               </div>
 
-              <div className="border border-green-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-green-400 transition-all duration-300 hover:shadow-lg rounded-xl p-6 h-full">
+              <div className="bg-slate-800/30 backdrop-blur-sm transition-all duration-300 rounded-xl p-6 h-full" style={{ border: '1px solid #2f2f2f' }}>
                 <h3 className="text-xl font-semibold mb-4 text-white font-inter">{t('whatIsQscim.automation.title')}</h3>
                 <p className="text-slate-300 leading-relaxed font-inter">
                   {t('whatIsQscim.automation.description')}

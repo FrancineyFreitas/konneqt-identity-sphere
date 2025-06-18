@@ -112,7 +112,7 @@ const Contact = () => {
           {/* Left side - Contact Form */}
           <div>
             <ScrollReveal>
-              <div className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg rounded-2xl p-8 shadow-lg relative overflow-hidden">
+              <div className="bg-slate-800/30 backdrop-blur-sm transition-all duration-300 rounded-2xl p-8 shadow-lg relative overflow-hidden" style={{ border: '1px solid #2f2f2f' }}>
                 
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 relative z-10">
@@ -220,7 +220,7 @@ const Contact = () => {
           {/* Right side - Why choose QSCIM */}
           <div>
             <ScrollReveal delay={200}>
-              <div className="border border-blue-500/40 bg-slate-800/30 backdrop-blur-sm hover:border-blue-400 transition-all duration-300 hover:shadow-lg rounded-2xl p-6 shadow-lg">
+              <div className="bg-slate-800/30 backdrop-blur-sm transition-all duration-300 rounded-2xl p-6 shadow-lg" style={{ border: '1px solid #2f2f2f' }}>
                 <h3 className="text-xl font-semibold mb-4 text-white font-inter">{t('contact.why.title')}</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start">
