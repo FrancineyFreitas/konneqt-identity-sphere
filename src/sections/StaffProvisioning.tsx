@@ -1,3 +1,4 @@
+
 import ScrollReveal from '../components/ScrollReveal';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -77,9 +78,10 @@ const StaffProvisioning = () => {
                 src="/lovable-uploads/fe8a2d38-1c42-47ba-9842-b88fef513dca.png" 
                 alt="Teachers and staff collaborating" 
                 className="w-full h-full object-cover"
+                style={{ clipPath: 'polygon(0 0, 95% 0, 100% 10%, 100% 100%, 5% 100%, 0 90%)' }}
               />
               {/* Gradient overlay matching page color palette */}
-              <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-gray-900/60 to-slate-800/70"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-gray-900/60 to-slate-800/70" style={{ clipPath: 'polygon(0 0, 95% 0, 100% 10%, 100% 100%, 5% 100%, 0 90%)' }}></div>
               
               {/* Text overlay - positioned at bottom of image */}
               <div className="absolute bottom-0 left-0 right-0 flex flex-col justify-end items-center text-center px-6 pb-12">
