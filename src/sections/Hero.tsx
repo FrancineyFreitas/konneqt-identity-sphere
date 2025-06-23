@@ -1,4 +1,3 @@
-
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
@@ -13,24 +12,9 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center relative overflow-hidden">
-      {/* Video background */}
+      {/* Background gradient instead of video */}
       <div className="absolute inset-0 z-0">
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline
-          preload="auto"
-          className="w-full h-full object-cover"
-          style={{ filter: 'brightness(0.6)' }}
-          onError={(e) => console.error('Video failed to load:', e)}
-          onLoadStart={() => console.log('Video loading started')}
-        >
-          <source src="/videos/hero-background-new.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        {/* Light overlay to maintain readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-gray-900/40 to-black/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-gray-900 to-black"></div>
       </div>
 
       {/* Tech grid background - very subtle */}
