@@ -23,7 +23,7 @@ const Hero = () => {
           className="w-full h-full object-cover"
           style={{ filter: 'brightness(0.6)' }}
         >
-          <source src="/videos/hero-background.mp4" type="video/mp4" />
+          <source src="/videos/hero-background-new.mp4" type="video/mp4" />
         </video>
         {/* Light overlay to maintain readability */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-gray-900/40 to-black/60"></div>
@@ -59,9 +59,9 @@ const Hero = () => {
                   <span className="text-xs md:text-sm font-medium text-slate-300 font-inter">{t('hero.badge')}</span>
                 </div>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.3] md:leading-[1.2] text-white font-inter drop-shadow-lg">
-                  <span className="font-inter text-white">{t('hero.title.qscim')}</span> <span className="text-white font-light">{t('hero.title.for')}</span>{' '}
-                  <span className="text-white">{t('hero.title.schools')}</span> <span className="text-white font-light">{t('hero.title.and')}</span>{' '}
-                  <span className="text-white">{t('hero.title.universities')}</span>
+                  <span className="font-inter" style={{ color: '#1de28f' }}>{t('hero.title.qscim')}</span> <span className="text-white font-light">{t('hero.title.for')}</span>{' '}
+                  <span style={{ color: '#1de28f' }}>{t('hero.title.schools')}</span> <span className="text-white font-light">{t('hero.title.and')}</span>{' '}
+                  <span style={{ color: '#1de28f' }}>{t('hero.title.universities')}</span>
                 </h1>
               </ScrollReveal>
 
@@ -90,7 +90,8 @@ const Hero = () => {
                   <Button
                     onClick={scrollToContact}
                     size="lg"
-                    className="bg-blue-600/80 border border-blue-500/40 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg hover:bg-blue-500/90 hover:border-blue-400 transform hover:scale-105 transition-all duration-300 font-inter backdrop-blur-sm"
+                    className="bg-transparent border-2 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg hover:bg-[#1de28f]/10 transform hover:scale-105 transition-all duration-300 font-inter backdrop-blur-sm"
+                    style={{ borderColor: '#1de28f' }}
                   >
                     {t('hero.cta')}
                   </Button>
