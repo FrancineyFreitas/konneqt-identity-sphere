@@ -12,24 +12,20 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-gray-900 to-black relative overflow-hidden">
-      {/* Walking students animation background */}
-      <div className="absolute inset-0 opacity-20 z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-600/20 to-transparent">
-          {/* Student silhouettes walking animation */}
-          <div className="absolute top-1/2 left-0 w-full h-32 flex items-center justify-center">
-            <div className="flex space-x-32 animate-[walk_20s_linear_infinite]">
-              <div className="w-8 h-12 bg-slate-300/40 rounded-full relative animate-[bob_2s_ease-in-out_infinite]">
-                <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-6 bg-slate-300/30 rounded"></div>
-              </div>
-              <div className="w-8 h-12 bg-slate-300/35 rounded-full relative animate-[bob_2s_ease-in-out_infinite_0.5s]">
-                <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-6 bg-slate-300/25 rounded"></div>
-              </div>
-              <div className="w-8 h-12 bg-slate-300/30 rounded-full relative animate-[bob_2s_ease-in-out_infinite_1s]">
-                <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-6 bg-slate-300/20 rounded"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Video background */}
+      <div className="absolute inset-0 z-0">
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          className="w-full h-full object-cover opacity-20"
+        >
+          <source src="https://player.vimeo.com/external/434045526.sd.mp4?s=c27eecc69a27dbc4ff2b87d38afc35f1a9e7c02d&profile_id=165&oauth2_token_id=57447761" type="video/mp4" />
+          {/* Fallback for browsers that don't support video */}
+        </video>
+        {/* Dark overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
       {/* Tech grid background */}
