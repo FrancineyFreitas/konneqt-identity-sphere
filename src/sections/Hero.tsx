@@ -19,17 +19,18 @@ const Hero = () => {
           muted 
           loop 
           playsInline
-          className="w-full h-full object-cover opacity-20"
+          className="w-full h-full object-cover opacity-60"
         >
-          <source src="https://player.vimeo.com/external/434045526.sd.mp4?s=c27eecc69a27dbc4ff2b87d38afc35f1a9e7c02d&profile_id=165&oauth2_token_id=57447761" type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/5198239/5198239-sd_640_360_25fps.mp4" type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/6985304/6985304-sd_640_360_25fps.mp4" type="video/mp4" />
           {/* Fallback for browsers that don't support video */}
         </video>
-        {/* Dark overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        {/* Lighter overlay to maintain text readability but show more video */}
+        <div className="absolute inset-0 bg-black/30"></div>
       </div>
 
-      {/* Tech grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_70%,transparent_100%)] z-1"></div>
+      {/* Tech grid background - reduced opacity to not interfere with video */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_70%,transparent_100%)] z-1"></div>
       
       {/* Animated particles */}
       <div className="absolute inset-0 z-2">
