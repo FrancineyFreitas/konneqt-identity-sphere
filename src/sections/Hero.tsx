@@ -1,3 +1,4 @@
+
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
@@ -11,26 +12,26 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-gray-900 to-black relative overflow-hidden">
-      {/* Video background */}
+    <section className="min-h-screen flex items-center relative overflow-hidden">
+      {/* Video background - moved to highest priority */}
       <div className="absolute inset-0 z-0">
         <video 
           autoPlay 
           muted 
           loop 
           playsInline
-          className="w-full h-full object-cover opacity-60"
+          className="w-full h-full object-cover"
+          style={{ filter: 'brightness(0.7)' }}
         >
+          <source src="https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4" type="video/mp4" />
           <source src="https://videos.pexels.com/video-files/5198239/5198239-sd_640_360_25fps.mp4" type="video/mp4" />
-          <source src="https://videos.pexels.com/video-files/6985304/6985304-sd_640_360_25fps.mp4" type="video/mp4" />
-          {/* Fallback for browsers that don't support video */}
         </video>
-        {/* Lighter overlay to maintain text readability but show more video */}
-        <div className="absolute inset-0 bg-black/30"></div>
+        {/* Very light overlay to maintain readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/40 via-gray-900/30 to-black/50"></div>
       </div>
 
-      {/* Tech grid background - reduced opacity to not interfere with video */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_70%,transparent_100%)] z-1"></div>
+      {/* Tech grid background - very subtle */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_70%,transparent_100%)] z-1"></div>
       
       {/* Animated particles */}
       <div className="absolute inset-0 z-2">
@@ -54,11 +55,11 @@ const Hero = () => {
             {/* Main content - centered */}
             <div className="max-w-4xl space-y-6 md:space-y-8">
               <ScrollReveal>
-                <div className="inline-flex items-center space-x-2 bg-slate-800/50 border border-slate-700 rounded-full px-3 md:px-4 py-2 mb-6 backdrop-blur-sm">
+                <div className="inline-flex items-center space-x-2 bg-slate-800/70 border border-slate-700 rounded-full px-3 md:px-4 py-2 mb-6 backdrop-blur-sm">
                   <span className="text-base md:text-lg">⚡</span>
                   <span className="text-xs md:text-sm font-medium text-slate-300 font-inter">{t('hero.badge')}</span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.3] md:leading-[1.2] text-white font-inter">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.3] md:leading-[1.2] text-white font-inter drop-shadow-lg">
                   <span className="font-inter text-white">{t('hero.title.qscim')}</span> <span className="text-white font-light">{t('hero.title.for')}</span>{' '}
                   <span className="text-white">{t('hero.title.schools')}</span> <span className="text-white font-light">{t('hero.title.and')}</span>{' '}
                   <span className="text-white">{t('hero.title.universities')}</span>
@@ -66,20 +67,20 @@ const Hero = () => {
               </ScrollReveal>
 
               <ScrollReveal delay={400}>
-                <p className="text-base md:text-lg text-slate-300 leading-relaxed font-inter max-w-3xl mx-auto">
+                <p className="text-base md:text-lg text-slate-200 leading-relaxed font-inter max-w-3xl mx-auto drop-shadow">
                   {t('hero.description')}
                 </p>
               </ScrollReveal>
 
               <ScrollReveal delay={600}>
                 <div className="flex flex-wrap justify-center gap-2 md:gap-3">
-                  <Badge className="bg-slate-800 border border-green-500/30 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-green-500/10 font-inter">
+                  <Badge className="bg-slate-800/70 border border-green-500/40 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-green-500/10 font-inter backdrop-blur-sm">
                     {t('hero.badge.automation')}
                   </Badge>
-                  <Badge className="bg-slate-800 border border-blue-500/30 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-blue-500/10 font-inter">
+                  <Badge className="bg-slate-800/70 border border-blue-500/40 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-blue-500/10 font-inter backdrop-blur-sm">
                     {t('hero.badge.security')}
                   </Badge>
-                  <Badge className="bg-slate-800 border border-purple-500/30 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-purple-500/10 font-inter">
+                  <Badge className="bg-slate-800/70 border border-purple-500/40 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-purple-500/10 font-inter backdrop-blur-sm">
                     {t('hero.badge.scalability')}
                   </Badge>
                 </div>
@@ -90,7 +91,7 @@ const Hero = () => {
                   <Button
                     onClick={scrollToContact}
                     size="lg"
-                    className="bg-transparent border border-blue-500/40 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg hover:bg-blue-500/10 hover:border-blue-400 transform hover:scale-105 transition-all duration-300 font-inter"
+                    className="bg-blue-600/80 border border-blue-500/40 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg hover:bg-blue-500/90 hover:border-blue-400 transform hover:scale-105 transition-all duration-300 font-inter backdrop-blur-sm"
                   >
                     {t('hero.cta')}
                   </Button>
