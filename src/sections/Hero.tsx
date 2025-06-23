@@ -1,4 +1,3 @@
-
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
@@ -14,19 +13,19 @@ const Hero = () => {
   return (
     <section className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-gray-900 to-black relative overflow-hidden">
       {/* Walking students animation background */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-700/10 to-transparent">
+      <div className="absolute inset-0 opacity-20 z-0">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-600/20 to-transparent">
           {/* Student silhouettes walking animation */}
           <div className="absolute top-1/2 left-0 w-full h-32 flex items-center justify-center">
             <div className="flex space-x-32 animate-[walk_20s_linear_infinite]">
-              <div className="w-8 h-12 bg-slate-400/20 rounded-full relative animate-[bob_2s_ease-in-out_infinite]">
-                <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-6 bg-slate-400/15 rounded"></div>
+              <div className="w-8 h-12 bg-slate-300/40 rounded-full relative animate-[bob_2s_ease-in-out_infinite]">
+                <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-6 bg-slate-300/30 rounded"></div>
               </div>
-              <div className="w-8 h-12 bg-slate-400/15 rounded-full relative animate-[bob_2s_ease-in-out_infinite_0.5s]">
-                <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-6 bg-slate-400/10 rounded"></div>
+              <div className="w-8 h-12 bg-slate-300/35 rounded-full relative animate-[bob_2s_ease-in-out_infinite_0.5s]">
+                <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-6 bg-slate-300/25 rounded"></div>
               </div>
-              <div className="w-8 h-12 bg-slate-400/10 rounded-full relative animate-[bob_2s_ease-in-out_infinite_1s]">
-                <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-6 bg-slate-400/10 rounded"></div>
+              <div className="w-8 h-12 bg-slate-300/30 rounded-full relative animate-[bob_2s_ease-in-out_infinite_1s]">
+                <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-6 bg-slate-300/20 rounded"></div>
               </div>
             </div>
           </div>
@@ -34,10 +33,10 @@ const Hero = () => {
       </div>
 
       {/* Tech grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_70%,transparent_100%)]"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_70%,transparent_100%)] z-1"></div>
       
       {/* Animated particles */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-2">
         <div className="absolute top-20 left-10 w-1 h-1 rounded-full animate-pulse" style={{ backgroundColor: '#637ef2' }}></div>
         <div className="absolute top-40 right-20 w-1 h-1 rounded-full animate-pulse delay-1000" style={{ backgroundColor: '#637ef2' }}></div>
         <div className="absolute bottom-40 left-20 w-1 h-1 rounded-full animate-pulse delay-2000" style={{ backgroundColor: '#637ef2' }}></div>
