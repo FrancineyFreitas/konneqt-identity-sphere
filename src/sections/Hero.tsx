@@ -20,10 +20,14 @@ const Hero = () => {
           muted 
           loop 
           playsInline
+          preload="auto"
           className="w-full h-full object-cover"
           style={{ filter: 'brightness(0.6)' }}
+          onError={(e) => console.error('Video failed to load:', e)}
+          onLoadStart={() => console.log('Video loading started')}
         >
           <source src="/videos/hero-background-new.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
         {/* Light overlay to maintain readability */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-gray-900/40 to-black/60"></div>
