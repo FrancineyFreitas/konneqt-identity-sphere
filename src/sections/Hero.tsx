@@ -13,7 +13,7 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center relative overflow-hidden">
-      {/* Video background - moved to highest priority */}
+      {/* Video background */}
       <div className="absolute inset-0 z-0">
         <video 
           autoPlay 
@@ -21,13 +21,12 @@ const Hero = () => {
           loop 
           playsInline
           className="w-full h-full object-cover"
-          style={{ filter: 'brightness(0.7)' }}
+          style={{ filter: 'brightness(0.6)' }}
         >
-          <source src="https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4" type="video/mp4" />
-          <source src="https://videos.pexels.com/video-files/5198239/5198239-sd_640_360_25fps.mp4" type="video/mp4" />
+          <source src="/videos/hero-background.mp4" type="video/mp4" />
         </video>
-        {/* Very light overlay to maintain readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/40 via-gray-900/30 to-black/50"></div>
+        {/* Light overlay to maintain readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-gray-900/40 to-black/60"></div>
       </div>
 
       {/* Tech grid background - very subtle */}
@@ -55,7 +54,7 @@ const Hero = () => {
             {/* Main content - centered */}
             <div className="max-w-4xl space-y-6 md:space-y-8">
               <ScrollReveal>
-                <div className="inline-flex items-center space-x-2 bg-slate-800/70 border border-slate-700 rounded-full px-3 md:px-4 py-2 mb-6 backdrop-blur-sm">
+                <div className="inline-flex items-center space-x-2 bg-slate-800/80 border border-slate-700 rounded-full px-3 md:px-4 py-2 mb-6 backdrop-blur-sm">
                   <span className="text-base md:text-lg">⚡</span>
                   <span className="text-xs md:text-sm font-medium text-slate-300 font-inter">{t('hero.badge')}</span>
                 </div>
@@ -74,13 +73,13 @@ const Hero = () => {
 
               <ScrollReveal delay={600}>
                 <div className="flex flex-wrap justify-center gap-2 md:gap-3">
-                  <Badge className="bg-slate-800/70 border border-green-500/40 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-green-500/10 font-inter backdrop-blur-sm">
+                  <Badge className="bg-slate-800/80 border border-green-500/40 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-green-500/10 font-inter backdrop-blur-sm">
                     {t('hero.badge.automation')}
                   </Badge>
-                  <Badge className="bg-slate-800/70 border border-blue-500/40 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-blue-500/10 font-inter backdrop-blur-sm">
+                  <Badge className="bg-slate-800/80 border border-blue-500/40 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-blue-500/10 font-inter backdrop-blur-sm">
                     {t('hero.badge.security')}
                   </Badge>
-                  <Badge className="bg-slate-800/70 border border-purple-500/40 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-purple-500/10 font-inter backdrop-blur-sm">
+                  <Badge className="bg-slate-800/80 border border-purple-500/40 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-purple-500/10 font-inter backdrop-blur-sm">
                     {t('hero.badge.scalability')}
                   </Badge>
                 </div>
