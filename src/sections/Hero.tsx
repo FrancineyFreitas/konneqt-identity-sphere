@@ -1,3 +1,4 @@
+
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import ScrollReveal from '../components/ScrollReveal';
@@ -12,9 +13,18 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center relative overflow-hidden">
-      {/* Background gradient instead of video */}
+      {/* Background video */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-gray-900 to-black"></div>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-20"
+        >
+          <source src="/videos/students-background.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-gray-900/80 to-black/80"></div>
       </div>
 
       {/* Tech grid background - very subtle */}
