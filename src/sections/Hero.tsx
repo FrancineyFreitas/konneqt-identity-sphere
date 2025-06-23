@@ -13,6 +13,26 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-gray-900 to-black relative overflow-hidden">
+      {/* Walking students animation background */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-700/10 to-transparent">
+          {/* Student silhouettes walking animation */}
+          <div className="absolute top-1/2 left-0 w-full h-32 flex items-center justify-center">
+            <div className="flex space-x-32 animate-[walk_20s_linear_infinite]">
+              <div className="w-8 h-12 bg-slate-400/20 rounded-full relative animate-[bob_2s_ease-in-out_infinite]">
+                <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-6 bg-slate-400/15 rounded"></div>
+              </div>
+              <div className="w-8 h-12 bg-slate-400/15 rounded-full relative animate-[bob_2s_ease-in-out_infinite_0.5s]">
+                <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-6 bg-slate-400/10 rounded"></div>
+              </div>
+              <div className="w-8 h-12 bg-slate-400/10 rounded-full relative animate-[bob_2s_ease-in-out_infinite_1s]">
+                <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-6 bg-slate-400/10 rounded"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Tech grid background */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_70%,transparent_100%)]"></div>
       
@@ -43,9 +63,9 @@ const Hero = () => {
                   <span className="text-xs md:text-sm font-medium text-slate-300 font-inter">{t('hero.badge')}</span>
                 </div>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.3] md:leading-[1.2] text-white font-inter">
-                  <span className="font-inter" style={{ color: '#0097b2' }}>{t('hero.title.qscim')}</span> <span className="text-white font-light">{t('hero.title.for')}</span>{' '}
-                  <span style={{ color: '#0097b2' }}>{t('hero.title.schools')}</span> <span className="text-white font-light">{t('hero.title.and')}</span>{' '}
-                  <span style={{ color: '#0097b2' }}>{t('hero.title.universities')}</span>
+                  <span className="font-inter text-white">{t('hero.title.qscim')}</span> <span className="text-white font-light">{t('hero.title.for')}</span>{' '}
+                  <span className="text-white">{t('hero.title.schools')}</span> <span className="text-white font-light">{t('hero.title.and')}</span>{' '}
+                  <span className="text-white">{t('hero.title.universities')}</span>
                 </h1>
               </ScrollReveal>
 
