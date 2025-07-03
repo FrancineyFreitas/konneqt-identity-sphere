@@ -90,6 +90,17 @@
   75% { transform: rotate(5deg); }
 }
 
+/* Walking students animation */
+@keyframes walk {
+  0% { transform: translateX(-100vw); }
+  100% { transform: translateX(100vw); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
 /* Tech scanning line effect */
 @keyframes scan {
   0% { transform: translateX(-100%); }
