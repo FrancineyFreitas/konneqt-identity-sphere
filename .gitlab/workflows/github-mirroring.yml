@@ -5,9 +5,7 @@ on:
     branches:
       - main 
       - staging
-      - develop 
-      - DEVOPS*
-      - MKT*
+      - develop
 
 jobs:
   mirror:
@@ -33,7 +31,7 @@ jobs:
           GITLAB_TOKEN_INTERNAL: ${{ secrets.GITLAB_TOKEN_INTERNAL }}
         run: |
           git remote remove gitlab || true
-          GITLAB_REPO="https://oauth2:${GITLAB_TOKEN_INTERNAL}@${GITLAB_DOMAIN_INTERNAL}/konneqt/infra-team/konneqt-qscim-education-lp.git"
+          GITLAB_REPO="https://oauth2:${GITLAB_TOKEN_INTERNAL}@${GITLAB_DOMAIN_INTERNAL}/konneqt/marketing-team/konneqt-qscim-education-lp.git"
           git remote add gitlab "$GITLAB_REPO"
           # Push all branchs
           git for-each-ref --format='%(refname:short)' refs/heads/ | xargs -n1 git push gitlab
