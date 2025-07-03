@@ -12,12 +12,26 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-gray-900 to-black relative overflow-hidden">
-      {/* Tech grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_70%,transparent_100%)]"></div>
+    <section className="min-h-screen flex items-center relative overflow-hidden">
+      {/* Background video */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-20"
+        >
+          <source src="/videos/students-background.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-gray-900/80 to-black/80"></div>
+      </div>
+
+      {/* Tech grid background - very subtle */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_70%,transparent_100%)] z-1"></div>
       
       {/* Animated particles */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-2">
         <div className="absolute top-20 left-10 w-1 h-1 rounded-full animate-pulse" style={{ backgroundColor: '#637ef2' }}></div>
         <div className="absolute top-40 right-20 w-1 h-1 rounded-full animate-pulse delay-1000" style={{ backgroundColor: '#637ef2' }}></div>
         <div className="absolute bottom-40 left-20 w-1 h-1 rounded-full animate-pulse delay-2000" style={{ backgroundColor: '#637ef2' }}></div>
@@ -38,11 +52,11 @@ const Hero = () => {
             {/* Main content - centered */}
             <div className="max-w-4xl space-y-6 md:space-y-8">
               <ScrollReveal>
-                <div className="inline-flex items-center space-x-2 bg-slate-800/50 border border-slate-700 rounded-full px-3 md:px-4 py-2 mb-6 backdrop-blur-sm">
+                <div className="inline-flex items-center space-x-2 bg-slate-800/80 border border-slate-700 rounded-full px-3 md:px-4 py-2 mb-6 backdrop-blur-sm">
                   <span className="text-base md:text-lg">⚡</span>
                   <span className="text-xs md:text-sm font-medium text-slate-300 font-inter">{t('hero.badge')}</span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.3] md:leading-[1.2] text-white font-inter">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.3] md:leading-[1.2] text-white font-inter drop-shadow-lg">
                   <span className="font-inter" style={{ color: '#1de28f' }}>{t('hero.title.qscim')}</span> <span className="text-white font-light">{t('hero.title.for')}</span>{' '}
                   <span style={{ color: '#1de28f' }}>{t('hero.title.schools')}</span> <span className="text-white font-light">{t('hero.title.and')}</span>{' '}
                   <span style={{ color: '#1de28f' }}>{t('hero.title.universities')}</span>
@@ -50,20 +64,20 @@ const Hero = () => {
               </ScrollReveal>
 
               <ScrollReveal delay={400}>
-                <p className="text-base md:text-lg text-slate-300 leading-relaxed font-inter max-w-3xl mx-auto">
+                <p className="text-base md:text-lg text-slate-200 leading-relaxed font-inter max-w-3xl mx-auto drop-shadow">
                   {t('hero.description')}
                 </p>
               </ScrollReveal>
 
               <ScrollReveal delay={600}>
                 <div className="flex flex-wrap justify-center gap-2 md:gap-3">
-                  <Badge className="bg-slate-800 border border-green-500/30 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-green-500/10 font-inter">
+                  <Badge className="bg-slate-800/80 border border-green-500/40 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-green-500/10 font-inter backdrop-blur-sm">
                     {t('hero.badge.automation')}
                   </Badge>
-                  <Badge className="bg-slate-800 border border-blue-500/30 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-blue-500/10 font-inter">
+                  <Badge className="bg-slate-800/80 border border-blue-500/40 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-blue-500/10 font-inter backdrop-blur-sm">
                     {t('hero.badge.security')}
                   </Badge>
-                  <Badge className="bg-slate-800 border border-purple-500/30 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-purple-500/10 font-inter">
+                  <Badge className="bg-slate-800/80 border border-purple-500/40 text-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm hover:bg-purple-500/10 font-inter backdrop-blur-sm">
                     {t('hero.badge.scalability')}
                   </Badge>
                 </div>
@@ -74,7 +88,8 @@ const Hero = () => {
                   <Button
                     onClick={scrollToContact}
                     size="lg"
-                    className="bg-transparent border border-blue-500/40 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg hover:bg-blue-500/10 hover:border-blue-400 transform hover:scale-105 transition-all duration-300 font-inter"
+                    className="bg-transparent border-2 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg hover:bg-[#1de28f]/10 transform hover:scale-105 transition-all duration-300 font-inter backdrop-blur-sm"
+                    style={{ borderColor: '#1de28f' }}
                   >
                     {t('hero.cta')}
                   </Button>
